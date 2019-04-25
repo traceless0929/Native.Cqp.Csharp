@@ -9,7 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Native.Csharp.Sdk.Cqp.Api
+namespace Native.Csharp.Sdk.Cqp
 {
 	public class CqApi
 	{
