@@ -11,6 +11,10 @@ namespace Native.Csharp.Tool.Reflection
     {
         public static T runMethod<T>(string loadNameSpace,string loadType,string methodSignature,params object[] parameters)
         {
+            if (string.IsNullOrEmpty(methodSignature))
+            {
+                return default(T);
+            }
             // 1.Load(命名空间名称)，GetType(命名空间.类名)
             Type type = Assembly.Load(loadNameSpace).GetType(loadType);
             //2.GetMethod(需要调用的方法名称)
@@ -25,6 +29,10 @@ namespace Native.Csharp.Tool.Reflection
 
         public static T runStaticMethod<T>(string loadNameSpace, string loadType, string methodSignature, params object[] parameters)
         {
+            if (string.IsNullOrEmpty(methodSignature))
+            {
+                return default(T);
+            }
             // 1.Load(命名空间名称)，GetType(命名空间.类名)
             Type type = Assembly.Load(loadNameSpace).GetType(loadType);
             //2.GetMethod(需要调用的方法名称)
@@ -32,12 +40,6 @@ namespace Native.Csharp.Tool.Reflection
             // 相应地调用静态方法时，Invoke的第一个参数为null
             object result = method.Invoke(null, parameters);
             return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(result));
-        }
-
-        public string test(string str,int num)
-        {
-            System.Console.WriteLine(str + num);
-            return str + num;
         }
     }
 }

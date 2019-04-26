@@ -6,34 +6,42 @@ using System.Linq;
 using System.Text;
 using Native.Csharp.App.Model;
 using Native.Csharp.App.Interface;
+using Native.Csharp.Tool.Reflection;
 
 namespace Native.Csharp.App.Event
 {
 	public class Event_GroupMessage : IEvent_GroupMessage
 	{
-		#region --公开方法--
-		/// <summary>
-		/// Type=2 群消息<para/>
-		/// 处理收到的群消息
-		/// </summary>
-		/// <param name="sender">事件的触发对象</param>
-		/// <param name="e">事件的附加参数</param>
-		public void ReceiveGroupMessage (object sender, GroupMessageEventArgs e)
+        public long DebugGid = 77540681;
+        #region --公开方法--
+        /// <summary>
+        /// Type=2 群消息<para/>
+        /// 处理收到的群消息
+        /// </summary>
+        /// <param name="sender">事件的触发对象</param>
+        /// <param name="e">事件的附加参数</param>
+        public void ReceiveGroupMessage (object sender, GroupMessageEventArgs e)
 		{
-			// 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
-			// 这里处理消息
-			if (e.FromAnonymous != null)    // 如果此属性不为null, 则消息来自于匿名成员
+            if(e.FromGroup != 77540681)
+            {
+                e.Handled = true;
+                return;
+            }
+            // 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
+            // 这里处理消息
+
+            AnalysisMsg nowModel = new AnalysisMsg(e.Msg);
+            MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.GroupApp", nowModel.Command, e, nowModel);
+
+            if (e.FromAnonymous != null)    // 如果此属性不为null, 则消息来自于匿名成员
 			{
-				Common.CqApi.SendGroupMessage (e.FromGroup, e.FromAnonymous.CodeName + " 你发送了这样的消息: " + e.Msg);
 				e.Handled = true;
-				return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
-			}
-
-			// 与2019年02月26日, 默认注释此行代码.
-			// Common.CqApi.SendGroupMessage (e.FromGroup, Common.CqApi.CqCode_At (e.FromQQ) + "你发送了这样的消息: " + e.Msg);
-
+                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+            }
+            
 			e.Handled = true;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
-		}
+            
+        }
 
 		/// <summary>
 		/// Type=21 群私聊<para/>
@@ -187,12 +195,10 @@ namespace Native.Csharp.App.Event
 		/// <param name="e">事件的附加参数</param>
 		public void ReceiveGroupAddInvitee (object sender, GroupAddRequestEventArgs e)
 		{
-			// 本子程序会在酷Q【线程】中被调用, 请注意使用对象等需要初始化(ConIntialize, CoUninitialize).
-			// 这里处理消息
+            // 本子程序会在酷Q【线程】中被调用, 请注意使用对象等需要初始化(ConIntialize, CoUninitialize).
+            // 这里处理消息
 
-
-
-			e.Handled = false;  // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
+            e.Handled = false;  // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
 		}
 		#endregion
 	}

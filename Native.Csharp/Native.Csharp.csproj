@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Native.Csharp</RootNamespace>
-    <AssemblyName>Native.Csharp</AssemblyName>
+    <AssemblyName>site.traceless.SmartTv2</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -18,7 +18,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+    <OutputPath>..\..\酷Q Air\app\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Command\GroupApp.cs" />
     <Compile Include="App\Common.cs" />
     <Compile Include="App\Core\LibExport.cs">
       <AutoGen>True</AutoGen>
@@ -101,6 +102,7 @@
     <Compile Include="App\Interface\IEvent_GroupMessage.cs" />
     <Compile Include="App\Interface\IEvent_OtherMessage.cs" />
     <Compile Include="App\Interface\IEvent_UserExpand.cs" />
+    <Compile Include="App\Model\AnalysisMsg.cs" />
     <Compile Include="App\Model\DiscussMessageEventArgs.cs" />
     <Compile Include="App\Model\FileUploadMessageEventArgs.cs" />
     <Compile Include="App\Model\FriendAddRequestEventArgs.cs" />
@@ -109,11 +111,12 @@
     <Compile Include="App\Model\GroupManageAlterEventArgs.cs" />
     <Compile Include="App\Model\GroupMemberAlterEventArgs.cs" />
     <Compile Include="App\Model\GroupMessageEventArgs.cs" />
+    <Compile Include="App\Model\OrderInfoModel.cs" />
     <Compile Include="App\Model\PrivateMessageEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Native.Csharp.json">
+    <None Include="site.traceless.SmartTv2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="FodyWeavers.xml" />
