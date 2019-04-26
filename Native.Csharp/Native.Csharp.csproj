@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Command\FriendApp.cs" />
     <Compile Include="App\Command\GroupApp.cs" />
     <Compile Include="App\Common.cs" />
     <Compile Include="App\Core\LibExport.cs">
@@ -96,6 +97,9 @@
     <Compile Include="App\Event\Event_GroupMessage.cs" />
     <Compile Include="App\Event\Event_OtherMessage.cs" />
     <Compile Include="App\Event\Event_UserExpand.cs" />
+    <Compile Include="App\Extend\StringOrg.cs" />
+    <Compile Include="App\Extend\Jx3OpenTell.cs" />
+    <Compile Include="App\Extend\ServerRemind.cs" />
     <Compile Include="App\Interface\IEvent_AppStatus.cs" />
     <Compile Include="App\Interface\IEvent_DiscussMessage.cs" />
     <Compile Include="App\Interface\IEvent_FriendMessage.cs" />

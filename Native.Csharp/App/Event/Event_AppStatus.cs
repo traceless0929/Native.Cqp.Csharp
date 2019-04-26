@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Native.Csharp.App.Extend;
 using Native.Csharp.App.Interface;
 using Native.Csharp.Sdk.Cqp;
 using Native.Csharp.Tool.IniConfig.Linq;
@@ -63,16 +64,33 @@ namespace Native.Csharp.App.Event
             {
                 iObject = new IniObject
                 {
-                    new IniSection("commands")
+                    new IniSection("gcommands")
                     {
-                        { "测试", "test" }
+                        { "功能","menu"},
+                        { "抽锦鲤","chose"},
+                        { "开服监控","serverRemind"},
+                        { "开服查询","serverQuery"},
+                        { "/roll","roll" },
+                        { "建议","advise"},
+                    },
+                    new IniSection("pcommands")
+                    {
+                        { "功能","menu"},
+                        { "建议","advise"},
+                        { "反馈","feeback"},
+                        { "个人反馈","pfeeback"},
                     }
                 };
                 iObject.Save(commandPath);
             };
             iObject = IniObject.Load(commandPath, Encoding.Default);
-            IniSection sectionCommand = iObject["commands"];
-            Common.CommandDic = sectionCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            IniSection pCommand = iObject["pcommands"];
+            Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            IniSection gCommand = iObject["gcommands"];
+            Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            Common.SerList = Jx3OpenTell.GetSerList();
+            Common.ServerRemind = new ServerRemind();
+            Common.menuStr = StringOrg.getMenuStr();
         }
 
 		/// <summary>

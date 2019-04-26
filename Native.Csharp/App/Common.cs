@@ -1,4 +1,5 @@
-﻿using Native.Csharp.Sdk.Cqp;
+﻿using Native.Csharp.App.Extend;
+using Native.Csharp.Sdk.Cqp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,23 @@ namespace Native.Csharp.App
         /// <summary>
         /// 命令映射路由
         /// </summary>
-        public static Dictionary<string, string> CommandDic { get; set; } = new Dictionary<string, string>();
-	}
+        public static Dictionary<string, string> GCommandDic { get; set; } = new Dictionary<string, string>();
+        public static Dictionary<string, string> PCommandDic { get; set; } = new Dictionary<string, string>();
+        /// <summary>
+        /// 服务器列表
+        /// </summary>
+        public static string[,] SerList;
+        /// <summary>
+        /// 开服监控
+        /// </summary>
+        public static ServerRemind ServerRemind;
+        /// <summary>
+        /// 主人QQ
+        /// </summary>
+        public static long masterQQ = 415206409;
+        /// <summary>
+        /// 菜单
+        /// </summary>
+        public static string menuStr = "";
+    }
 }

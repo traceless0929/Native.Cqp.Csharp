@@ -14,13 +14,23 @@ namespace Native.Csharp.App.Model
             get => _msg.What.Trim() ?? "";
         }
 
-        public string Command
+        public string GCommand
         {
             get
             {
-                string _command = null;
-                Common.CommandDic.TryGetValue(_msg.What.Trim(),out _command);
-                return _command;
+                string _gcommand = null;
+                Common.GCommandDic.TryGetValue(_msg.What.Trim(),out _gcommand);
+                return _gcommand;
+            }
+        }
+
+        public string PCommand
+        {
+            get
+            {
+                string _pcommand = null;
+                Common.PCommandDic.TryGetValue(_msg.What.Trim(), out _pcommand);
+                return _pcommand;
             }
         }
 

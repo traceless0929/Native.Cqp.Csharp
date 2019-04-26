@@ -29,16 +29,20 @@ namespace Native.Csharp.App.Event
             }
             // 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
             // 这里处理消息
+            //         if (e.FromAnonymous != null)    // 如果此属性不为null, 则消息来自于匿名成员
+            //{
+            //	e.Handled = true;
+            //             return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+            //         }
 
             AnalysisMsg nowModel = new AnalysisMsg(e.Msg);
-            MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.GroupApp", nowModel.Command, e, nowModel);
-
-            if (e.FromAnonymous != null)    // 如果此属性不为null, 则消息来自于匿名成员
-			{
-				e.Handled = true;
+            if (String.IsNullOrEmpty(nowModel.GCommand))
+            {
+                e.Handled = true;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }
-            
+            MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.GroupApp", nowModel.GCommand, e, nowModel);
+
 			e.Handled = true;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
             
         }
