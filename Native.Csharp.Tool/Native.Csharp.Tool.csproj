@@ -57,8 +57,6 @@
   <ItemGroup>
     <None Include="IniConfig\README.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SQLite\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
