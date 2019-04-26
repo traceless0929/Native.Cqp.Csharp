@@ -19,7 +19,7 @@ namespace Native.Csharp.App.Model
             get
             {
                 string _command = null;
-                Common.commandDic.TryGetValue(_msg.What.Trim(),out _command);
+                Common.CommandDic.TryGetValue(_msg.What.Trim(),out _command);
                 return _command;
             }
         }

@@ -34,6 +34,6 @@ namespace Native.Csharp.App
         /// <summary>
         /// 命令映射路由
         /// </summary>
-        public static Dictionary<string, string> commandDic { get; set; } = new Dictionary<string, string>();
+        public static Dictionary<string, string> CommandDic { get; set; } = new Dictionary<string, string>();
 	}
 }

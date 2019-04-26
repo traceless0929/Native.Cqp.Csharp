@@ -72,7 +72,7 @@ namespace Native.Csharp.App.Event
             };
             iObject = IniObject.Load(commandPath, Encoding.Default);
             IniSection sectionCommand = iObject["commands"];
-            Common.commandDic = sectionCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            Common.CommandDic = sectionCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
         }
 
 		/// <summary>
