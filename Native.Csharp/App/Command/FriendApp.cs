@@ -8,7 +8,7 @@ namespace Native.Csharp.App.Command
 {
     public class FriendApp
     {
-        public static void advise(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void advise(PrivateMessageEventArgs args, AnalysisMsg msg)
         {
             Common.CqApi.SendPrivateMessage(Common.masterQQ, $"来自个人{args.FromQQ}:{msg.Who} {msg.How}");
         }

@@ -12,7 +12,6 @@ namespace Native.Csharp.App.Event
 {
 	public class Event_GroupMessage : IEvent_GroupMessage
 	{
-        public long DebugGid = 77540681;
         #region --公开方法--
         /// <summary>
         /// Type=2 群消息<para/>
@@ -22,11 +21,6 @@ namespace Native.Csharp.App.Event
         /// <param name="e">事件的附加参数</param>
         public void ReceiveGroupMessage (object sender, GroupMessageEventArgs e)
 		{
-            if(e.FromGroup != 77540681)
-            {
-                e.Handled = true;
-                return;
-            }
             // 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
             // 这里处理消息
             //         if (e.FromAnonymous != null)    // 如果此属性不为null, 则消息来自于匿名成员
