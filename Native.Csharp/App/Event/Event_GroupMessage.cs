@@ -12,7 +12,6 @@ namespace Native.Csharp.App.Event
 {
 	public class Event_GroupMessage : IEvent_GroupMessage
 	{
-        public long DebugGid = 77540681;
         #region --公开方法--
         /// <summary>
         /// Type=2 群消息<para/>
