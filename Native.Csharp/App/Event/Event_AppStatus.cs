@@ -77,8 +77,8 @@ namespace Native.Csharp.App.Event
                     {
                         { "功能","menu"},
                         { "建议","advise"},
-                        { "反馈","feeback"},
-                        { "个人反馈","pfeeback"},
+                        { "反馈","feedback"},
+                        { "个人反馈","pfeedback"},
                     }
                 };
                 iObject.Save(commandPath);
@@ -91,6 +91,7 @@ namespace Native.Csharp.App.Event
             Common.SerList = Jx3OpenTell.GetSerList();
             Common.ServerRemind = new ServerRemind();
             Common.menuStr = StringOrg.getMenuStr();
+            Common.masterQQ = 415206409L;
         }
 
 		/// <summary>

@@ -24,7 +24,8 @@ namespace Native.Csharp.App.Command
             {
                 return;
             }
-            Common.CqApi.SendGroupMessage(long.Parse(msg.Who), msg.How+ Environment.NewLine + "[来自作者的反馈]");
+            Common.CqApi.SendGroupMessage(long.Parse(msg.Who), msg.How + Environment.NewLine + "[来自作者的反馈]");
+
         }
 
         public static void pfeedback(PrivateMessageEventArgs args, AnalysisMsg msg)
