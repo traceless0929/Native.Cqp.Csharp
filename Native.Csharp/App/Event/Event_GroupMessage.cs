@@ -21,16 +21,11 @@ namespace Native.Csharp.App.Event
         /// <param name="e">事件的附加参数</param>
         public void ReceiveGroupMessage (object sender, GroupMessageEventArgs e)
 		{
-            if(e.FromGroup != 77540681)
-            {
-                e.Handled = true;
-                return;
-            }
             // 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
             // 这里处理消息
 
             AnalysisMsg nowModel = new AnalysisMsg(e.Msg);
-            MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.GroupApp", nowModel.Command, e, nowModel);
+            MethodUtil.runStaticMethod<object>("程序集名称", "Native.Csharp.App.Command.GroupApp", nowModel.GCommand, e, nowModel);
 
             if (e.FromAnonymous != null)    // 如果此属性不为null, 则消息来自于匿名成员
 			{

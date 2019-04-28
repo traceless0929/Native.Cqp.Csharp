@@ -45,34 +45,40 @@ namespace Native.Csharp.App.Event
 
 		}
 
-		/// <summary>
-		/// Type=1003 应用被启用<para/>
-		/// 处理 酷Q 的插件启动事件回调
-		/// </summary>
-		/// <param name="sender">事件的触发对象</param>
-		/// <param name="e">事件的附加参数</param>
-		public void AppEnable (object sender, EventArgs e)
-		{
-			// 当应用被启用后，将收到此事件。
-			// 如果酷Q载入时应用已被启用，则在_eventStartup(Type=1001,酷Q启动)被调用后，本函数也将被调用一次。
-			// 如非必要，不建议在这里加载窗口。（可以添加菜单，让用户手动打开窗口）
-			Common.IsRunning = true;
+        /// <summary>
+        /// Type=1003 应用被启用<para/>
+        /// 处理 酷Q 的插件启动事件回调
+        /// </summary>
+        /// <param name="sender">事件的触发对象</param>
+        /// <param name="e">事件的附加参数</param>
+        public void AppEnable(object sender, EventArgs e)
+        {
+            // 当应用被启用后，将收到此事件。
+            // 如果酷Q载入时应用已被启用，则在_eventStartup(Type=1001,酷Q启动)被调用后，本函数也将被调用一次。
+            // 如非必要，不建议在这里加载窗口。（可以添加菜单，让用户手动打开窗口）
+            Common.IsRunning = true;
             string commandPath = Common.CqApi.GetAppDirectory() + "command.ini";
             IniObject iObject;
             if (!File.Exists(commandPath))
             {
                 iObject = new IniObject
                 {
-                    new IniSection("commands")
+                    new IniSection("gcommands")
                     {
-                        { "测试", "test" }
+                        { "测试","test"}
+                    },
+                    new IniSection("pcommands")
+                    {
+                        { "测试","test"}
                     }
                 };
-                iObject.Save(commandPath);
-            };
+            iObject.Save(commandPath);
+        };
             iObject = IniObject.Load(commandPath, Encoding.Default);
-            IniSection sectionCommand = iObject["commands"];
-            Common.commandDic = sectionCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            IniSection pCommand = iObject["pcommands"];
+            Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            IniSection gCommand = iObject["gcommands"];
+            Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
         }
 
 		/// <summary>

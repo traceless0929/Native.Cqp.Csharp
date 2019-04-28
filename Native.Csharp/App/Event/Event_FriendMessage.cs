@@ -1,5 +1,6 @@
 ﻿using Native.Csharp.App.Interface;
 using Native.Csharp.App.Model;
+using Native.Csharp.Tool.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,17 +51,22 @@ namespace Native.Csharp.App.Event
 		/// <param name="e">事件的附加参数</param>
 		public void ReceiveFriendMessage (object sender, PrivateMessageEventArgs e)
 		{
-			// 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
-			// 这里处理消息
+            // 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
+            // 这里处理消息
 
-			Common.CqApi.SendPrivateMessage (e.FromQQ, Common.CqApi.CqCode_At (e.FromQQ) + "你发送了这样的消息:" + e.Msg);
+            AnalysisMsg nowModel = new AnalysisMsg(e.Msg);
+            if (String.IsNullOrEmpty(nowModel.PCommand))
+            {
+                e.Handled = false;
+                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+            }
+            MethodUtil.runStaticMethod<object>("程序集名称", "Native.Csharp.App.Command.FriendApp", nowModel.PCommand, e, nowModel);
 
-
-			e.Handled = true;
-			// e.Handled 相当于 原酷Q事件的返回值
-			// 如果要回复消息，请调用api发送，并且置 true - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得置 true
-			// 如果不回复消息，交由之后的应用/过滤器处理，这里置 false  - 忽略本条消息
-		}
-		#endregion
-	}
+            e.Handled = false;
+            // e.Handled 相当于 原酷Q事件的返回值
+            // 如果要回复消息，请调用api发送，并且置 true - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得置 true
+            // 如果不回复消息，交由之后的应用/过滤器处理，这里置 false  - 忽略本条消息
+        }
+        #endregion
+    }
 }

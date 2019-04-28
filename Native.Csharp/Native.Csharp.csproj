@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Command\FriendApp.cs" />
     <Compile Include="App\Command\GroupApp.cs" />
     <Compile Include="App\Common.cs" />
     <Compile Include="App\Core\LibExport.cs">

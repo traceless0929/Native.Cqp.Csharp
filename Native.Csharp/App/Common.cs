@@ -34,6 +34,11 @@ namespace Native.Csharp.App
         /// <summary>
         /// 命令映射路由
         /// </summary>
-        public static Dictionary<string, string> commandDic { get; set; } = new Dictionary<string, string>();
-	}
+        public static Dictionary<string, string> GCommandDic { get; set; } = new Dictionary<string, string>();
+        public static Dictionary<string, string> PCommandDic { get; set; } = new Dictionary<string, string>();
+        /// <summary>
+        /// 主人QQ
+        /// </summary>
+        public static long masterQQ = 415206409;
+    }
 }
