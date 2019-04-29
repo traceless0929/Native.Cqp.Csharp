@@ -27,13 +27,14 @@ namespace Native.Csharp.App.Command
             if (File.Exists(filePath))
             {
                 DateTime dt = File.GetCreationTime(filePath);
-                if (dt.DayOfYear== now.DayOfYear)
+                if (dt.DayOfYear == now.DayOfYear)
                 {
                     memberInfos =Newtonsoft.Json.JsonConvert.DeserializeObject<List<GroupMember>>(FileUtil.GetFileText(filePath, encoding));
                 }
                 else
                 {
                     Common.CqApi.GetMemberList(args.FromGroup, out memberInfos);
+                    FileUtil.WriteFileText(filePath, encoding, Newtonsoft.Json.JsonConvert.SerializeObject(memberInfos));
                 }
                 
             }

@@ -22,6 +22,8 @@ namespace Native.Csharp.Tool.Utils
 
         public static void WriteFileText(String path,Encoding encoding,String content)
         {
+            String pathStr = Path.GetDirectoryName(path);
+            Directory.CreateDirectory(pathStr);
             File.WriteAllText(path, content, encoding);
         }
     }
