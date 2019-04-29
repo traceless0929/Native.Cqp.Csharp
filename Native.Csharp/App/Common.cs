@@ -53,5 +53,15 @@ namespace Native.Csharp.App
         /// 菜单
         /// </summary>
         public static string menuStr = "";
+        /// <summary>
+        /// 群成员列表缓存
+        /// </summary>
+        public static string groupMemberPath
+        {
+            get
+            {
+                return AppDirectory + "groupMemeber\\";
+            }
+        }
     }
 }

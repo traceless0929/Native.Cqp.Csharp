@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Native.Csharp.Tool.Utils;
+using System.IO;
 
 namespace Native.Csharp.App.Command
 {
@@ -19,7 +20,28 @@ namespace Native.Csharp.App.Command
 
         public static void chose(GroupMessageEventArgs args, AnalysisMsg msg)
         {
-            var data = Common.CqApi.GetMemberList(args.FromGroup, out List<GroupMember> memberInfos);
+            List<GroupMember> memberInfos = null;
+            DateTime now = DateTime.Now;
+            String filePath = Common.groupMemberPath + args.FromGroup+".json";
+            Encoding encoding = Encoding.UTF8;
+            if (File.Exists(filePath))
+            {
+                DateTime dt = File.GetCreationTime(filePath);
+                if (dt.DayOfYear== now.DayOfYear)
+                {
+                    memberInfos =Newtonsoft.Json.JsonConvert.DeserializeObject<List<GroupMember>>(FileUtil.GetFileText(filePath, encoding));
+                }
+                else
+                {
+                    Common.CqApi.GetMemberList(args.FromGroup, out memberInfos);
+                }
+                
+            }
+            else
+            {
+                Common.CqApi.GetMemberList(args.FromGroup, out memberInfos);
+                FileUtil.WriteFileText(filePath, encoding,Newtonsoft.Json.JsonConvert.SerializeObject(memberInfos));
+            }
             var str = msg.Who;
             var orderid = Guid.NewGuid().ToString("N").Substring(0, 5);
             Common.CqApi.SendGroupMessage(args.FromGroup,

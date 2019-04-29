@@ -13,5 +13,16 @@ namespace Native.Csharp.Tool.Utils
             if (!File.Exists(path)) return null;
             return File.ReadAllLines(path, encoding);
         }
+
+        public static string GetFileText(string path, Encoding encoding)
+        {
+            if (!File.Exists(path)) return null;
+            return File.ReadAllText(path, encoding);
+        }
+
+        public static void WriteFileText(String path,Encoding encoding,String content)
+        {
+            File.WriteAllText(path, content, encoding);
+        }
     }
 }
