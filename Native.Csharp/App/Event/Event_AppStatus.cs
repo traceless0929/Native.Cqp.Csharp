@@ -67,11 +67,12 @@ namespace Native.Csharp.App.Event
                     new IniSection("gcommands")
                     {
                         { "功能","menu"},
-                        { "抽锦鲤","chose"},
+                        { "查日常","dayTask"},
+                        //{ "抽锦鲤","chose"},
                         { "开服监控","serverRemind"},
                         { "开服查询","serverQuery"},
                         { "/roll","roll" },
-                        { "建议","advise"},
+                        { "建议","advise"}
                     },
                     new IniSection("pcommands")
                     {

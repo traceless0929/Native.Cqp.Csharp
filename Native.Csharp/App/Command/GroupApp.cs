@@ -61,7 +61,6 @@ namespace Native.Csharp.App.Command
                 $"Boom!{orderid}号{str}的锦鲤为！" +
                 Environment.NewLine +
                 choseQQStr);
-
         }
 
         public static void serverRemind(GroupMessageEventArgs args, AnalysisMsg msg)
@@ -87,6 +86,35 @@ namespace Native.Csharp.App.Command
         public static void menu(GroupMessageEventArgs args, AnalysisMsg msg)
         {
             Common.CqApi.SendGroupMessage(args.FromGroup, Common.menuStr);
+        }
+        public static void dayTask(GroupMessageEventArgs args, AnalysisMsg msg)
+        {
+            Tool.Crawler.WeiBoContentItem contentItem = Tool.Crawler.WeiBoUtil.GetWeiboByUid("1761587065", "1076031761587065", "#剑网3江湖百晓生#").OrderByDescending(p => p.Time).FirstOrDefault();
+            DateTime dt = DateTime.Now;
+            if (contentItem != null)
+            {
+                if (msg.Who.Contains("文")){
+                    Common.CqApi.SendGroupMessage(args.FromGroup, "[日常]来自 " + contentItem.Author + "：" + Environment.NewLine +
+                        contentItem.ContentStr + Environment.NewLine +
+                        $"高清大图-{contentItem.Pic}" + Environment.NewLine +
+                        @"本信息由新浪微博-剑网3江湖百晓生-超话提供"
+                        );
+                }
+                else
+                {
+                    Common.CqApi.SendGroupMessage(args.FromGroup, "[日常]来自 " + contentItem.Author + "：" + Environment.NewLine +
+                        contentItem.ContentStr + Environment.NewLine +
+                        @"本信息由新浪微博-剑网3江湖百晓生-超话提供"
+                        );
+                    string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "image");
+                    string fileName = "daytask" + dt.ToString("yyyyMMdd") + ".jpg";
+                    if (!File.Exists(Path.Combine(path, fileName)))
+                    {
+                        Tool.Http.HttpHelper.DownUrlPic(contentItem.Pic, path, fileName);
+                    }
+                    Common.CqApi.SendGroupMessage(args.FromGroup, Common.CqApi.CqCode_Image(fileName));
+                }
+            }
         }
     }
 }

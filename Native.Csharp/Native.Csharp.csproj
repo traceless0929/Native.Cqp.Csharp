@@ -123,6 +123,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="site.traceless.SmartTv2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
