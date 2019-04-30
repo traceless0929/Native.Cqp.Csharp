@@ -115,6 +115,10 @@ namespace Native.Csharp.App.Command
                     Common.CqApi.SendGroupMessage(args.FromGroup, Common.CqApi.CqCode_Image(fileName));
                 }
             }
+            else
+            {
+                Common.CqApi.SendGroupMessage(args.FromGroup, "[日常]天哪噜！QAQ官微又偷懒了！");
+            }
         }
     }
 }
