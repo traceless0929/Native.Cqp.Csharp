@@ -107,7 +107,7 @@ namespace Native.Csharp.App.Command
                         @"本信息由新浪微博-剑网3江湖百晓生-超话提供"
                         );
                     string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "image");
-                    string fileName = "daytask" + dt.ToString("yyyyMMdd") + ".jpg";
+                    string fileName = "daytask" + contentItem.Time.ToString("yyyyMMdd") + ".jpg";
                     if (!File.Exists(Path.Combine(path, fileName)))
                     {
                         Tool.Http.HttpHelper.DownUrlPic(contentItem.Pic, path, fileName);
