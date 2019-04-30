@@ -93,7 +93,7 @@ namespace Native.Csharp.App.Command
             DateTime dt = DateTime.Now;
             if (contentItem != null)
             {
-                if (msg.Who.Contains("文")){
+                if (msg.OriginStr.Contains("文")){
                     Common.CqApi.SendGroupMessage(args.FromGroup, "[日常]来自 " + contentItem.Author + "：" + Environment.NewLine +
                         contentItem.ContentStr + Environment.NewLine +
                         $"高清大图-{contentItem.Pic}" + Environment.NewLine +
