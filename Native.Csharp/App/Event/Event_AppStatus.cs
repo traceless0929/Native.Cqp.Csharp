@@ -82,8 +82,8 @@ namespace Native.Csharp.App.Event
                         { "个人反馈","pfeedback"},
                     }
                 };
-                iObject.Save(commandPath);
-            };
+            iObject.Save(commandPath);
+        };
             iObject = IniObject.Load(commandPath, Encoding.Default);
             IniSection pCommand = iObject["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
