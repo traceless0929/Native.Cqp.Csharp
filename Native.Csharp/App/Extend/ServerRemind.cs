@@ -23,6 +23,7 @@ namespace Native.Csharp.App.Extend
 
         public void GoServerQuery(long clu, string serverstr)
         {
+            Common.CqApi.SendGroupMessage(clu, $"正在努力寻找机房烧烤的GWW……");
             string serName = serverstr.Trim();
             string ip = string.Empty;
             string bigSer = string.Empty;
