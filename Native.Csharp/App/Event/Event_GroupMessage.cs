@@ -32,12 +32,12 @@ namespace Native.Csharp.App.Event
             AnalysisMsg nowModel = new AnalysisMsg(e.Msg);
             if (String.IsNullOrEmpty(nowModel.GCommand))
             {
-                e.Handled = true;
+                e.Handled = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }
             MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.GroupApp", nowModel.GCommand, e, nowModel);
 
-			e.Handled = true;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
+			e.Handled = false;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
             
         }
 

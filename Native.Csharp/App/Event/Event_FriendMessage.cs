@@ -62,7 +62,7 @@ namespace Native.Csharp.App.Event
             }
             MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.FriendApp", nowModel.PCommand, e, nowModel);
 
-            e.Handled = true;
+            e.Handled = false;
 			// e.Handled 相当于 原酷Q事件的返回值
 			// 如果要回复消息，请调用api发送，并且置 true - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得置 true
 			// 如果不回复消息，交由之后的应用/过滤器处理，这里置 false  - 忽略本条消息
