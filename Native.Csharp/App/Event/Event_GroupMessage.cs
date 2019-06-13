@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Native.Csharp.App.Model;
 using Native.Csharp.App.Interface;
-using Native.Csharp.Tool.Reflection;
+using Native.Csharp.App.Command;
 
 namespace Native.Csharp.App.Event
 {
@@ -25,15 +25,16 @@ namespace Native.Csharp.App.Event
             // 这里处理消息
 
             AnalysisMsg nowModel = new AnalysisMsg(e.Msg);
-            MethodUtil.runStaticMethod<object>("程序集名称", "Native.Csharp.App.Command.GroupApp", nowModel.GCommand, e, nowModel);
-
-            if (e.FromAnonymous != null)    // 如果此属性不为null, 则消息来自于匿名成员
-			{
-				e.Handled = true;
+            if (String.IsNullOrEmpty(nowModel.GCommand))
+            {
+                e.Handled = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }
-            
-			e.Handled = true;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
+            var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
+            var method = gapp.GetType().GetMethod(nowModel.PCommand);
+            object result = method.Invoke(null, new Object[] { e, nowModel });
+
+			e.Handled = false;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
             
         }
 

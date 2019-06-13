@@ -1,6 +1,6 @@
-﻿using Native.Csharp.App.Interface;
+﻿using Native.Csharp.App.Command;
+using Native.Csharp.App.Interface;
 using Native.Csharp.App.Model;
-using Native.Csharp.Tool.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,13 +55,14 @@ namespace Native.Csharp.App.Event
             // 这里处理消息
 
             AnalysisMsg nowModel = new AnalysisMsg(e.Msg);
-            if (String.IsNullOrEmpty(nowModel.PCommand))
+            if (String.IsNullOrEmpty(nowModel.GCommand))
             {
                 e.Handled = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }
-            MethodUtil.runStaticMethod<object>("程序集名称", "Native.Csharp.App.Command.FriendApp", nowModel.PCommand, e, nowModel);
-
+            var gapp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
+            var method = gapp.GetType().GetMethod(nowModel.PCommand);
+            object result = method.Invoke(null, new Object[] { e, nowModel });
             e.Handled = false;
             // e.Handled 相当于 原酷Q事件的返回值
             // 如果要回复消息，请调用api发送，并且置 true - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得置 true
