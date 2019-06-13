@@ -39,7 +39,6 @@ namespace Native.Csharp.App.Event
             var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
             var method = gapp.GetType().GetMethod(nowModel.GCommand);
             object result = method.Invoke(null, new Object[] {e,nowModel});
-            //MethodUtil.runStaticMethod<object>(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace(@"file:///",""), "Native.Csharp.App.Command.GroupApp", nowModel.GCommand, e, nowModel);
 
             e.Handled = false;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
             

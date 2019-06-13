@@ -64,7 +64,6 @@ namespace Native.Csharp.App.Event
             var gapp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
             var method = gapp.GetType().GetMethod(nowModel.PCommand);
             object result = method.Invoke(null, new Object[] { e, nowModel });
-            //MethodUtil.runStaticMethod<object>(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace(@"file:///", ""), "Native.Csharp.App.Command.FriendApp", nowModel.PCommand, e, nowModel);
 
             e.Handled = false;
 			// e.Handled 相当于 原酷Q事件的返回值
