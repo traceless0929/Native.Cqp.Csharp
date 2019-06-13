@@ -34,6 +34,11 @@ namespace Native.Csharp.App.Command
                 else
                 {
                     Common.CqApi.GetMemberList(args.FromGroup, out memberInfos);
+                    GroupMember zero = memberInfos.Where(p => p.GroupId == 0L || p.QQId == 0L).FirstOrDefault();
+                    if (null != zero)
+                    {
+                        memberInfos.Remove(zero);
+                    }
                     FileUtil.WriteFileText(filePath, encoding, Newtonsoft.Json.JsonConvert.SerializeObject(memberInfos));
                 }
                 
@@ -41,8 +46,14 @@ namespace Native.Csharp.App.Command
             else
             {
                 Common.CqApi.GetMemberList(args.FromGroup, out memberInfos);
+                GroupMember zero = memberInfos.Where(p => p.GroupId == 0L || p.QQId == 0L).FirstOrDefault();
+                if (null != zero)
+                {
+                    memberInfos.Remove(zero);
+                }
                 FileUtil.WriteFileText(filePath, encoding,Newtonsoft.Json.JsonConvert.SerializeObject(memberInfos));
             }
+            
             var str = msg.Who;
             var orderid = Guid.NewGuid().ToString("N").Substring(0, 5);
             Common.CqApi.SendGroupMessage(args.FromGroup,

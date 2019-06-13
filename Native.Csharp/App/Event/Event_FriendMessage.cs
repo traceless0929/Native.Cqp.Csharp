@@ -1,4 +1,5 @@
-﻿using Native.Csharp.App.Interface;
+﻿using Native.Csharp.App.Command;
+using Native.Csharp.App.Interface;
 using Native.Csharp.App.Model;
 using Native.Csharp.Tool.Reflection;
 using System;
@@ -60,7 +61,10 @@ namespace Native.Csharp.App.Event
                 e.Handled = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }
-            MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.FriendApp", nowModel.PCommand, e, nowModel);
+            var gapp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
+            var method = gapp.GetType().GetMethod(nowModel.PCommand);
+            object result = method.Invoke(null, new Object[] { e, nowModel });
+            //MethodUtil.runStaticMethod<object>(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace(@"file:///", ""), "Native.Csharp.App.Command.FriendApp", nowModel.PCommand, e, nowModel);
 
             e.Handled = false;
 			// e.Handled 相当于 原酷Q事件的返回值

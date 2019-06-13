@@ -7,6 +7,7 @@ using System.Text;
 using Native.Csharp.App.Model;
 using Native.Csharp.App.Interface;
 using Native.Csharp.Tool.Reflection;
+using Native.Csharp.App.Command;
 
 namespace Native.Csharp.App.Event
 {
@@ -35,9 +36,12 @@ namespace Native.Csharp.App.Event
                 e.Handled = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }
-            MethodUtil.runStaticMethod<object>("site.traceless.SmartTv2", "Native.Csharp.App.Command.GroupApp", nowModel.GCommand, e, nowModel);
+            var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
+            var method = gapp.GetType().GetMethod(nowModel.GCommand);
+            object result = method.Invoke(null, new Object[] {e,nowModel});
+            //MethodUtil.runStaticMethod<object>(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Replace(@"file:///",""), "Native.Csharp.App.Command.GroupApp", nowModel.GCommand, e, nowModel);
 
-			e.Handled = false;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
+            e.Handled = false;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
             
         }
 
