@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using Native.Csharp.App.Model;
 using Native.Csharp.App.Interface;
-using Native.Csharp.Tool.Reflection;
 using Native.Csharp.App.Command;
 
 namespace Native.Csharp.App.Event
