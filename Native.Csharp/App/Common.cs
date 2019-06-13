@@ -1,4 +1,4 @@
-﻿using Native.Csharp.App.Extend;
+using Native.Csharp.App.Extend;
 using Native.Csharp.Sdk.Cqp;
 using System;
 using System.Collections.Generic;
