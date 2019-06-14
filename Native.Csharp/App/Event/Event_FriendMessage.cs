@@ -62,7 +62,7 @@ namespace Native.Csharp.App.Event
             }
             var gapp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
             var method = gapp.GetType().GetMethod(nowModel.PCommand);
-            object result = method.Invoke(null, new Object[] { e, nowModel });
+            object result = method.Invoke(null, new object[] { e, nowModel });
 
             e.Handled = false;
 			// e.Handled 相当于 原酷Q事件的返回值

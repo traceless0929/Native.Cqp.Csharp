@@ -37,7 +37,7 @@ namespace Native.Csharp.App.Event
             }
             var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
             var method = gapp.GetType().GetMethod(nowModel.GCommand);
-            object result = method.Invoke(null, new Object[] {e,nowModel});
+            object result = method.Invoke(null, new object[] {e,nowModel});
 
             e.Handled = false;   // 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
             
