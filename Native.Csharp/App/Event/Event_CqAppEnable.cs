@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Native.Csharp.App.EventArgs;
 using Native.Csharp.App.Interface;
+using Native.Csharp.Tool.IniConfig.Linq;
 
 namespace Native.Csharp.App.Event
 {
@@ -25,6 +27,28 @@ namespace Native.Csharp.App.Event
             // 如非必要，不建议在这里加载窗口。（可以添加菜单，让用户手动打开窗口）
 
             Common.IsRunning = true;
+            string commandPath = Common.CqApi.GetAppDirectory() + "command.ini";
+            IniObject iObject;
+            if (!File.Exists(commandPath))
+            {
+                iObject = new IniObject
+                {
+                    new IniSection("gcommands")
+                    {
+                        { "测试","test"}
+                    },
+                    new IniSection("pcommands")
+                    {
+                        { "测试","test"}
+                    }
+                };
+                iObject.Save(commandPath);
+            };
+            iObject = IniObject.Load(commandPath, Encoding.Default);
+            IniSection pCommand = iObject["pcommands"];
+            Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            IniSection gCommand = iObject["gcommands"];
+            Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
         }
     }
 }
