@@ -31,10 +31,36 @@ namespace Native.Csharp.App.Core
 		/// </summary>
 		private static void ResolveAppbackcall ()
 		{
+			/*
+			 * Name: ???????
+			 * Function: _eventOpenConsole
+			 */
+			if (Common.UnityContainer.IsRegistered<ICallMenu> ("???????") == true)
+			{
+				Menu__eventOpenConsole = Common.UnityContainer.Resolve<ICallMenu> ("???????").CallMenu;
+			}
+
+
 		}
         #endregion
 
 		#region --导出方法--
+		/*
+		 * Name: ???????
+		 * Function: _eventOpenConsole
+		 */
+		public static event EventHandler<CqCallMenuEventArgs> Menu__eventOpenConsole;
+		[DllExport (ExportName = "_eventOpenConsole", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventOpenConsole ()
+		{
+			if (Menu__eventOpenConsole != null)
+			{
+				Menu__eventOpenConsole (null, new CqCallMenuEventArgs ("???????"));
+			}
+			return 0;
+		}
+
+
 		#endregion
     }
 }

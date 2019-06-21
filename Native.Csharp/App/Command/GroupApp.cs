@@ -6,19 +6,20 @@ using System.Linq;
 using System.Text;
 using Native.Csharp.Tool.Utils;
 using System.IO;
+using Native.Csharp.App.EventArgs;
 
 namespace Native.Csharp.App.Command
 {
     public class GroupApp
     {
-        public static void test(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void test(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             
             String res = args.FromQQ + " 发送:" + msg.OriginStr;
             Common.CqApi.SendGroupMessage(args.FromGroup, res);
         }
 
-        public static void chose(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void chose(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             List<GroupMember> memberInfos = null;
             DateTime now = DateTime.Now;
@@ -74,31 +75,31 @@ namespace Native.Csharp.App.Command
                 choseQQStr);
         }
 
-        public static void serverRemind(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void serverRemind(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             Common.ServerRemind.GoServerRemind(args.FromGroup, msg.Who);
         }
 
-        public static void serverQuery(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void serverQuery(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             Common.ServerRemind.GoServerQuery(args.FromGroup, msg.Who);
         }
 
-        public static void roll(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void roll(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             Common.CqApi.SendGroupMessage(args.FromGroup, Common.CqApi.CqCode_At(args.FromQQ) + $"Roll了 {RandomUtil.RandomGet(0, 101)} 点");
         }
 
-        public static void advise(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void advise(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             Common.CqApi.SendPrivateMessage(Common.masterQQ, $"来自群{args.FromGroup}的{args.FromQQ}:{msg.Who} {msg.How}");
         }
 
-        public static void menu(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void menu(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             Common.CqApi.SendGroupMessage(args.FromGroup, Common.menuStr);
         }
-        public static void dayTask(GroupMessageEventArgs args, AnalysisMsg msg)
+        public static void dayTask(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             Tool.Crawler.WeiBoContentItem contentItem = Tool.Crawler.WeiBoUtil.GetWeiboByUid("1761587065", "1076031761587065", "#剑网3江湖百晓生#").OrderByDescending(p => p.Time).FirstOrDefault();
             DateTime dt = DateTime.Now;

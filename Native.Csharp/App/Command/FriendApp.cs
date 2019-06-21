@@ -1,4 +1,5 @@
-﻿using Native.Csharp.App.Model;
+﻿using Native.Csharp.App.EventArgs;
+using Native.Csharp.App.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,17 @@ namespace Native.Csharp.App.Command
 {
     public class FriendApp
     {
-        public static void advise(PrivateMessageEventArgs args, AnalysisMsg msg)
+        public static void advise(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
             Common.CqApi.SendPrivateMessage(Common.masterQQ, $"来自个人{args.FromQQ}:{msg.Who} {msg.How}");
         }
 
-        public static void menu(PrivateMessageEventArgs args, AnalysisMsg msg)
+        public static void menu(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
             Common.CqApi.SendPrivateMessage(args.FromQQ, Common.menuStr);
         }
 
-        public static void feedback(PrivateMessageEventArgs args, AnalysisMsg msg)
+        public static void feedback(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
             if (args.FromQQ != Common.masterQQ)
             {
@@ -28,7 +29,7 @@ namespace Native.Csharp.App.Command
 
         }
 
-        public static void pfeedback(PrivateMessageEventArgs args, AnalysisMsg msg)
+        public static void pfeedback(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
             if (args.FromQQ != Common.masterQQ)
             {

@@ -132,6 +132,9 @@
     <Compile Include="App\Event\Event_CqStartup.cs" />
     <Compile Include="App\Event\Event_FriendMessage.cs" />
     <Compile Include="App\Event\Event_GroupMessage.cs" />
+    <Compile Include="App\Extend\Jx3OpenTell.cs" />
+    <Compile Include="App\Extend\ServerRemind.cs" />
+    <Compile Include="App\Extend\StringOrg.cs" />
     <Compile Include="App\Interface\ICallMenu.cs" />
     <Compile Include="App\Interface\ICqAppDisable.cs" />
     <Compile Include="App\Interface\ICqAppEnable.cs" />

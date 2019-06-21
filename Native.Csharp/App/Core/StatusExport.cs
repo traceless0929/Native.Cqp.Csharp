@@ -31,10 +31,12 @@ namespace Native.Csharp.App.Core
 		/// </summary>
 		private static void ResolveAppbackcall ()
 		{
+
 		}
         #endregion
 
 		#region --导出方法--
+
         #endregion
 	}
 }
