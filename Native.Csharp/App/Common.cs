@@ -1,3 +1,4 @@
+using Native.Csharp.Sdk.Cqp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,14 @@ namespace Native.Csharp.App
     /// </summary>
     public static class Common
     {
+        /// <summary>
+        /// 获取 App 在酷Q中显示的名称 (此属性 set 并不能做出实质性的修改)
+        /// </summary>
+        public static string AppName { get; set; }
+        /// <summary>
+        /// 获取 App 在酷Q中的版本号 (此属性 set 并不能做出实质性的修改)
+        /// </summary>
+        public static Version AppVersion { get; set; }
         /// <summary>
         /// 获取或设置 App 在运行期间所使用的数据路径
         /// </summary>

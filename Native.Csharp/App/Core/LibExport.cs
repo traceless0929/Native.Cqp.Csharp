@@ -57,14 +57,14 @@ namespace Native.Csharp.App.Core
 		{
 			// 请勿随意修改
 			// 
-			Common.AppName = "解析失败";
-			Common.AppVersion = Version.Parse ("0.0.0");		
+			Common.AppName = "酷Q样例应用 for C#";
+			Common.AppVersion = Version.Parse ("1.0.0");		
 
 			//
-			// 当前项目名称: Native.Csharp
+			// 当前项目名称: Native.Csharp.Demo
 			// Api版本: 9
 
-			return string.Format ("{0},{1}", 9, "Native.Csharp");
+			return string.Format ("{0},{1}", 9, "Native.Csharp.Demo");
 		}
 
 		/// <summary>
@@ -113,10 +113,221 @@ namespace Native.Csharp.App.Core
 		/// </summary>
 		private static void ResolveAppbackcall ()
 		{
+			/*
+			 * Id: 1
+			 * Name: 私聊消息处理
+			 */
+			if (Common.UnityContainer.IsRegistered<IReceiveFriendMessage> ("私聊消息处理") == true)
+			{
+				ReceiveFriendMessage_1 = Common.UnityContainer.Resolve<IReceiveFriendMessage> ("私聊消息处理").ReceiveFriendMessage;
+			}
+			if (Common.UnityContainer.IsRegistered<IReceiveOnlineStatusMessage> ("私聊消息处理") == true)
+			{
+				ReceiveOnlineStatusMessage_1 = Common.UnityContainer.Resolve<IReceiveOnlineStatusMessage> ("私聊消息处理").ReceiveOnlineStatusMessage;
+			}
+			if (Common.UnityContainer.IsRegistered<IReceiveGroupPrivateMessage> ("私聊消息处理") == true)
+			{
+				ReceiveGroupPrivateMessage_1 = Common.UnityContainer.Resolve<IReceiveGroupPrivateMessage> ("私聊消息处理").ReceiveGroupPrivateMessage;
+			}
+			if (Common.UnityContainer.IsRegistered<IReceiveDiscussPrivateMessage> ("私聊消息处理") == true)
+			{
+				ReceiveDiscussPrivateMessage_1 = Common.UnityContainer.Resolve<IReceiveDiscussPrivateMessage> ("私聊消息处理").ReceiveDiscussPrivateMessage;
+			}
+			
+			/*
+			 * Id: 2
+			 * Name: 群消息处理
+			 */
+			if (Common.UnityContainer.IsRegistered<IReceiveGroupMessage> ("群消息处理") == true)
+			{
+				ReceiveGroupMessage_2 = Common.UnityContainer.Resolve<IReceiveGroupMessage> ("群消息处理").ReceiveGroupMessage;
+			}
+			
+			/*
+			 * Id: 1001
+			 * Name: 酷Q启动事件
+			 */
+			if (Common.UnityContainer.IsRegistered<ICqStartup> ("酷Q启动事件") == true)
+			{
+				CqStartup_1001 = Common.UnityContainer.Resolve<ICqStartup> ("酷Q启动事件").CqStartup;
+			}
+			
+			/*
+			 * Id: 1002
+			 * Name: 酷Q关闭事件
+			 */
+			if (Common.UnityContainer.IsRegistered<ICqExit> ("酷Q关闭事件") == true)
+			{
+				CqExit_1002 = Common.UnityContainer.Resolve<ICqExit> ("酷Q关闭事件").CqExit;
+			}
+			
+			/*
+			 * Id: 1003
+			 * Name: 应用已被启用
+			 */
+			if (Common.UnityContainer.IsRegistered<ICqAppEnable> ("应用已被启用") == true)
+			{
+				AppEnable_1003 = Common.UnityContainer.Resolve<ICqAppEnable> ("应用已被启用").CqAppEnable;
+			}
+			
+			/*
+			 * Id: 1004
+			 * Name: 应用将被停用
+			 */
+			if (Common.UnityContainer.IsRegistered<ICqAppDisable> ("应用将被停用") == true)
+			{
+				AppDisable_1004 = Common.UnityContainer.Resolve<ICqAppDisable> ("应用将被停用").CqAppDisable;
+			}
+			
+
 		}
 		#endregion
 		
 		#region --导出方法--
+		/*
+		 * Id: 1
+		 * Type: 21
+		 * Name: 私聊消息处理
+		 * Function: _eventPrivateMsg
+		 */
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveFriendMessage_1;
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveOnlineStatusMessage_1;
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveGroupPrivateMessage_1;
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveDiscussPrivateMessage_1;
+		[DllExport (ExportName = "_eventPrivateMsg", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventPrivateMsg (int subType, int msgId, long fromQQ, IntPtr msg, int font)
+		{
+			if (ReceiveFriendMessage_1 != null)
+			{
+				CqPrivateMessageEventArgs args = new CqPrivateMessageEventArgs (1, msgId, fromQQ, msg.ToString (_defaultEncoding));
+				if (subType == 11)
+				{
+					if (ReceiveFriendMessage_1 != null)
+					{
+						ReceiveFriendMessage_1 (null, args);
+					}
+				}
+				else if (subType == 1)
+				{
+					if (ReceiveOnlineStatusMessage_1 != null)
+					{
+						ReceiveOnlineStatusMessage_1 (null, args);
+					}
+				}
+				else if (subType == 2)
+				{
+					if (ReceiveGroupPrivateMessage_1 != null)
+					{
+						ReceiveGroupPrivateMessage_1 (null, args);
+					}
+				}
+				else if (subType == 3)
+				{
+					if (ReceiveDiscussPrivateMessage_1 != null)
+					{
+						ReceiveDiscussPrivateMessage_1 (null, args);
+					}
+				}
+				return Convert.ToInt32 (args.Handler);
+			}
+			return -1;
+		}
+
+		/*
+		 * Id: 2
+		 * Type: 2
+		 * Name: 群消息处理
+		 * Function: _eventGroupMsg
+		 */
+		public static event EventHandler<CqGroupMessageEventArgs> ReceiveGroupMessage_2;
+		[DllExport (ExportName = "_eventGroupMsg", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventGroupMsg (int subType, int msgId, long fromGroup, long fromQQ, string fromAnonymous, IntPtr msg, int font)
+		{
+			GroupAnonymous anonymous = null;
+			if (fromQQ == 80000000 && !string.IsNullOrEmpty (fromAnonymous))
+			{
+				anonymous = Common.CqApi.GetAnonymous (fromAnonymous);
+			}
+			CqGroupMessageEventArgs args = new CqGroupMessageEventArgs (2, msgId, fromGroup, fromQQ, anonymous, msg.ToString (_defaultEncoding));
+			if (subType == 1)
+			{
+				if (ReceiveGroupMessage_2 != null)
+				{
+					ReceiveGroupMessage_2 (null, args);
+				}
+			}
+			return Convert.ToInt32 (args.Handler);
+		}
+
+		/*
+		 * Id: 1001
+		 * Type: 1001
+		 * Name: 酷Q启动事件
+		 * Function: _eventStartup
+		 */
+		public static event EventHandler<CqStartupEventArgs> CqStartup_1001;
+		[DllExport (ExportName = "_eventStartup", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventStartup ()
+		{
+			if (CqStartup_1001 != null)
+			{
+				CqStartup_1001 (null, new CqStartupEventArgs (1001));
+			}
+			return 0;
+		}
+
+		/*
+		 * Id: 1002
+		 * Type: 1002
+		 * Name: 酷Q关闭事件
+		 * Function: _eventExit
+		 */
+		public static event EventHandler<CqExitEventArgs> CqExit_1002;
+		[DllExport (ExportName = "_eventExit", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventExit ()
+		{
+			if (CqExit_1002 != null)
+			{
+				CqExit_1002 (null, new CqExitEventArgs (1002));
+			}
+			return 0;
+		}
+
+		/*
+		 * Id: 1003
+		 * Type: 1003
+		 * Name: 应用已被启用
+		 * Function: _eventEnable
+		 */
+		public static event EventHandler<CqAppEnableEventArgs> AppEnable_1003;
+		[DllExport (ExportName = "_eventEnable", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventEnable ()
+		{
+			if (AppEnable_1003 != null)
+			{
+				AppEnable_1003 (null, new CqAppEnableEventArgs (1003));
+			}
+			return 0;
+		}
+
+		/*
+		 * Id: 1004
+		 * Type: 1004
+		 * Name: 应用将被停用
+		 * Function: _eventDisable
+		 */
+		public static event EventHandler<CqAppDisableEventArgs> AppDisable_1004;
+		[DllExport (ExportName = "_eventDisable", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventDisable ()
+		{
+			if (AppDisable_1004 != null)
+			{
+				AppDisable_1004 (null, new CqAppDisableEventArgs (1004));
+			}
+			return 0;
+		}
+
+
 		#endregion
     }
 }
