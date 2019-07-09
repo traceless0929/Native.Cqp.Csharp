@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Native.Csharp.App.EventArgs;
+﻿using Native.Csharp.App.EventArgs;
 using Native.Csharp.App.Interface;
+using Native.Csharp.Tool.IniConfig.Linq;
 
 namespace Native.Csharp.App.Event
 {
@@ -22,7 +18,15 @@ namespace Native.Csharp.App.Event
         {
             // 本方法会在酷Q【主线程】中被调用。
             // 无论本应用是否被启用，本方法都会在酷Q退出前执行一次，请在这里执行插件关闭代码。
-
+            IniObject iObject;
+            string trashSortPath = Common.CqApi.GetAppDirectory() + "trashSort.ini";
+            IniSection dataSec = new IniSection("sortData");
+            foreach (var item in Common.TrashDic)
+            {
+                dataSec.Add(item.Key, Newtonsoft.Json.JsonConvert.SerializeObject(item.Value));
+            }
+            iObject = new IniObject{dataSec};
+            iObject.Save(trashSortPath);
             // 本方法将固定给酷Q返回 0, 返回后酷Q将很快关闭，请不要再通过线程等方式执行其他代码。
         }
     }

@@ -7,6 +7,8 @@ using System.Text;
 using Native.Csharp.Tool.Utils;
 using System.IO;
 using Native.Csharp.App.EventArgs;
+using Native.Csharp.App.Model.respModel;
+using Native.Csharp.Tool.IniConfig.Linq;
 
 namespace Native.Csharp.App.Command
 {
@@ -99,6 +101,16 @@ namespace Native.Csharp.App.Command
         {
             Common.CqApi.SendGroupMessage(args.FromGroup, Common.menuStr);
         }
+
+        public static void trashsort(CqGroupMessageEventArgs args, AnalysisMsg msg)
+        {
+            if (string.IsNullOrEmpty(msg.Who))
+            {
+                return;
+            }
+            Common.CqApi.SendGroupMessage(args.FromGroup, Extend.TrashSort.goSort(msg.Who));
+        }
+
         public static void dayTask(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
             Tool.Crawler.WeiBoContentItem contentItem = Tool.Crawler.WeiBoUtil.GetWeiboByUid("1761587065", "1076031761587065", "#剑网3江湖百晓生#").OrderByDescending(p => p.Time).FirstOrDefault();

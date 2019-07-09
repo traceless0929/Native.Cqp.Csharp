@@ -1,4 +1,5 @@
 using Native.Csharp.App.Extend;
+using Native.Csharp.App.Model.respModel;
 using Native.Csharp.Sdk.Cqp;
 using System;
 using System.Collections.Generic;
@@ -71,5 +72,9 @@ namespace Native.Csharp.App
                 return AppDirectory + "groupMemeber\\";
             }
         }
+        /// <summary>
+        /// 垃圾分类缓存
+        /// </summary>
+        public static Dictionary<string, TrashSortResp> TrashDic { get; set; } = new Dictionary<string, TrashSortResp>();
     }
 }

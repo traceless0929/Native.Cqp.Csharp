@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Native.Csharp.App.EventArgs;
 using Native.Csharp.App.Extend;
 using Native.Csharp.App.Interface;
+using Native.Csharp.App.Model.respModel;
 using Native.Csharp.Tool.IniConfig.Linq;
 
 namespace Native.Csharp.App.Event
@@ -41,7 +42,8 @@ namespace Native.Csharp.App.Event
                         { "开服监控","serverRemind"},
                         { "开服查询","serverQuery"},
                         { "/roll","roll" },
-                        { "建议","advise"}
+                        { "建议","advise"},
+                        { "垃圾分类","trashsort"}
                     },
                     new IniSection("pcommands")
                     {
@@ -49,6 +51,7 @@ namespace Native.Csharp.App.Event
                         { "建议","advise"},
                         { "反馈","feedback"},
                         { "个人反馈","pfeedback"},
+                        { "垃圾分类","trashsort"}
                     }
                 };
                 iObject.Save(commandPath);
@@ -58,6 +61,27 @@ namespace Native.Csharp.App.Event
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
             IniSection gCommand = iObject["gcommands"];
             Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+
+            string trashSortPath = Common.CqApi.GetAppDirectory() + "trashSort.ini";
+            if (!File.Exists(trashSortPath)) {
+                iObject = new IniObject
+                {
+                    new IniSection("sortData")
+                    {
+                        
+                    }
+                };
+                iObject.Save(trashSortPath);
+            }
+            iObject = IniObject.Load(trashSortPath, Encoding.Default);
+            IniSection sortData = iObject["sortData"];
+            var temp = sortData.ToDictionary(p => p.Key, p => p.Value.ToString());
+            foreach (var item in temp)
+            {
+                TrashSortResp sortItem = Newtonsoft.Json.JsonConvert.DeserializeObject<TrashSortResp>(item.Value);
+                Common.TrashDic.Add(sortItem.name, sortItem);
+            }
+
             Common.SerList = Jx3OpenTell.GetSerList();
             Common.ServerRemind = new ServerRemind();
             Common.menuStr = StringOrg.getMenuStr();

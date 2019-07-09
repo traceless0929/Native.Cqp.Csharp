@@ -135,6 +135,7 @@
     <Compile Include="App\Extend\Jx3OpenTell.cs" />
     <Compile Include="App\Extend\ServerRemind.cs" />
     <Compile Include="App\Extend\StringOrg.cs" />
+    <Compile Include="App\Extend\TrashSort.cs" />
     <Compile Include="App\Interface\ICallMenu.cs" />
     <Compile Include="App\Interface\ICqAppDisable.cs" />
     <Compile Include="App\Interface\ICqAppEnable.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="App\Interface\IReceiveOnlineStatusMessage.cs" />
     <Compile Include="App\Model\AnalysisMsg.cs" />
     <Compile Include="App\Model\OrderInfoModel.cs" />
+    <Compile Include="App\Model\respModel\TxResp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repair\Core\Kernel32.cs" />
     <Compile Include="Repair\Enum\LoadLibraryFlags.cs" />

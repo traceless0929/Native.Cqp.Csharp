@@ -28,6 +28,14 @@ namespace Native.Csharp.App.Command
             Common.CqApi.SendGroupMessage(long.Parse(msg.Who), msg.How + Environment.NewLine + "[来自作者的反馈]");
 
         }
+        public static void trashsort(CqPrivateMessageEventArgs args, AnalysisMsg msg)
+        {
+            if (string.IsNullOrEmpty(msg.Who))
+            {
+                return;
+            }
+            Common.CqApi.SendPrivateMessage(args.FromQQ, Extend.TrashSort.goSort(msg.Who));
+        }
 
         public static void pfeedback(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
