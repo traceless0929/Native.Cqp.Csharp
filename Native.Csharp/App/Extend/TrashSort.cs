@@ -53,7 +53,7 @@ namespace Native.Csharp.App.Extend
                 sb.AppendLine("[垃圾分类]没有关于 " + what + " 的分类结果QAQ");
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
 
         public static string convertTrashType(int type)
