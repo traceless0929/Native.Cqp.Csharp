@@ -36,7 +36,7 @@ namespace Native.Csharp.App.Command
                 }
                 else
                 {
-                    Common.CqApi.GetMemberList(args.FromGroup, out memberInfos);
+                    memberInfos = Common.CqApi.GetMemberList(args.FromGroup);
                     GroupMember zero = memberInfos.Where(p => p.GroupId == 0L || p.QQId == 0L).FirstOrDefault();
                     if (null != zero)
                     {
@@ -48,7 +48,7 @@ namespace Native.Csharp.App.Command
             }
             else
             {
-                Common.CqApi.GetMemberList(args.FromGroup, out memberInfos);
+                memberInfos = Common.CqApi.GetMemberList(args.FromGroup);
                 GroupMember zero = memberInfos.Where(p => p.GroupId == 0L || p.QQId == 0L).FirstOrDefault();
                 if (null != zero)
                 {
