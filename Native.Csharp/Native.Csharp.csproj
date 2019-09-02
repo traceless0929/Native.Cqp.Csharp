@@ -181,7 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Native.Csharp.Sdk\Native.Csharp.Sdk.csproj">
-      <Project>{797eaebc-4d5b-4eef-87f4-a508fda2cb6a}</Project>
+      <Project>{797EAEBC-4D5B-4EEF-87F4-A508FDA2CB6A}</Project>
       <Name>Native.Csharp.Sdk</Name>
     </ProjectReference>
     <ProjectReference Include="..\Native.Csharp.Tool\Native.Csharp.Tool.csproj">
