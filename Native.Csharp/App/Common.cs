@@ -77,5 +77,11 @@ namespace Native.Csharp.App
         /// 设置
         /// </summary>
         public static Dictionary<string, string> settingDic { get; set; } = new Dictionary<string, string>();
+        public static T getSetting<T>(string key)
+        {
+            settingDic.TryGetValue(key, out string value);
+            T res = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(value);
+            return res;
+        }
     }
 }
