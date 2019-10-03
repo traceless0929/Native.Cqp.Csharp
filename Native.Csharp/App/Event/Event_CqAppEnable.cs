@@ -49,6 +49,22 @@ namespace Native.Csharp.App.Event
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
             IniSection gCommand = iObject["gcommands"];
             Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+
+            commandPath = Common.CqApi.GetAppDirectory() + "setting.ini";
+            if (!File.Exists(commandPath))
+            {
+                iObject = new IniObject
+                {
+                    new IniSection("setting")
+                    {
+                        { "master",415206409}
+                    }
+                };
+                iObject.Save(commandPath);
+            };
+            iObject = IniObject.Load(commandPath, Encoding.Default);
+            IniSection settings = iObject["setting"];
+            Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
         }
     }
 }

@@ -47,6 +47,6 @@ namespace Native.Csharp.App
         /// <summary>
         /// 主人QQ
         /// </summary>
-        public static long masterQQ = 415206409;
+        public static Dictionary<string, string> settingDic { get; set; } = new Dictionary<string, string>();
     }
 }
