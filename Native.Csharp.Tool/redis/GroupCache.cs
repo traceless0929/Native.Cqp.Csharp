@@ -10,11 +10,18 @@ namespace Native.Csharp.Tool.redis
 {
     public class GroupCache
     {
+        public static Group setGroupInfo(Group group)
+        {
+            BaseRedis.getRedis().SetAsync($"Groups:{group.Id}:info", group);
+            BaseRedis.getRedis().HSetAsync($"Groups:list", group.Id+"", group);
+            return group;
+        }
        
         public static List<GroupMember> setGroupMember(long gid,List<GroupMember> members) 
         {
             members.ForEach(p =>
             {
+                BaseRedis.getRedis().Del($"Groups:{gid}:members");
                 BaseRedis.getRedis().HSetAsync($"Groups:{gid}:members", p.QQId+"", p);
                 //群主
                 GroupMember master = members.Where(c => c.PermitType == PermitType.Holder).FirstOrDefault();
