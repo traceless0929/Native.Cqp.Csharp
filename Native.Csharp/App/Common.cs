@@ -55,10 +55,6 @@ namespace Native.Csharp.App
         /// </summary>
         public static ServerRemind ServerRemind;
         /// <summary>
-        /// 主人QQ
-        /// </summary>
-        public static long masterQQ = 415206409;
-        /// <summary>
         /// 菜单
         /// </summary>
         public static string menuStr = "";
@@ -76,6 +72,10 @@ namespace Native.Csharp.App
         /// 垃圾分类缓存
         /// </summary>
         public static Dictionary<string, TrashSortResp> TrashDic { get; set; } = new Dictionary<string, TrashSortResp>();
+       
+        /// <summary>
+        /// 设置
+        /// </summary>
         public static Dictionary<string, string> settingDic { get; set; } = new Dictionary<string, string>();
     }
 }
