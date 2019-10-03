@@ -83,5 +83,11 @@ namespace Native.Csharp.App
             T res = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(value);
             return res;
         }
+
+        public static String getSetting(string key)
+        {
+            settingDic.TryGetValue(key, out string value);
+            return value;
+        }
     }
 }

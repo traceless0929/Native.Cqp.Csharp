@@ -101,6 +101,9 @@ namespace Native.Csharp.App.Event
             Common.SerList = Jx3OpenTell.GetSerList();
             Common.ServerRemind = new ServerRemind();
             Common.menuStr = StringOrg.getMenuStr();
+
+            //redis初始化
+            new Tool.redis.BaseRedis(Common.getSetting("redis.ip"), Common.getSetting<int>("redis.port"), Common.getSetting("redis.pwd"), Common.getSetting<int>("redis.db"), Common.getSetting("redis.prefix"));
         }
     }
 }

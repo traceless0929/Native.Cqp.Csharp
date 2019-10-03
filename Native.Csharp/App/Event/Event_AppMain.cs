@@ -28,6 +28,7 @@ namespace Native.Csharp.App.Event
             //
             // 以下为 Json 文件中的 1001, 1002, 1003, 1004 事件的注入
 
+
             // 注入 Type=1001 的回调
             container.RegisterType<ICqStartup, Event_CqStartup> ("酷Q启动事件");
             // 注入 Type=1002 的回调
@@ -36,9 +37,34 @@ namespace Native.Csharp.App.Event
             container.RegisterType<ICqAppEnable, Event_CqAppEnable> ("应用已被启用");
             // 注入 Type=1004 的回调
             container.RegisterType<ICqAppDisable, Event_CqAppDisable> ("应用将被停用");
+            // 注入 Type=2 的回调
             container.RegisterType<IReceiveGroupMessage, Event_GroupMessage>("群消息处理");
+            // 注入 Type=21 的回调
             container.RegisterType<IReceiveFriendMessage, Event_FriendMessage>("私聊消息处理");
+            container.RegisterType<IReceiveDiscussPrivateMessage, Event_DiscussPrivateMessage>("私聊消息处理");
+            container.RegisterType<IReceiveGroupPrivateMessage, Event_GroupPrivateMessage>("私聊消息处理");
+            container.RegisterType<IReceiveOnlineStatusMessage, Event_OnlineStatusMessage>("私聊消息处理");
+            // 注入 Type=3 的回调
+            container.RegisterType<IReceiveDiscussMessage, Event_DiscussMessage>("讨论组消息处理");
+            // 注入 Type=11 的回调
+            container.RegisterType<IReceiveGroupFileUpload, Event_ReceiveGroupFileUpload>("群文件上传事件处理");
+            // 注入 Type=101 的回调
+            container.RegisterType<IReceiveGroupManageDecrease, ReceiveGroupManageDecrease>("群管理变动事件处理");
+            container.RegisterType<IReceiveGroupManageIncrease, ReceiveGroupManageIncrease>("群管理变动事件处理");
+            // 注入 Type=102 的回调
+            container.RegisterType<IReceiveGroupMemberLeave, ReceiveGroupMemberLeave>("群成员减少事件处理");
+            container.RegisterType<IReceiveGroupMemberRemove, ReceiveGroupMemberRemove>("群成员减少事件处理");
+            // 注入 Type=103 的回调
+            container.RegisterType<IReceiveGroupMemberPass, ReceiveGroupMemberPass>("群成员增加事件处理");
+            //注入 Type=201 的回调
+            container.RegisterType<IReceiveFriendIncrease, ReceiveFriendIncrease>("好友已添加事件处理");
+            //注入 Type=301 的回调
+            container.RegisterType<IReceiveFriendAddRequest, ReceiveFriendAddRequest>("好友添加请求处理");
+            //注入 Type=302 的回调
+            container.RegisterType<IReceiveAddGroupBeInvitee, ReceiveAddGroupBeInvitee>("群添加请求处理");
+            container.RegisterType<IReceiveAddGroupRequest, ReceiveAddGroupRequest>("群添加请求处理");
         }
+        
 
 		/// <summary>
 		/// 回调分发

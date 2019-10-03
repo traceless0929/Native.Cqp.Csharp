@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Command\AdminApp.cs" />
     <Compile Include="App\Command\FriendApp.cs" />
     <Compile Include="App\Command\GroupApp.cs" />
     <Compile Include="App\Common.cs" />
@@ -139,8 +140,15 @@
     <Compile Include="App\Event\Event_AppMain.cs" />
     <Compile Include="App\Event\Event_CqExit.cs" />
     <Compile Include="App\Event\Event_CqStartup.cs" />
+    <Compile Include="App\Event\Event_DiscussMessage.cs" />
+    <Compile Include="App\Event\Event_DiscussPrivateMessage.cs" />
     <Compile Include="App\Event\Event_FriendMessage.cs" />
+    <Compile Include="App\Event\Event_FriendManage.cs" />
+    <Compile Include="App\Event\Event_GroupManage.cs" />
     <Compile Include="App\Event\Event_GroupMessage.cs" />
+    <Compile Include="App\Event\Event_GroupPrivateMessage.cs" />
+    <Compile Include="App\Event\Event_OnlineStatusMessage.cs" />
+    <Compile Include="App\Event\Event_ReceiveGroupFileUpload.cs" />
     <Compile Include="App\Extend\Jx3OpenTell.cs" />
     <Compile Include="App\Extend\ServerRemind.cs" />
     <Compile Include="App\Extend\StringOrg.cs" />

@@ -58,7 +58,7 @@ namespace Native.Csharp.App.Core
 			// 请勿随意修改
 			// 
 			Common.AppName = "剑三小T-V2";
-			Common.AppVersion = Version.Parse ("1.0.9");		
+			Common.AppVersion = Version.Parse ("1.0.10");		
 
 			//
 			// 当前项目名称: site.traceless.SmartTv2
