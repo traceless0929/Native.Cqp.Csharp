@@ -21,10 +21,14 @@ namespace Native.Csharp.Tool.Utils
             return File.ReadAllText(path, encoding);
         }
 
-        public static void WriteFileText(String path,Encoding encoding,String content)
+        public static void WriteFileText(String path,Encoding encoding,String content,bool isRemove=true)
         {
             String pathStr = Path.GetDirectoryName(path);
             Directory.CreateDirectory(pathStr);
+            if (isRemove)
+            {
+                File.Delete(path);
+            }
             File.WriteAllText(path, content, encoding);
         }
 

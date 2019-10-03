@@ -35,7 +35,7 @@ namespace Native.Csharp.App.Command
                 Common.CqApi.SendPrivateMessage(Common.getSetting<long>("master"), $"刷新第{i}个群列表，{p.Name}({p.Id})-{memberInfos.Count}人");
                 i++;
             });
-            Common.CqApi.SendPrivateMessage(Common.getSetting<long>("master"), $"刷新完成{i}/{groups.Count}个");
+            Common.CqApi.SendPrivateMessage(Common.getSetting<long>("master"), $"刷新完成{i-1}/{groups.Count}个");
         }
     }
 }
