@@ -29,7 +29,7 @@ namespace Native.Csharp.Tool.redis
         {
             if (null == rds)
             {
-                rds = new CSRedis.CSRedisClient($"{_ip}:{_port},password={_pwd},defaultDatabase={_db},ssl=false,prefix={_prefix}");
+                rds = new CSRedis.CSRedisClient($"{_ip}:{_port},password={_pwd},defaultDatabase={_db},ssl=false,prefix={_prefix}:");
             }
             return rds;
         }
