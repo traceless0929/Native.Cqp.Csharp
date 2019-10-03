@@ -76,5 +76,6 @@ namespace Native.Csharp.App
         /// 垃圾分类缓存
         /// </summary>
         public static Dictionary<string, TrashSortResp> TrashDic { get; set; } = new Dictionary<string, TrashSortResp>();
+        public static Dictionary<string, string> settingDic { get; set; } = new Dictionary<string, string>();
     }
 }
