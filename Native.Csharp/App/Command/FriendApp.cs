@@ -16,7 +16,7 @@ namespace Native.Csharp.App.Command
 
         public static void menu(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
-            Common.CqApi.SendPrivateMessage(args.FromQQ, Common.menuStr);
+            Common.sendResult(args, Common.menuStr);
         }
 
         public static void feedback(CqPrivateMessageEventArgs args, AnalysisMsg msg)
@@ -34,7 +34,7 @@ namespace Native.Csharp.App.Command
             {
                 return;
             }
-            Common.CqApi.SendPrivateMessage(args.FromQQ, Extend.TrashSort.goSort(msg.Who));
+            Common.sendResult(args, Extend.TrashSort.goSort(msg.Who));
         }
 
         public static void pfeedback(CqPrivateMessageEventArgs args, AnalysisMsg msg)

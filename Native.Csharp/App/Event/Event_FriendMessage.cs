@@ -19,11 +19,19 @@ namespace Native.Csharp.App.Event
             AnalysisMsg nowModel = new AnalysisMsg(e.Message);
             if (String.IsNullOrEmpty(nowModel.PCommand))
             {
-                if (e.FromQQ == Common.getSetting<long>("master"))
+                if (e.FromQQ == Common.getSetting<long>("master") && nowModel.What == "command")
                 {
-                    var adminApp = Activator.CreateInstance(typeof(AdminApp)) as AdminApp;
-                    var adminMethod = adminApp.GetType().GetMethod(e.Message);
-                    object adminResult = adminMethod.Invoke(null, new object[] { e, nowModel });
+                    try
+                    {
+                        var adminApp = Activator.CreateInstance(typeof(AdminApp)) as AdminApp;
+                        var adminMethod = adminApp.GetType().GetMethod(nowModel.Who).MakeGenericMethod(e.GetType());
+                        object adminResult = adminMethod.Invoke(null, new object[] { e, nowModel });
+                    }
+                    catch(Exception ex)
+                    {
+                        Common.CqApi.SendPrivateMessage(Common.getSetting<long>("master"), ex+"");
+                    }
+                    
                 }
                 e.Handler = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回

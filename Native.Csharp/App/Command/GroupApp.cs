@@ -14,12 +14,6 @@ namespace Native.Csharp.App.Command
 {
     public class GroupApp
     {
-        public static void test(CqGroupMessageEventArgs args, AnalysisMsg msg)
-        {
-            
-            String res = args.FromQQ + " 发送:" + msg.OriginStr;
-            Common.CqApi.SendGroupMessage(args.FromGroup, res);
-        }
 
         public static void chose(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
@@ -59,7 +53,7 @@ namespace Native.Csharp.App.Command
             
             var str = msg.Who;
             var orderid = Guid.NewGuid().ToString("N").Substring(0, 5);
-            Common.CqApi.SendGroupMessage(args.FromGroup,
+            Common.sendResult(args,
                 $"5S后,开始从{memberInfos.Count()}人中抽取幸运锦鲤{str}!"+
                 Environment.NewLine+
                 $"锦鲤编号:{orderid}");
@@ -71,7 +65,7 @@ namespace Native.Csharp.App.Command
             {
                 choseQQStr = Common.CqApi.CqCode_At(choseQQ)+ Environment.NewLine + "ヽ(●-`Д´-)ノ！" ;
             }
-            Common.CqApi.SendGroupMessage(args.FromGroup,
+            Common.sendResult(args, 
                 $"Boom!{orderid}号{str}的锦鲤为！" +
                 Environment.NewLine +
                 choseQQStr);
@@ -89,7 +83,7 @@ namespace Native.Csharp.App.Command
 
         public static void roll(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
-            Common.CqApi.SendGroupMessage(args.FromGroup, Common.CqApi.CqCode_At(args.FromQQ) + $"Roll了 {RandomUtil.RandomGet(0, 101)} 点");
+            Common.sendResult(args,  Common.CqApi.CqCode_At(args.FromQQ) + $"Roll了 {RandomUtil.RandomGet(0, 101)} 点");
         }
 
         public static void advise(CqGroupMessageEventArgs args, AnalysisMsg msg)
@@ -99,7 +93,7 @@ namespace Native.Csharp.App.Command
 
         public static void menu(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
-            Common.CqApi.SendGroupMessage(args.FromGroup, Common.menuStr);
+            Common.sendResult(args,  Common.menuStr);
         }
 
         public static void trashsort(CqGroupMessageEventArgs args, AnalysisMsg msg)
@@ -108,7 +102,7 @@ namespace Native.Csharp.App.Command
             {
                 return;
             }
-            Common.CqApi.SendGroupMessage(args.FromGroup, Extend.TrashSort.goSort(msg.Who));
+            Common.sendResult(args,  Extend.TrashSort.goSort(msg.Who));
         }
 
         public static void dayTask(CqGroupMessageEventArgs args, AnalysisMsg msg)
@@ -118,7 +112,7 @@ namespace Native.Csharp.App.Command
             if (contentItem != null)
             {
                 if (msg.OriginStr.Contains("文")){
-                    Common.CqApi.SendGroupMessage(args.FromGroup, "[日常]来自 " + contentItem.Author + "：" + Environment.NewLine +
+                    Common.sendResult(args,  "[日常]来自 " + contentItem.Author + "：" + Environment.NewLine +
                         contentItem.ContentStr + Environment.NewLine +
                         $"高清大图-{contentItem.Pic}" + Environment.NewLine +
                         @"本信息由新浪微博-剑网3江湖百晓生-超话提供"
@@ -126,7 +120,7 @@ namespace Native.Csharp.App.Command
                 }
                 else
                 {
-                    Common.CqApi.SendGroupMessage(args.FromGroup, "[日常]来自 " + contentItem.Author + "：" + Environment.NewLine +
+                    Common.sendResult(args,  "[日常]来自 " + contentItem.Author + "：" + Environment.NewLine +
                         contentItem.ContentStr + Environment.NewLine +
                         @"本信息由新浪微博-剑网3江湖百晓生-超话提供"
                         );
@@ -136,12 +130,12 @@ namespace Native.Csharp.App.Command
                     {
                         Tool.Http.HttpHelper.DownUrlPic(contentItem.Pic, path, fileName);
                     }
-                    Common.CqApi.SendGroupMessage(args.FromGroup, Common.CqApi.CqCode_Image(fileName));
+                    Common.sendResult(args,  Common.CqApi.CqCode_Image(fileName));
                 }
             }
             else
             {
-                Common.CqApi.SendGroupMessage(args.FromGroup, "[日常]天哪噜！QAQ官微又偷懒了！");
+                Common.sendResult(args,  "[日常]天哪噜！QAQ官微又偷懒了！");
             }
         }
     }

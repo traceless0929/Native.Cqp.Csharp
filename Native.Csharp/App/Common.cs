@@ -38,6 +38,40 @@ namespace Native.Csharp.App
         public static CqApi CqApi { get; set; }
 
         /// <summary>
+        /// 发送回复消息，如果是群内发送到群，如果是私聊，发送私聊
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <param name="text"></param>
+        public static void sendResult<T>(T type, string text) where T : EventArgs.CqEventArgsBase
+        {
+            switch (type.Type)
+            {
+                case 2:
+                    {
+                        //群内
+                        EventArgs.CqGroupMessageEventArgs args = type as EventArgs.CqGroupMessageEventArgs;
+                        if (null != args)
+                        {
+                            Common.CqApi.SendGroupMessage(args.FromGroup, text);
+                        }
+                    }
+                    break;
+                case 21:
+                    {
+                        //私聊
+                        EventArgs.CqPrivateMessageEventArgs args = type as EventArgs.CqPrivateMessageEventArgs;
+                        Common.CqApi.SendPrivateMessage(args.FromQQ, text);
+                    }
+                    break;
+                default:
+                    Common.CqApi.SendPrivateMessage(Common.getSetting<long>("master"), $"[意外的type{type.Type}]{text}");
+                    break;
+
+            }
+        }
+
+        /// <summary>
         /// 获取或设置当前 App 使用的依赖注入容器实例
         /// </summary>
         public static IUnityContainer UnityContainer { get; set; }

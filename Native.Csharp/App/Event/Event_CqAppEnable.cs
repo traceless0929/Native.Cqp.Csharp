@@ -104,6 +104,7 @@ namespace Native.Csharp.App.Event
 
             //redis初始化
             new Tool.redis.BaseRedis(Common.getSetting("redis.ip"), Common.getSetting<int>("redis.port"), Common.getSetting("redis.pwd"), Common.getSetting<int>("redis.db"), Common.getSetting("redis.prefix"));
+            Common.CqApi.AddLoger(Sdk.Cqp.Enum.LogerLevel.Info,$"{Common.AppName}-插件初始化init",$"初始化完成，载入群{Tool.redis.GroupCache.initGroupCache().Count()}个");
         }
     }
 }
