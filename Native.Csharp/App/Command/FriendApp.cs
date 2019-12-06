@@ -11,7 +11,7 @@ namespace Native.Csharp.App.Command
     {
         public static void advise(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
-            Common.CqApi.SendPrivateMessage(Common.masterQQ, $"来自个人{args.FromQQ}:{msg.Who} {msg.How}");
+            Common.CqApi.SendPrivateMessage(Convert.ToInt64(Common.settingDic["master"]), $"来自个人{args.FromQQ}:{msg.Who} {msg.How}");
         }
 
         public static void menu(CqPrivateMessageEventArgs args, AnalysisMsg msg)
@@ -21,7 +21,7 @@ namespace Native.Csharp.App.Command
 
         public static void feedback(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
-            if (args.FromQQ != Common.masterQQ)
+            if (args.FromQQ != Convert.ToInt64(Common.settingDic["master"]))
             {
                 return;
             }
@@ -39,7 +39,7 @@ namespace Native.Csharp.App.Command
 
         public static void pfeedback(CqPrivateMessageEventArgs args, AnalysisMsg msg)
         {
-            if (args.FromQQ != Common.masterQQ)
+            if (args.FromQQ != Convert.ToInt64(Common.settingDic["master"]))
             {
                 return;
             }

@@ -94,7 +94,7 @@ namespace Native.Csharp.App.Command
 
         public static void advise(CqGroupMessageEventArgs args, AnalysisMsg msg)
         {
-            Common.CqApi.SendPrivateMessage(Common.masterQQ, $"来自群{args.FromGroup}的{args.FromQQ}:{msg.Who} {msg.How}");
+            Common.CqApi.SendPrivateMessage(Convert.ToInt64(Common.settingDic["master"]), $"来自群{args.FromGroup}的{args.FromQQ}:{msg.Who} {msg.How}");
         }
 
         public static void menu(CqGroupMessageEventArgs args, AnalysisMsg msg)
