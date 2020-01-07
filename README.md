@@ -2,8 +2,144 @@
 ## 代码库介绍
 base分支为我自用的新建App的模板，引入了一些自己的机制简化开发流程
 
-> 1. 增加指令消息解析类，采用 (wwh) what who how模式对指令进行解析
-> 2. 使用反射机制使业务和代码指令可以灵活调整
+> 1. 增加指令消息解析类，采用 (wwh) what who how模式
+> 2. 反射机制优化流程
+> 3. 同步更新Native.SDK
+
+### 消息解析
+
+将原始指令使用空格（可更改）进行解析
+> 如“攻击 麻花疼 50”
+解析为
+> what（要干啥）：攻击
+> who（对谁干）：麻花疼
+> how（怎么干）：50
+无需自己解析指令！
+
+### 反射机制
+
+还在使用？？？？
+
+```c#
+if(msg=="攻击"){
+    goAttack(fromQQ,target);
+}
+else if(msg="防御"){
+    goDef(fromQQ,target);
+}
+```
+不！可！以！
+
+触发关键字修改还要改代码？？
+NO！！
+
+多关键字触发同一个方法还在？？？
+```c#
+if(msg=="攻击"||msg=="打击"){
+    goAttack(fromQQ,target);
+}
+else if(msg="防御"){
+    goDef(fromQQ,target);
+}
+```
+OH MY GOD！！
+
+这里帮你解决！
+
+1. 应用启动处增加映射关系（进行初始化，仅在应用第一次运行的机器中进行）
+```c#
+public void AppEnable(object sender, CQAppEnableEventArgs e)
+        {
+        //此处仅演示 私聊 和 群聊
+            Common.CqApi = e.CQApi;
+            string commandPath = Common.CqApi.AppDirectory + "command.ini";
+            IniObject iObject;
+            if (!File.Exists(commandPath))
+            {
+                iObject = new IniObject
+                {
+                    new IniSection("gcommands")
+                    {
+                        { "攻击","funcOne"},
+                        { "打击","funcOne"},
+                        { "防御","funcTwo"},
+                    },
+                    new IniSection("pcommands")
+                    {
+                        { "功能1","funcOne"},
+                        { "功能2","funcTwo"}
+                    }
+                };
+                iObject.Save(commandPath);
+            };
+            iObject = IniObject.Load(commandPath, Encoding.Default);
+            IniSection pCommand = iObject["pcommands"];
+            Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+            IniSection gCommand = iObject["gcommands"];
+            Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+```
+
+2. 书写反射代码（直接Clone本仓库无需书写）
+```c#
+public class Event_GroupMsg : IGroupMessage
+    {
+    //群聊
+        public void GroupMessage(object sender, CQGroupMessageEventArgs e)
+        {
+            AnalysisMsg nowModel = new AnalysisMsg(e.Message.OriginalMessage);
+            if (String.IsNullOrEmpty(nowModel.GCommand))
+            {
+                e.Handler = false;
+                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+            }
+            var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
+            var method = gapp.GetType().GetMethod(nowModel.GCommand);
+            object result = method.Invoke(null, new object[] { e, nowModel });
+
+            e.Handler = false;
+
+        }
+
+    }
+```
+```c#
+ public class Event_PrivateMsg : IPrivateMessage
+    {
+    //私聊
+        public void PrivateMessage(object sender, CQPrivateMessageEventArgs e)
+        {
+            AnalysisMsg nowModel = new AnalysisMsg(e.Message.OriginalMessage);
+            if (String.IsNullOrEmpty(nowModel.PCommand))
+            {
+                e.Handler = false;
+                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+            }
+            var papp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
+            var method = papp.GetType().GetMethod(nowModel.PCommand);
+            object result = method.Invoke(null, new object[] { e, nowModel });
+
+            e.Handler = false;
+        }
+    }
+```
+
+3. 书写业务代码（群聊为例）
+```c#
+public class GroupApp
+    {
+        public static void funcOne(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            e.CQApi.SendPrivateMessage(415206409,$"[这里是群方法 攻击]", $"参数数 {msg.OrderCount}\n", $"触发指令(第一参数 what) {msg.What}\n", $"目标(第二参数 who) {msg.Who}\n", $"怎么做(第三参数 how) {msg.How}\n", $"原始信息 {msg.OriginStr}\n", e.ToString());
+        }
+        public static void funcTwo(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            e.CQApi.SendPrivateMessage(415206409, $"[这里是群方法 防御]\n", $"参数数 {msg.OrderCount}\n", $"触发指令(第一参数 what) {msg.What}\n", $"目标(第二参数 who) {msg.Who}\n", $"怎么做(第三参数 how) {msg.How}\n", $"原始信息 {msg.OriginStr}\n", e.ToString());
+        }
+    }
+```
+4. 体验快感！
+> 群聊“打击 麻花疼 50”效果等于“攻击 麻花疼 50”！（一个方法多个触发）
+> 修改酷Q“\data\app\site.traceless.nativedemo\command.ini”重启应用即可更新指令映射！无需修改代码！
 
 # 以下部分为框架作者的原文（包括打赏码）
 
