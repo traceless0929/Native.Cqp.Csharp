@@ -14,7 +14,7 @@ namespace Site.Traceless.Nativedemo.Code.Event
     {
         public void GroupMessage(object sender, CQGroupMessageEventArgs e)
         {
-            AnalysisMsg nowModel = new AnalysisMsg(e.Message.OriginalMessage);
+            AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
             if (String.IsNullOrEmpty(nowModel.GCommand))
             {
                 e.Handler = false;

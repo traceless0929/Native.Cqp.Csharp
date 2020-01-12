@@ -34,13 +34,13 @@ namespace Native.Csharp.App.Export
 			CosturaUtility.Initialize ();	
 			
 			Type type = typeof (Common.AppInfo);	// 反射初始化容器	
-			type.GetProperty ("Id", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { "Native.Csharp" });	
+			type.GetProperty ("Id", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { "site.traceless.nativedemo" });	
 			type.GetProperty ("ResultCode", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { 1 });	
 			type.GetProperty ("ApiVersion", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { 9 });	
 			type.GetProperty ("Name", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { "酷Q样例应用 for C#" });	
 			type.GetProperty ("Version", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { new Version ("1.0.0") });	
 			type.GetProperty ("VersionId", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { 1 });	
-			type.GetProperty ("Author", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { "JieGG" });	
+			type.GetProperty ("Author", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { "Traceless" });	
 			type.GetProperty ("Description", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { "酷Q样例应用(V9应用机制)" });	
 			type.GetProperty ("UnityContainer", BindingFlags.Public | BindingFlags.Static).SetMethod.Invoke (null, new object[] { new UnityContainer () });	
 			
@@ -60,7 +60,7 @@ namespace Native.Csharp.App.Export
 		[DllExport (ExportName = "AppInfo", CallingConvention = CallingConvention.StdCall)]	
 		private static string AppInfo ()	
 		{	
-			return "9,Native.Csharp";	
+			return "9,site.traceless.nativedemo";	
 		}	
 		
 		/// <summary>	
@@ -73,10 +73,10 @@ namespace Native.Csharp.App.Export
 		{	
 			// 向容器注册一个 CQApi 实例	
 			api = new CQApi (authCode);	
-			Common.AppInfo.UnityContainer.RegisterInstance<CQApi> ("Native.Csharp", api);	
+			Common.AppInfo.UnityContainer.RegisterInstance<CQApi> ("site.traceless.nativedemo", api);	
 			// 向容器注册一个 CQLog 实例	
 			log = new CQLog (authCode);	
-			Common.AppInfo.UnityContainer.RegisterInstance<CQLog> ("Native.Csharp", log);	
+			Common.AppInfo.UnityContainer.RegisterInstance<CQLog> ("site.traceless.nativedemo", log);	
 			// 注册插件全局异常捕获回调, 用于捕获未处理的异常, 回弹给 酷Q 做处理	
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;	
 			// 本函数【禁止】处理其他任何代码，以免发生异常情况。如需执行初始化代码请在Startup事件中执行（Type=1001）。	

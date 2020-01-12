@@ -14,7 +14,7 @@ namespace Site.Traceless.Nativedemo.Code.Event
     {
         public void PrivateMessage(object sender, CQPrivateMessageEventArgs e)
         {
-            AnalysisMsg nowModel = new AnalysisMsg(e.Message.OriginalMessage);
+            AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
             if (String.IsNullOrEmpty(nowModel.PCommand))
             {
                 e.Handler = false;
