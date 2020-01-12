@@ -87,7 +87,7 @@ public class Event_GroupMsg : IGroupMessage
     //群聊
         public void GroupMessage(object sender, CQGroupMessageEventArgs e)
         {
-            AnalysisMsg nowModel = new AnalysisMsg(e.Message.OriginalMessage);
+            AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
             if (String.IsNullOrEmpty(nowModel.GCommand))
             {
                 e.Handler = false;
@@ -109,7 +109,7 @@ public class Event_GroupMsg : IGroupMessage
     //私聊
         public void PrivateMessage(object sender, CQPrivateMessageEventArgs e)
         {
-            AnalysisMsg nowModel = new AnalysisMsg(e.Message.OriginalMessage);
+            AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
             if (String.IsNullOrEmpty(nowModel.PCommand))
             {
                 e.Handler = false;
