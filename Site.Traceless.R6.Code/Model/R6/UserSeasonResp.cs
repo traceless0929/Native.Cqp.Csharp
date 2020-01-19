@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,25 +14,19 @@ namespace Site.Traceless.R6.Code.Model.R6
         public string ubisoft_id { get; set; }
         public string uplay_id { get; set; }
         public DateTime last_updated { get; set; }
-        public Seasons seasons { get; set; }
-    }
+        public JObject seasons { get; set; }
 
-    public class Seasons
-    {
-        public SeasonItem shifting_tides { get; set; }
-        public SeasonItem ember_rise { get; set; }
-        public SeasonItem phantom_sight { get; set; }
-        public SeasonItem burnt_horizon { get; set; }
-        public SeasonItem wind_bastion { get; set; }
-        public SeasonItem grim_sky { get; set; }
-        public SeasonItem para_bellum { get; set; }
-        public SeasonItem chimera { get; set; }
-        public SeasonItem white_noise { get; set; }
-        public SeasonItem blood_orchid { get; set; }
-        public SeasonItem health { get; set; }
-        public List<SeasonItem> Getinfos()
+        public List<SeasonItem> GetSeasons()
         {
-            return new List<SeasonItem>() { ember_rise,shifting_tides,phantom_sight, burnt_horizon, wind_bastion, grim_sky, para_bellum, chimera, white_noise, blood_orchid, health };
+            List<SeasonItem> res=new List<SeasonItem>();
+            foreach(var prop in this.seasons.Properties())
+            {
+                if (prop.Count() > 0)
+                {
+                    res.Add(prop.Value.ToObject<SeasonItem>());
+                }
+            }
+            return res;
         }
     }
 

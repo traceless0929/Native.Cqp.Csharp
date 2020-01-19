@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Csharp.Tool", "Nativ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.R6.Code", "Site.Traceless.R6.Code\Site.Traceless.R6.Code.csproj", "{19FD2B02-DEFC-46A4-8814-63C188BCCB8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.R6.CodeTests", "Site.Traceless.R6.CodeTests\Site.Traceless.R6.CodeTests.csproj", "{759CED82-41D9-4760-A87D-FBF8444D87D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,14 @@ Global
 		{19FD2B02-DEFC-46A4-8814-63C188BCCB8D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19FD2B02-DEFC-46A4-8814-63C188BCCB8D}.Release|x86.ActiveCfg = Release|Any CPU
 		{19FD2B02-DEFC-46A4-8814-63C188BCCB8D}.Release|x86.Build.0 = Release|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Debug|x86.Build.0 = Debug|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Release|x86.ActiveCfg = Release|Any CPU
+		{759CED82-41D9-4760-A87D-FBF8444D87D9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -57,6 +57,7 @@
     <Compile Include="Model\R6\UserBaseInfoResp.cs" />
     <Compile Include="Model\R6\UserDetailInfoResp.cs" />
     <Compile Include="Model\R6\UserSeasonResp.cs" />
+    <Compile Include="Model\R6\UserWeaponResp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Http\Utils.cs" />
   </ItemGroup>

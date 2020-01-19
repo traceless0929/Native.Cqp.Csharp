@@ -19,8 +19,9 @@ namespace Site.Traceless.R6.Code.Command
             if (res == null)
             {
                 e.CQApi.SendGroupMessage(e.FromGroup, @"[R6排位]查无此人");
+                return;
             }
-            List<SeasonItem> infos = res.seasons.Getinfos().OrderByDescending(p => p.id).Take(3).ToList();
+            List<SeasonItem> infos = res.GetSeasons().OrderByDescending(p => p.id).Take(3).ToList();
             StringBuilder sb = new StringBuilder();
             RegionsItem nowSeason = infos.FirstOrDefault().regions.getBest();
             var rankItem = infos.FirstOrDefault().rankings;
@@ -36,42 +37,63 @@ namespace Site.Traceless.R6.Code.Command
                 Environment.NewLine +
                 @"详情:https://r6stats.com/zh/stats/" + res.uplay_id + "/seasons");
         }
+
+        public static void GetWeapon(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            UserBaseInfoResp baseRes = Apis.GetUserBaseInfo(msg.Who, "pc");
+            UserWeaponResp res = Apis.GetUserWeaponInfo(baseRes);
+            if (res == null)
+            {
+                e.CQApi.SendGroupMessage(e.FromGroup, @"[R6排位]查无此人");
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"[{baseRes.progressionStats.level}]{res.username}-武器数据统计:");
+                sb.AppendLine($"敬请期待");
+                sb.AppendLine(@"详情:https://r6stats.com/zh/stats/" + res.uplay_id + "/weapons");
+                e.CQApi.SendGroupMessage(
+                e.FromGroup,
+                sb.ToString()
+                );
+        }
+
         public static void GetBattleStastic(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
             UserDetailInfoResp res = Apis.GetUserDetailInfo(Apis.GetUserBaseInfo(msg.Who, "pc"));
             if (res != null)
             {
+                StringBuilder sb = new StringBuilder();
                 var gen = res.stats.FirstOrDefault().general;
                 var que = res.stats.FirstOrDefault().queue;
-                string content = $"[{res.progression.level}]{res.username}-刷包概率{res.progression.lootbox_probability} 的战绩如下:" +
-                             Environment.NewLine +
-                             $"总计：" +
-                             Environment.NewLine +
-                             $"KD(击杀/死亡):{gen.kd}({gen.kills}/{gen.deaths})" +
-                             Environment.NewLine +
-                             $"近战/穿透/致盲:{gen.melee_kills}/{gen.penetration_kills}/{gen.blind_kills}" +
-                             Environment.NewLine +
-                             $"胜负比(胜/负):{gen.wl}/{gen.wins}/{gen.losses}" +
-                             Environment.NewLine +
-                             $"休闲：" +
-                             Environment.NewLine +
-                             $"KD(击杀/死亡):{que.casual.kd}({que.casual.kills}/{que.casual.deaths})" +
-                             Environment.NewLine +
-                             $"胜负比(胜/负):{que.casual.wl}/{que.casual.wins}/{que.casual.losses}" +
-                             Environment.NewLine +
-                             $"排位：" +
-                             Environment.NewLine +
-                             $"KD(击杀/死亡):{que.ranked.kd}({que.ranked.kills}/{que.ranked.deaths})" +
-                             Environment.NewLine +
-                             $"胜负比(胜/负):{que.ranked.wl}/{que.ranked.wins}/{que.ranked.losses}" +
-                             Environment.NewLine +
-                             @"详情:https://r6stats.com/zh/stats/" + res.uplay_id;
-                e.CQApi.SendGroupMessage(e.FromGroup, content);
+                Operator kdOpt = res.operators.OrderByDescending(p => p.kd).FirstOrDefault();
+                Operator killOpt = res.operators.OrderByDescending(p => p.kills).FirstOrDefault();
+                Operator winOpt = res.operators.OrderByDescending(p => p.wins).FirstOrDefault();
+                Operator winRateOpt = res.operators.OrderByDescending(p => p.wl).FirstOrDefault();
+                Operator timeOpt = res.operators.OrderByDescending(p => p.playtime).FirstOrDefault();
+                Operator expOpt = res.operators.OrderByDescending(p => p.experience).FirstOrDefault();
+                sb.AppendLine($"[{res.progression.level}]{res.username}-刷包概率{res.progression.lootbox_probability} 的战绩如下:");
+                sb.AppendLine($"总计：");
+                sb.AppendLine($"KD(击杀/死亡):{gen.kd}({gen.kills}/{gen.deaths})");
+                sb.AppendLine($"近战/穿透/致盲:{gen.melee_kills}/{gen.penetration_kills}/{gen.blind_kills}");
+                sb.AppendLine($"胜负比(胜/负):{gen.wl}({gen.wins}/{gen.losses})");
+                sb.AppendLine($"休闲：");
+                sb.AppendLine($"KD(击杀/死亡):{que.casual.kd}({que.casual.kills}/{que.casual.deaths})");
+                sb.AppendLine($"胜负比(胜/负):{que.casual.wl}({que.casual.wins}/{que.casual.losses})");
+                sb.AppendLine($"排位：");
+                sb.AppendLine($"KD(击杀/死亡):{que.ranked.kd}({que.ranked.kills}/{que.ranked.deaths})");
+                sb.AppendLine($"胜负比(胜/负):{que.ranked.wl}({que.ranked.wins}/{que.ranked.losses})");
+                sb.AppendLine($"干员：");
+                sb.AppendLine($"本命(熟练度):" + expOpt._operator.name+"/"+expOpt.experience);
+                sb.AppendLine($"全场最佳(KD):" + kdOpt._operator.name+"/"+kdOpt.kd);
+                sb.AppendLine($"反恐杀神(击杀):" + killOpt._operator.name+"/"+killOpt.kills);
+                sb.AppendLine($"战功赫赫(胜场):" + winOpt._operator.name+"/"+winOpt.wins);
+                sb.AppendLine($"上分机器(胜负比):" + winRateOpt._operator.name+"/"+winRateOpt.wl);
+                sb.AppendLine($"情有独钟(使用时长):" + timeOpt._operator.name+"/"+timeOpt.playtime+"秒");
+                sb.AppendLine( @"详情:https://r6stats.com/zh/stats/" + res.uplay_id);
+                e.CQApi.SendGroupMessage(e.FromGroup, sb.ToString());
+                return;
             }
-            else
-            {
-                e.CQApi.SendGroupMessage(e.FromGroup, @"[R6战绩]查无此人");
-            }
+            e.CQApi.SendGroupMessage(e.FromGroup, @"[R6战绩]查无此人");
         }
     }
 }

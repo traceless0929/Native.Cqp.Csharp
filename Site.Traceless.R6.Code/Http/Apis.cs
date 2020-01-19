@@ -14,6 +14,7 @@ namespace Site.Traceless.R6.Code.Http
         private const string BASEINFO = @"player-search/";
         private const string DETAILINFO = @"stats/";
         private const string SEAAONINFO = @"/seasonal";
+        private const string WEAPONINFO = @"/weapons";
         /// <summary>
         /// 获取基础信息
         /// </summary>
@@ -80,6 +81,25 @@ namespace Site.Traceless.R6.Code.Http
             return null;
         }
 
+
+        public static UserWeaponResp GetUserWeaponInfo(UserBaseInfoResp res)
+        {
+            try
+            {
+                if (res != null)
+                {
+                    UserWeaponResp userWeaponResp =
+                        Utils.GetAPI<UserWeaponResp>(BASEURL + DETAILINFO + res.uplay_id + WEAPONINFO);
+                    return userWeaponResp;
+                }
+            }
+            catch (Exception ex)
+            {
+                res = null;
+            }
+
+            return null;
+        }
         /// <summary>  
         /// 转换输入字符串中的任何转义字符。如：Unicode 的中文 \u8be5  
         /// </summary>  
