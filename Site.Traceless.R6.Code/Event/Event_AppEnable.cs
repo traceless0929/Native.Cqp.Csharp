@@ -24,8 +24,8 @@ namespace Site.Traceless.R6.Code.Event
                     new IniSection("gcommands")
                     {
                         { "R6排位","GetRankInfo"},
-                        { "R6战绩","GetBattleStastic"},
-                        { "R6武器","GetWeapon"}
+                        { "R6战绩","GetBattleStastic"}
+                        // { "R6武器","GetWeapon"}
                     },
                     new IniSection("pcommands")
                     {
