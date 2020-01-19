@@ -18,7 +18,7 @@ namespace Site.Traceless.R6.Code.Command
             UserSeasonResp res = Apis.GetUserSeasonInfo(baseRes);
             if (res == null)
             {
-                e.CQApi.SendGroupMessage(e.FromGroup, @"[R6排位]查无此人");
+                e.CQApi.SendGroupMessage(e.FromGroup, @"[R6排位]查无此人/BUG碧查询服务器维护中");
                 return;
             }
             List<SeasonItem> infos = res.GetSeasons().OrderByDescending(p => p.id).Take(3).ToList();
@@ -44,7 +44,7 @@ namespace Site.Traceless.R6.Code.Command
             UserWeaponResp res = Apis.GetUserWeaponInfo(baseRes);
             if (res == null)
             {
-                e.CQApi.SendGroupMessage(e.FromGroup, @"[R6排位]查无此人");
+                e.CQApi.SendGroupMessage(e.FromGroup, @"[R6排位]查无此人/BUG碧查询服务器维护中");
                 return;
             }
             StringBuilder sb = new StringBuilder();
@@ -65,12 +65,13 @@ namespace Site.Traceless.R6.Code.Command
                 StringBuilder sb = new StringBuilder();
                 var gen = res.stats.FirstOrDefault().general;
                 var que = res.stats.FirstOrDefault().queue;
-                Operator kdOpt = res.operators.OrderByDescending(p => p.kd).FirstOrDefault();
-                Operator killOpt = res.operators.OrderByDescending(p => p.kills).FirstOrDefault();
-                Operator winOpt = res.operators.OrderByDescending(p => p.wins).FirstOrDefault();
-                Operator winRateOpt = res.operators.OrderByDescending(p => p.wl).FirstOrDefault();
-                Operator timeOpt = res.operators.OrderByDescending(p => p.playtime).FirstOrDefault();
-                Operator expOpt = res.operators.OrderByDescending(p => p.experience).FirstOrDefault();
+                List<Operator> operators = res.operators.OrderByDescending(p => p.experience).Take(20).ToList();
+                Operator kdOpt = operators.OrderByDescending(p => p.kd).FirstOrDefault();
+                Operator killOpt = operators.OrderByDescending(p => p.kills).FirstOrDefault();
+                Operator winOpt = operators.OrderByDescending(p => p.wins).FirstOrDefault();
+                Operator winRateOpt = operators.OrderByDescending(p => p.wl).FirstOrDefault();
+                Operator timeOpt = operators.OrderByDescending(p => p.playtime).FirstOrDefault();
+                Operator expOpt = operators.OrderByDescending(p => p.experience).FirstOrDefault();
                 sb.AppendLine($"[{res.progression.level}]{res.username}-刷包概率{res.progression.lootbox_probability} 的战绩如下:");
                 sb.AppendLine($"总计：");
                 sb.AppendLine($"KD(击杀/死亡):{gen.kd}({gen.kills}/{gen.deaths})");
@@ -82,18 +83,18 @@ namespace Site.Traceless.R6.Code.Command
                 sb.AppendLine($"排位：");
                 sb.AppendLine($"KD(击杀/死亡):{que.ranked.kd}({que.ranked.kills}/{que.ranked.deaths})");
                 sb.AppendLine($"胜负比(胜/负):{que.ranked.wl}({que.ranked.wins}/{que.ranked.losses})");
-                sb.AppendLine($"干员：");
-                sb.AppendLine($"本命(熟练度):" + expOpt._operator.name+"/"+expOpt.experience);
-                sb.AppendLine($"全场最佳(KD):" + kdOpt._operator.name+"/"+kdOpt.kd);
-                sb.AppendLine($"反恐杀神(击杀):" + killOpt._operator.name+"/"+killOpt.kills);
-                sb.AppendLine($"战功赫赫(胜场):" + winOpt._operator.name+"/"+winOpt.wins);
-                sb.AppendLine($"上分机器(胜负比):" + winRateOpt._operator.name+"/"+winRateOpt.wl);
-                sb.AppendLine($"情有独钟(使用时长):" + timeOpt._operator.name+"/"+timeOpt.playtime+"秒");
+                sb.AppendLine($"干员（为避免无意义数据，仅统计熟练度TOP20）：");
+                sb.AppendLine($"本命(熟练度):" + expOpt.@operator.name+"/"+expOpt.experience);
+                sb.AppendLine($"全场最佳(KD):" + kdOpt.@operator.name+"/"+kdOpt.kd);
+                sb.AppendLine($"反恐杀神(击杀):" + killOpt.@operator.name+"/"+killOpt.kills);
+                sb.AppendLine($"战功赫赫(胜场):" + winOpt.@operator.name+"/"+winOpt.wins);
+                sb.AppendLine($"上分机器(胜负比):" + winRateOpt.@operator.name+"/"+winRateOpt.wl);
+                sb.AppendLine($"情有独钟(使用时长):" + timeOpt.@operator.name+"/"+timeOpt.playtime+"秒");
                 sb.AppendLine( @"详情:https://r6stats.com/zh/stats/" + res.uplay_id);
                 e.CQApi.SendGroupMessage(e.FromGroup, sb.ToString());
                 return;
             }
-            e.CQApi.SendGroupMessage(e.FromGroup, @"[R6战绩]查无此人");
+            e.CQApi.SendGroupMessage(e.FromGroup, @"[R6战绩]查无此人/BUG碧查询服务器维护中");
         }
     }
 }
