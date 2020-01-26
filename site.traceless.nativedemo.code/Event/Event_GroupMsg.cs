@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.EventArgs;
-using Site.Traceless.Nativedemo.Code.Model;
-using Site.Traceless.Nativedemo.Code.Command;
+using Site.Traceless.SamrtT.Code.Model;
+using Site.Traceless.SamrtT.Code.Command;
 
-namespace Site.Traceless.Nativedemo.Code.Event
+namespace Site.Traceless.SamrtT.Code.Event
 {
     public class Event_GroupMsg : IGroupMessage
     {

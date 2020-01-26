@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Native.Csharp</RootNamespace>
-    <AssemblyName>site.traceless.nativedemo</AssemblyName>
+    <AssemblyName>site.traceless.smarttv2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -131,9 +131,9 @@
       <Project>{797eaebc-4d5b-4eef-87f4-a508fda2cb6a}</Project>
       <Name>Native.Csharp.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\site.traceless.nativedemo.code\Site.Traceless.Nativedemo.Code.csproj">
+    <ProjectReference Include="..\site.traceless.nativedemo.code\Site.Traceless.SamrtT.Code.csproj">
       <Project>{a9cba998-a1da-4a85-bf67-0b9ec35ccd62}</Project>
-      <Name>Site.Traceless.Nativedemo.Code</Name>
+      <Name>Site.Traceless.SamrtT.Code</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

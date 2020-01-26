@@ -1,12 +1,12 @@
 ﻿using Native.Csharp.Sdk.Cqp.EventArgs;
-using Site.Traceless.Nativedemo.Code.Model;
+using Site.Traceless.SamrtT.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Site.Traceless.Nativedemo.Code.Command
+namespace Site.Traceless.SamrtT.Code.Command
 {
     public class GroupApp
     {

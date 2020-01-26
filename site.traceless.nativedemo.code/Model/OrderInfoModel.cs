@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Site.Traceless.Nativedemo.Code.Model
+namespace Site.Traceless.SamrtT.Code.Model
 {
     public class OrderInfoModel
     {

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Csharp.Sdk", "Native
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Csharp.Tool", "Native.Csharp.Tool\Native.Csharp.Tool.csproj", "{9DB94CBF-6843-4EA3-9241-769124416FE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.Nativedemo.Code", "site.traceless.nativedemo.code\Site.Traceless.Nativedemo.Code.csproj", "{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.SamrtT.Code", "site.traceless.nativedemo.code\Site.Traceless.SamrtT.Code.csproj", "{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

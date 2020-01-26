@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Site.Traceless.Nativedemo.Code
+namespace Site.Traceless.SamrtT.Code
 {
 	public static class Common
 	{

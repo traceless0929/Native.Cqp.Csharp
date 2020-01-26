@@ -8,7 +8,7 @@ using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Tool.IniConfig.Linq;
 using System.IO;
 
-namespace Site.Traceless.Nativedemo.Code.Event
+namespace Site.Traceless.SamrtT.Code.Event
 {
     public class Event_AppEnable : IAppEnable
     {

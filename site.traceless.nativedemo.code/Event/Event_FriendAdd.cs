@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 
-namespace Site.Traceless.Nativedemo.Code.Event
+namespace Site.Traceless.SamrtT.Code.Event
 {
     public class Event_FriendAdd : IFriendAdd
     {
