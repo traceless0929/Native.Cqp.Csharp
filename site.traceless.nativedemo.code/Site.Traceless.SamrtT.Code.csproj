@@ -7,8 +7,8 @@
     <ProjectGuid>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Site.Traceless.Nativedemo.Code</RootNamespace>
-    <AssemblyName>Site.Traceless.Nativedemo.Code</AssemblyName>
+    <RootNamespace>Site.Traceless.SamrtT.Code</RootNamespace>
+    <AssemblyName>Site.Traceless.SamrtT.Code</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

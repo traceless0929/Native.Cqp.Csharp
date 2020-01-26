@@ -121,7 +121,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CQExport.tt</DependentUpon>
     </None>
-    <None Include="site.traceless.nativedemo.json">
+    <None Include="site.traceless.smarttv2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

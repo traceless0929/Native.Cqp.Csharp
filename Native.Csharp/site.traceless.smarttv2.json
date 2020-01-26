@@ -5,11 +5,11 @@
 {
 	"ret": 1,
 	"apiver": 9,
-	"name": "酷Q样例应用 for C#",
+	"name": "剑三小T_V2",
 	"version": "1.0.0",
 	"version_id": 1,
 	"author": "Traceless",
-	"description": "酷Q样例应用(V9应用机制)",
+	"description": "这里是剑三小T V2全面重制版，使用NativeSDK",
 	"event": [
 		{
 			"id": 1,
