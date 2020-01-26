@@ -23,13 +23,22 @@ namespace Site.Traceless.SamrtT.Code.Event
                 {
                     new IniSection("gcommands")
                     {
-                        { "功能1","funcOne"},
-                        { "功能2","funcTwo"}
+                        { "功能","menu"},
+                        { "查日常","dayTask"},
+                        { "抽锦鲤","chose"},
+                        { "开服监控","serverRemind"},
+                        { "开服查询","serverQuery"},
+                        { "/roll","roll" },
+                        { "建议","advise"},
+                        { "垃圾分类","trashsort"}
                     },
                     new IniSection("pcommands")
                     {
-                        { "功能1","funcOne"},
-                        { "功能2","funcTwo"}
+                        { "功能","menu"},
+                        { "建议","advise"},
+                        { "反馈","feedback"},
+                        { "个人反馈","pfeedback"},
+                        { "垃圾分类","trashsort"}
                     }
                 };
                 iObject.Save(commandPath);
@@ -56,7 +65,6 @@ namespace Site.Traceless.SamrtT.Code.Event
             IniSection settings = iObject["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
 
-            e.CQApi.SendPrivateMessage(415206409, "[测试-应用启动]", sender, e);
         }
     }
 }
