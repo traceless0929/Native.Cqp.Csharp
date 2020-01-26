@@ -41,7 +41,8 @@ namespace Site.Traceless.SamrtT.Code.Func
                     sb.AppendLine(Environment.NewLine + "---------周常---------");
                     foreach (var weekItem in weekInfo)
                     {
-                        sb.AppendLine("「" + weekItem.Path.Split('.').LastOrDefault() + "」" + weekItem.FirstOrDefault().ToString() + "");
+                        sb.AppendLine("「" + weekItem.Path.Split('.').LastOrDefault().Replace("武林通鉴·", "") + "」"
+                                      + Environment.NewLine+"  " + weekItem.FirstOrDefault().ToString().Replace(",", Environment.NewLine+ "  ") + "");
                     }
                     sb.AppendLine("「备注」周常十二点刷新");
                 }
