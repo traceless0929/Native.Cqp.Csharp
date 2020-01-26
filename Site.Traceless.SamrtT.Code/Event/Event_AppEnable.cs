@@ -32,7 +32,7 @@ namespace Site.Traceless.SamrtT.Code.Event
                         { "开服查询","serverQuery"},
                         { "/roll","roll" },
                         { "建议","advise"},
-                        { "垃圾分类","trashsort"}
+                        { "垃圾","trashsort"}
                     },
                     new IniSection("pcommands")
                     {
@@ -41,7 +41,7 @@ namespace Site.Traceless.SamrtT.Code.Event
                         { "建议","advise"},
                         { "反馈","feedback"},
                         { "个人反馈","pfeedback"},
-                        { "垃圾分类","trashsort"}
+                        { "垃圾","trashsort"}
                     }
                 };
                 iObject.Save(commandPath);
