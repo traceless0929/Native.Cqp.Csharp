@@ -7,6 +7,8 @@ using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Tool.IniConfig.Linq;
 using System.IO;
+using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.SamrtT.Code.Model.SmartT;
 
 namespace Site.Traceless.SamrtT.Code.Event
 {
@@ -35,6 +37,7 @@ namespace Site.Traceless.SamrtT.Code.Event
                     new IniSection("pcommands")
                     {
                         { "功能","menu"},
+                        { "查日常","dayTask"},
                         { "建议","advise"},
                         { "反馈","feedback"},
                         { "个人反馈","pfeedback"},
@@ -64,6 +67,31 @@ namespace Site.Traceless.SamrtT.Code.Event
             iObject = IniObject.Load(commandPath, Encoding.Default);
             IniSection settings = iObject["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
+
+            string trashSortPath = Common.CqApi.AppDirectory + "trashSort.ini";
+            if (!File.Exists(trashSortPath))
+            {
+                iObject = new IniObject
+                {
+                    new IniSection("sortData")
+                    {
+
+                    }
+                };
+                iObject.Save(trashSortPath);
+            }
+            iObject = IniObject.Load(trashSortPath, Encoding.Default);
+            IniSection sortData = iObject["sortData"];
+            var temp = sortData.ToDictionary(p => p.Key, p => p.Value.ToString());
+            foreach (var item in temp)
+            {
+                TrashSortResp sortItem = Newtonsoft.Json.JsonConvert.DeserializeObject<TrashSortResp>(item.Value);
+                Common.TrashDic.Add(sortItem.name, sortItem);
+            }
+
+            Common.SerList = JxServer.GetSerList();
+            Common.JxServer = new JxServer();
+            Common.menuStr = Utils.MenuUitls.getMenuStr();
 
         }
     }

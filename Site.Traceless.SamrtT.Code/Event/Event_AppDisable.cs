@@ -12,7 +12,7 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void AppDisable(object sender, CQAppDisableEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-应用退出]", sender, e);
+            
         }
 
     }

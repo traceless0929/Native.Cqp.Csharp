@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,9 +62,15 @@
     <Compile Include="Event\Event_GroupMsg.cs" />
     <Compile Include="Event\Event_GroupUpload.cs" />
     <Compile Include="Event\Event_PrivateMsg.cs" />
+    <Compile Include="Func\JxServer.cs" />
+    <Compile Include="Func\JxTask.cs" />
+    <Compile Include="Func\TrashSort.cs" />
     <Compile Include="Model\AnalysisMsg.cs" />
     <Compile Include="Model\OrderInfoModel.cs" />
+    <Compile Include="Model\SmartT\TrashSortResp.cs" />
+    <Compile Include="Model\SmartT\TxResp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\MenuUitls.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Native.Csharp.Sdk\Native.Csharp.Sdk.csproj">
@@ -72,9 +81,14 @@
       <Project>{9DB94CBF-6843-4EA3-9241-769124416FE9}</Project>
       <Name>Native.Csharp.Tool</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Site.Traceless.Tools\Site.Traceless.Tools.csproj">
+      <Project>{54454067-a4e1-40c6-9c18-29feb9c07145}</Project>
+      <Name>Site.Traceless.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Tool\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

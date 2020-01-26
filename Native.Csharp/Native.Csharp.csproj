@@ -131,7 +131,7 @@
       <Project>{797eaebc-4d5b-4eef-87f4-a508fda2cb6a}</Project>
       <Name>Native.Csharp.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\site.traceless.nativedemo.code\Site.Traceless.SamrtT.Code.csproj">
+    <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SamrtT.Code.csproj">
       <Project>{a9cba998-a1da-4a85-bf67-0b9ec35ccd62}</Project>
       <Name>Site.Traceless.SamrtT.Code</Name>
     </ProjectReference>

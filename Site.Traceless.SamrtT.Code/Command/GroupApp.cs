@@ -5,18 +5,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Native.Csharp.Sdk.Cqp;
+using Native.Csharp.Sdk.Cqp.Model;
+using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.Tools.Utils;
 
 namespace Site.Traceless.SamrtT.Code.Command
 {
     public class GroupApp
     {
-        public static void funcOne(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        public static void menu(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
-            e.CQApi.SendPrivateMessage(415206409,$"[这里是群方法1]", $"参数数 {msg.OrderCount}\n", $"触发指令(第一参数 what) {msg.What}\n", $"目标(第二参数 who) {msg.Who}\n", $"怎么做(第三参数 how) {msg.How}\n", $"原始信息 {msg.OriginStr}\n", e.ToString());
+            e.CQApi.SendGroupMessage(e.FromGroup, Common.menuStr);
         }
-        public static void funcTwo(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        public static void advise(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
-            e.CQApi.SendPrivateMessage(415206409, $"[这里是群方法2]\n", $"参数数 {msg.OrderCount}\n", $"触发指令(第一参数 what) {msg.What}\n", $"目标(第二参数 who) {msg.Who}\n", $"怎么做(第三参数 how) {msg.How}\n", $"原始信息 {msg.OriginStr}\n", e.ToString());
+            e.CQApi.SendPrivateMessage(Convert.ToInt64(Common.settingDic["master"]), $"来自群{e.FromGroup}的{e.FromQQ}:{msg.Who} {msg.How}");
+        }
+        public static void trashsort(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            if (string.IsNullOrEmpty(msg.Who))
+            {
+                return;
+            }
+            e.CQApi.SendGroupMessage(e.FromGroup, TrashSort.goSort(msg.Who));
+
+        }
+        public static void roll(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            e.CQApi.SendGroupMessage(e.FromGroup, CQApi.CQCode_At(e.FromQQ) + $"Roll了 {RandomUtil.RandomGet(0, 101)} 点");
+        }
+        public static void chose(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            List<GroupMemberInfo> memberInfos = e.FromGroup.GetGroupMemberList();
+            var str = msg.Who;
+            var orderid = Guid.NewGuid().ToString("N").Substring(0, 5);
+            Common.CqApi.SendGroupMessage(e.FromGroup,
+                $"5S后,开始从{memberInfos.Count()}人中抽取幸运锦鲤{str}!" +
+                Environment.NewLine +
+                $"锦鲤编号:{orderid}");
+            System.Threading.Thread.Sleep(5000);
+            int choseQQIndex = RandomUtil.RandomGet(0, memberInfos.Count());
+            long choseQQ = memberInfos.ToArray()[choseQQIndex].QQ.Id;
+            string choseQQStr = "我自己！没想到吧！";
+            if (choseQQ != e.CQApi.GetLoginQQ())
+            {
+                choseQQStr = CQApi.CQCode_At(choseQQ) + Environment.NewLine + "ヽ(●-`Д´-)ノ！";
+            }
+            e.CQApi.SendGroupMessage(e.FromGroup,
+                $"Boom!{orderid}号{str}的锦鲤为！" +
+                Environment.NewLine +
+                choseQQStr);
+        }
+        public static void dayTask(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            e.CQApi.SendGroupMessage(e.FromGroup, JxTask.getTask());
+        }
+        public static void serverRemind(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            Common.JxServer.GoServerRemind(e.FromGroup.Id, msg.Who);
+        }
+
+        public static void serverQuery(CQGroupMessageEventArgs e, AnalysisMsg msg)
+        {
+            Common.JxServer.GoServerQuery(e.FromGroup.Id, msg.Who);
         }
     }
 }
