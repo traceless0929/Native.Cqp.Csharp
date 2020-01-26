@@ -12,7 +12,7 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void GroupBanSpeak(object sender, CQGroupBanSpeakEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-群禁言]", sender, e);
+            
         }
     }
 }

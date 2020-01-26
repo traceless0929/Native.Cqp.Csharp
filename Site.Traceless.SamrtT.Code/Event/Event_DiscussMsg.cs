@@ -12,7 +12,7 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void DiscussMessage(object sender, CQDiscussMessageEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-讨论组]", sender, e);
+            
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Site.Traceless.SamrtT.Code.Event
 
         public void GroupAddRequest(object sender, CQGroupAddRequestEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-群添加请求]", sender, e);
+            
         }
     }
 }

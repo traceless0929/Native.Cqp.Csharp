@@ -13,7 +13,7 @@ namespace Site.Traceless.SamrtT.Code.Event
 
         public void GroupMemberIncrease(object sender, CQGroupMemberIncreaseEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-群成员增加]", sender, e);
+            
         }
     }
 }

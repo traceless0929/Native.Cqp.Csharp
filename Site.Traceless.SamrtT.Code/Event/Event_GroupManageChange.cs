@@ -12,7 +12,7 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void GroupManageChange(object sender, CQGroupManageChangeEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-群管理变动]", sender, e);
+            
         }
     }
 }

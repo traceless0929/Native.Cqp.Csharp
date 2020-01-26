@@ -12,7 +12,7 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void GroupUpload(object sender, CQGroupUploadEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-文件上传]", sender, e);
+            
         }
     }
 }

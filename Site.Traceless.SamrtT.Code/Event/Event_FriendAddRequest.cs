@@ -12,7 +12,7 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void FriendAddRequest(object sender, CQFriendAddRequestEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-好友添加请求]", sender, e);
+            
         }
     }
 }
