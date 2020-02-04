@@ -51,7 +51,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             if (rightIds.Contains(e.FromQQ.Id))
             {
                 groupData.ChangeSwitch(SwitchEnum.welopen, false);
-                e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]群欢迎开启成功!");
+                e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]群欢迎开关闭成功!");
             }
         }
 

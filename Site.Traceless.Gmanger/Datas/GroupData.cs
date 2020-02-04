@@ -115,7 +115,7 @@ namespace Site.Traceless.Gmanger.Datas
             ini[switchEnum.ToString("G")] = new IniValue(Tools.Crawler.JavaScriptAnalyzer.Decode(newTemplate).Trim());
             iniObject.Save(dataPath);
             ini.TryGetValue(switchEnum.ToString("G"), out IniValue iniValue);
-            return iniValue.ToString();
+            return iniValue.ToString().Trim();
         }
 
         /// <summary>
