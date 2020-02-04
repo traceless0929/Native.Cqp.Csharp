@@ -12,7 +12,7 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void CQExit(object sender, CQExitEventArgs e)
         {
-            e.CQApi.SendPrivateMessage(415206409, "[测试-酷Q退出]", sender, e);
+            
         }
 
     }
