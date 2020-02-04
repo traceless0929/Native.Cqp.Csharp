@@ -37,7 +37,7 @@ namespace Site.Traceless.SamrtT.Code.Command
         }
         public static void chose(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
-            List<GroupMemberInfo> memberInfos = e.FromGroup.GetGroupMemberList();
+            var memberInfos = e.FromGroup.GetGroupMemberList();
             var str = msg.Who;
             var orderid = Guid.NewGuid().ToString("N").Substring(0, 5);
             Common.CqApi.SendGroupMessage(e.FromGroup,
@@ -45,9 +45,9 @@ namespace Site.Traceless.SamrtT.Code.Command
                 Environment.NewLine +
                 $"锦鲤编号:{orderid}");
             System.Threading.Thread.Sleep(5000);
-            int choseQQIndex = RandomUtil.RandomGet(0, memberInfos.Count());
-            long choseQQ = memberInfos.ToArray()[choseQQIndex].QQ.Id;
-            string choseQQStr = "我自己！没想到吧！";
+            var choseQQIndex = RandomUtil.RandomGet(0, memberInfos.Count());
+            var choseQQ = memberInfos.ToArray()[choseQQIndex].QQ.Id;
+            var choseQQStr = "我自己！没想到吧！";
             if (choseQQ != e.CQApi.GetLoginQQ())
             {
                 choseQQStr = CQApi.CQCode_At(choseQQ) + Environment.NewLine + "ヽ(●-`Д´-)ノ！";

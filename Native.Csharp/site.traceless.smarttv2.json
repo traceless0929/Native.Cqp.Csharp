@@ -6,10 +6,10 @@
 	"ret": 1,
 	"apiver": 9,
 	"name": "剑三小T_V2",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"version_id": 1,
 	"author": "Traceless",
-	"description": "这里是剑三小T V2全面重制版，使用NativeSDK",
+	"description": "这里是剑三小T V2全面重制版，使用NativeSDK,增加群管开关及群欢迎",
 	"event": [
 		{
 			"id": 1,
@@ -120,14 +120,7 @@
 	"menu": [ // 设置菜单（发布前请删除无用菜单，如果无需设置菜单请全部删除）
   ],
 	"status": [ // 悬浮窗状态（见 com.example.status 样例）
-		{
-			"id": 1, // 悬浮窗ID
-			"name": "运行时间", // 名称
-			"title": "UPTIME", // 英文名称
-			"function": "_statusUptime", // 数据更新对应函数
-			"period": "1000" // 更新间隔（单位ms（毫秒），目前仅支持1000ms（1秒））
-		}
-	],
+  ],
 	"auth": [ // 应用权限（发布前请删除无用权限）
 		20,  //[敏感]取Cookies    getCookies / getCsrfToken
 		30,  //接收语音           getRecord

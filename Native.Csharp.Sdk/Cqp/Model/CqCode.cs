@@ -172,7 +172,7 @@ namespace Native.Csharp.Sdk.Cqp.Model
 		/// 延时初始化正则表达式
 		/// </summary>
 		/// <returns></returns>
-		private static Regex[] InitializeRegex ()
+		private static Regex[] InitializeRegex ()  
 		{
 			// 此处延时加载, 以提升运行速度
 			return new Regex[]

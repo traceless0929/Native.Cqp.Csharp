@@ -43,41 +43,10 @@ namespace Native.Csharp.App.Export
 		/// </summary>	
 		private static void ResolveBackcall ()	
 		{	
-			/*	
-			 * Id: 1	
-			 * Name: 运行时间	
-			 * Title: UPTIME	
-			 * Function: _statusUptime	
-			 * Period: 1000	
-			 */	
-			if (Common.AppInfo.UnityContainer.IsRegistered<IStatusUpdate> ("运行时间"))	
-			{	
-				Status_statusUptimeHandler += Common.AppInfo.UnityContainer.Resolve<IStatusUpdate> ("运行时间").StatusUpdate;	
-			}	
-			
 		}	
 		#endregion	
 		
 		#region --导出方法--	
-		/*	
-		 * Id: 1	
-		 * Name: 运行时间	
-		 * Title: UPTIME	
-		 * Function: _statusUptime	
-		 * Period: 1000	
-		 */	
-		public static event Func<object, CQStatusUpdateEventArgs, CQFloatWindow> Status_statusUptimeHandler;	
-		[DllExport (ExportName = "_statusUptime", CallingConvention = CallingConvention.StdCall)]	
-		public static string Status_statusUptime ()	
-		{	
-			CQStatusUpdateEventArgs args = new CQStatusUpdateEventArgs (api, log, 1, "运行时间", "UPTIME", "_statusUptime", 1000);	
-			if (Status_statusUptimeHandler != null)	
-			{	
-				return Status_statusUptimeHandler (typeof (CQStatusExport), args).ToSendString ();	
-			}	
-			return new CQFloatWindow ().ToSendString (); // 返回默认悬浮窗样式	
-		}	
-		
 		#endregion	
 	}	
 }

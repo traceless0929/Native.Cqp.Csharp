@@ -17,7 +17,7 @@ namespace Site.Traceless.SamrtT.Code.Event
         public void AppEnable(object sender, CQAppEnableEventArgs e)
         {
             Common.CqApi = e.CQApi;
-            string commandPath = Common.CqApi.AppDirectory + "command.ini";
+            string commandPath = e.CQApi.AppDirectory + "command.ini";
             IniObject iObject;
             if (!File.Exists(commandPath))
             {
@@ -52,6 +52,7 @@ namespace Site.Traceless.SamrtT.Code.Event
             IniSection gCommand = iObject["gcommands"];
             Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
 
+            e.CQLog.Info("初始化", "读取指令正常");
             commandPath = Common.CqApi.AppDirectory + "setting.ini";
             if (!File.Exists(commandPath))
             {
@@ -67,7 +68,7 @@ namespace Site.Traceless.SamrtT.Code.Event
             iObject = IniObject.Load(commandPath, Encoding.Default);
             IniSection settings = iObject["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
-
+            e.CQLog.Info("初始化", "读取设置正常");
             string trashSortPath = Common.CqApi.AppDirectory + "trashSort.ini";
             if (!File.Exists(trashSortPath))
             {
@@ -88,11 +89,14 @@ namespace Site.Traceless.SamrtT.Code.Event
                 TrashSortResp sortItem = Newtonsoft.Json.JsonConvert.DeserializeObject<TrashSortResp>(item.Value);
                 Common.TrashDic.Add(sortItem.name, sortItem);
             }
+            e.CQLog.Info("初始化", "读取垃圾分类正常");
 
             Common.SerList = JxServer.GetSerList();
+            e.CQLog.Info("初始化", "读取服务器列表正常");
             Common.JxServer = new JxServer();
+            e.CQLog.Info("初始化", "初始化开服监控正常");
             Common.menuStr = Utils.MenuUitls.getMenuStr();
-
+            e.CQLog.Info("初始化", "初始化菜单正常");
         }
     }
 }
