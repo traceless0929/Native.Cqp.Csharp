@@ -17,6 +17,7 @@ namespace Site.Traceless.SamrtT.Code.Event
             AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
             if (String.IsNullOrEmpty(nowModel.PCommand))
             {
+                FriendApp.changeCode(e, nowModel);
                 e.Handler = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }

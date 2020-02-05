@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Site.Traceless.SamrtT.Code.Utils;
 
 namespace Site.Traceless.SamrtT.Code.Func.Tests
 {
@@ -14,7 +15,7 @@ namespace Site.Traceless.SamrtT.Code.Func.Tests
         [TestMethod()]
         public void getTaskTest()
         {
-            JxTask.getTask();
+            "[AT415206409]".ReplaceAtQQ();
         }
     }
 }

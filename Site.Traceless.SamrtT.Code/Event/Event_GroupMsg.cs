@@ -37,6 +37,11 @@ namespace Site.Traceless.SamrtT.Code.Event
                             object gmResult = gmMethod.Invoke(null, new object[] { e, nowModel, groupData });
                         }
                     }
+                    else if(groupData.GetSwitch(SwitchEnum.gmopen)&&groupData.GetSwitch(SwitchEnum.thesureopen))
+                    {
+                        //词库
+                        MGroupApp.gmThesureScan(e,nowModel,groupData);
+                    }
                 }
                 e.Handler = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回

@@ -27,5 +27,31 @@ namespace Site.Traceless.Tools.Crawler
             str = HttpUtility.HtmlDecode(str);
             return str;
         }
+
+        static Regex reUnicodeDec = new Regex(@"\&\#([0-9]{2,4})\;", RegexOptions.Compiled);
+
+        public static string EncodeDecAsciiCQ(string s)
+        {
+            StringBuilder sb = new StringBuilder();
+            char[] charBuf = s.ToArray();
+            ASCIIEncoding charToASCII = new ASCIIEncoding();
+
+            byte[] TxdBuf = new byte[charBuf.Length];    // 定义发送缓冲区；
+            TxdBuf = charToASCII.GetBytes(charBuf); 　　 // 转换为各字符对应的ASCII
+            foreach (var b in TxdBuf)
+            {
+                short c = (short) b;
+                if (c == 44 || c == 91 || c == 93)
+                {
+                    sb.Append(@"&#" + c + ";");
+                }
+                else
+                {
+                    sb.Append(charToASCII.GetString(new byte[]{b}));
+                }
+
+            }
+            return sb.ToString();
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.SamrtT.Code.Utils;
 
 namespace Site.Traceless.SamrtT.Code.Command
 {
@@ -46,6 +47,17 @@ namespace Site.Traceless.SamrtT.Code.Command
         public static void dayTask(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             e.CQApi.SendPrivateMessage(e.FromQQ, JxTask.getTask());
+        }
+
+        public static void changeCode(CQPrivateMessageEventArgs e, AnalysisMsg msg)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (e.Message.CQCodes != null && e.Message.CQCodes.Any())
+            {
+                e.Message.CQCodes.ForEach(p => { sb.AppendLine(Tools.Crawler.JavaScriptAnalyzer.EncodeDecAsciiCQ(p.ToString())); });
+                e.CQApi.SendPrivateMessage(e.FromQQ, sb.ToString());
+            }
+            
         }
     }
 }
