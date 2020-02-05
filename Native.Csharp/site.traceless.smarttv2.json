@@ -9,7 +9,7 @@
 	"version": "1.0.1",
 	"version_id": 1,
 	"author": "Traceless",
-	"description": "这里是剑三小T V2全面重制版，使用NativeSDK,增加群管开关及群欢迎",
+	"description": "这里是剑三小T V2全面重制版，使用NativeSDK",
 	"event": [
 		{
 			"id": 1,
