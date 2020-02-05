@@ -35,6 +35,16 @@ namespace Site.Traceless.SamrtT.Code.Model
             }
         }
 
+        public string MPCommand
+        {
+            get
+            {
+                string _mpcommand = null;
+                Common.MPCommandDic.TryGetValue(_msg.What.Trim(), out _mpcommand);
+                return _mpcommand;
+            }
+        }
+
         public string How
         {
             get => _msg.How.Trim() ?? "";

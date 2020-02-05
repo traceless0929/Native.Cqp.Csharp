@@ -246,5 +246,38 @@ namespace Site.Traceless.Gmanger.Datas
             }
             return res;
         }
+        /// <summary>
+        /// 添加管理
+        /// </summary>
+        /// <param name="qqGroupMemberType"></param>
+        /// <param name="qq"></param>
+        /// <returns></returns>
+        public List<long> AddManager(QQGroupMemberType qqGroupMemberType, params long[] qq)
+        {
+            List<long> managerList = GetManager(qqGroupMemberType);
+            var ini = iniObject["manager"];
+            managerList.AddRange(qq);
+            ini[qqGroupMemberType.ToString("G")] =new IniValue(string.Join(",",qq.Distinct().Select(p=>p+"").ToList()));
+            iniObject.Save(dataPath);
+            return GetManager(qqGroupMemberType);
+        }
+
+        public void upsertMenu(Dictionary<string, string> menus)
+        {
+            var gCommand = iniObject["gcommands"];
+            foreach (var keyValuePair in menus)
+            {
+                if (gCommand.ContainsKey(keyValuePair.Key))
+                {
+                    gCommand[keyValuePair.Key] = new IniValue(keyValuePair.Value);
+                }
+                else
+                {
+                    gCommand.Add(keyValuePair.Key, keyValuePair.Value);
+                }
+            }
+            iniObject.Save(dataPath);
+            this.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
+        }
     }
 }

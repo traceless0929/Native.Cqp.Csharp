@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\MFriendApp.cs" />
     <Compile Include="Command\FriendApp.cs" />
     <Compile Include="Command\GroupApp.cs" />
     <Compile Include="Command\MGroupApp.cs" />

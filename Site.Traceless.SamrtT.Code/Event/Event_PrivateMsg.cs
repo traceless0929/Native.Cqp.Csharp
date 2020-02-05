@@ -15,9 +15,20 @@ namespace Site.Traceless.SamrtT.Code.Event
         public void PrivateMessage(object sender, CQPrivateMessageEventArgs e)
         {
             AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
-            if (String.IsNullOrEmpty(nowModel.PCommand))
+            if (String.IsNullOrEmpty(nowModel.PCommand) && e.FromQQ != long.Parse(Common.settingDic["master"]))
             {
+                //私聊命令为空，不是主人
                 FriendApp.changeCode(e, nowModel);
+                e.Handler = false;
+                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+            }
+            
+            if (!String.IsNullOrEmpty(nowModel.MPCommand) && e.FromQQ == long.Parse(Common.settingDic["master"]))
+            {
+                var mpapp = Activator.CreateInstance(typeof(MFriendApp)) as MFriendApp;
+                //有管理命令，且是主人发的
+                var mmethod = mpapp.GetType().GetMethod(nowModel.MPCommand);
+                object mresult = mmethod.Invoke(null, new object[] { e, nowModel });
                 e.Handler = false;
                 return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
             }
@@ -27,5 +38,6 @@ namespace Site.Traceless.SamrtT.Code.Event
 
             e.Handler = false;
         }
+
     }
 }

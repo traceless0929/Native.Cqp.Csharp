@@ -19,7 +19,15 @@ namespace Site.Traceless.SamrtT.Code
 		/// 命令映射路由(私聊)
 		/// </summary>
 		public static Dictionary<string, string> PCommandDic { get; set; } = new Dictionary<string, string>();
-
+        /// <summary>
+        /// 命令映射路由(主人私聊)
+        /// </summary>
+        public static Dictionary<string, string> MPCommandDic { get; set; } = new Dictionary<string, string>()
+        {
+            {"添加超级管理员","addManager" },
+            {"添加管理员","addManager" },
+            {"更新菜单","addGroupMenu" },
+        };
 		/// <summary>
 		/// 设置
 		/// </summary>
