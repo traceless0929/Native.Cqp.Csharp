@@ -66,9 +66,11 @@
     <Compile Include="Event\Event_PrivateMsg.cs" />
     <Compile Include="Func\GMWel.cs" />
     <Compile Include="Func\JxServer.cs" />
+    <Compile Include="Func\QQExtend.cs" />
     <Compile Include="Func\JxTask.cs" />
     <Compile Include="Func\TrashSort.cs" />
     <Compile Include="Model\AnalysisMsg.cs" />
+    <Compile Include="Model\Extend\GroupNoticeResp.cs" />
     <Compile Include="Model\OrderInfoModel.cs" />
     <Compile Include="Model\SmartT\TrashSortResp.cs" />
     <Compile Include="Model\SmartT\TxResp.cs" />

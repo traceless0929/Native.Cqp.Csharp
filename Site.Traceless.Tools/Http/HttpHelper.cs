@@ -29,6 +29,25 @@ namespace Site.Traceless.Tools.Http
         }
 
         /// <summary>
+        /// 调用POST API
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string PostAPI(string url,string cookieStr)
+        {
+            System.Net.HttpWebRequest request = System.Net.WebRequest.Create(url) as System.Net.HttpWebRequest;
+            request.Method = "POST";
+            request.UserAgent = DefaultUserAgent;
+            request.Headers.Add("cookie", cookieStr);
+            System.Net.HttpWebResponse result = request.GetResponse() as System.Net.HttpWebResponse;
+            System.IO.StreamReader sr = new System.IO.StreamReader(result.GetResponseStream(), System.Text.Encoding.UTF8);
+            string strResult = sr.ReadToEnd();
+            sr.Close();
+            //Console.WriteLine(strResult);
+            return strResult.Replace(" ", "").Replace("\n", "");
+        }
+
+        /// <summary>
         /// 调用GET API
         /// </summary>
         /// <param name="url"></param>
@@ -38,6 +57,26 @@ namespace Site.Traceless.Tools.Http
             System.Net.HttpWebRequest request = System.Net.WebRequest.Create(url) as System.Net.HttpWebRequest;
             request.Method = "GET";
             request.UserAgent = DefaultUserAgent;
+            System.Net.HttpWebResponse result = request.GetResponse() as System.Net.HttpWebResponse;
+            System.IO.StreamReader sr = new System.IO.StreamReader(result.GetResponseStream(), System.Text.Encoding.UTF8);
+            string strResult = sr.ReadToEnd();
+            var res = JsonConvert.DeserializeObject<T>(strResult.Replace(" ", "").Replace("\n", ""));
+            sr.Close();
+            //Console.WriteLine(strResult);
+            return res;
+        }
+
+        /// <summary>
+        /// 调用POST API
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static T PostAPI<T>(string url, string cookieStr) where T : class
+        {
+            System.Net.HttpWebRequest request = System.Net.WebRequest.Create(url) as System.Net.HttpWebRequest;
+            request.Method = "POST";
+            request.UserAgent = DefaultUserAgent;
+            request.Headers.Add("cookie", cookieStr);
             System.Net.HttpWebResponse result = request.GetResponse() as System.Net.HttpWebResponse;
             System.IO.StreamReader sr = new System.IO.StreamReader(result.GetResponseStream(), System.Text.Encoding.UTF8);
             string strResult = sr.ReadToEnd();

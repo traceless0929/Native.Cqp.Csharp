@@ -15,6 +15,13 @@ namespace Site.Traceless.SamrtT.Code.Command
 {
     public class MFriendApp
     {
+        public static void getToken(CQPrivateMessageEventArgs e, AnalysisMsg msg)
+        {
+            e.CQApi.SendPrivateMessage(long.Parse(Common.settingDic["master"]), e.CQApi.GetCsrfToken());
+            e.CQApi.SendPrivateMessage(long.Parse(Common.settingDic["master"]), e.CQApi.GetCookies("qun.qq.com"));
+        }
+        
+
         public static void addGroupMenu(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();

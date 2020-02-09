@@ -27,6 +27,7 @@ namespace Site.Traceless.SamrtT.Code
             {"添加超级管理员","addManager" },
             {"添加管理员","addManager" },
             {"更新菜单","addGroupMenu" },
+            {"获取Token","getToken" }
         };
 		/// <summary>
 		/// 设置

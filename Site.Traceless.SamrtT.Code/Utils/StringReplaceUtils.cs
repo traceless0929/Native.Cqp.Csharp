@@ -9,6 +9,8 @@ using Native.Csharp.Sdk.Cqp;
 using Native.Csharp.Sdk.Cqp.Enum;
 using Native.Csharp.Sdk.Cqp.Expand;
 using Native.Csharp.Sdk.Cqp.Model;
+using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.SamrtT.Code.Model.Extend;
 using Group = Native.Csharp.Sdk.Cqp.Model.Group;
 
 namespace Site.Traceless.SamrtT.Code.Utils
@@ -47,6 +49,24 @@ namespace Site.Traceless.SamrtT.Code.Utils
                     .Replace("[进群者性别]", beingQQInfo.Sex.GetDescription() + "")
                     .Replace("[进群者头像]", GetHeadCode(beingQQ.Id).ToSendString() + "");
             }
+            return raw;
+        }
+
+        public static string ReplaceNotice(this string raw,long qid, CQApi cqApi)
+        {
+            Feed[] noticeList = null;
+            if (raw.Contains("[公告标题]") || raw.Contains("[公告内容]"))
+            {
+                GroupNoticeResp groupNotice = QQExtend.getGroupNotice(cqApi.GetCsrfToken() + "", qid, cqApi.GetCookies("qun.qq.com"));
+                if (groupNotice.ec == 0)
+                {
+                    noticeList = groupNotice.feeds;
+                }
+                raw = raw
+                    .Replace("[公告标题]", (noticeList == null || noticeList.Length < 1) ? "" : noticeList[0].msg.title)
+                    .Replace("[公告内容]", (noticeList == null || noticeList.Length < 1) ? "" : noticeList[0].msg.text);
+            }
+
             return raw;
         }
 

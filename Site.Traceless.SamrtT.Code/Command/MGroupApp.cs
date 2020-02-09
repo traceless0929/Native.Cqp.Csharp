@@ -65,7 +65,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             if (rightIds.Contains(e.FromQQ.Id))
             {
                 string template = groupData.SetTemplate(SwitchEnum.welopen, msg.OriginStr.Replace(msg.What, "")).Trim();
-                template = template.ReplaceTrimAndLine();
+                template = template.ReplaceTrimAndLine().ReplaceNotice(e.FromGroup.Id,e.CQApi);
                 e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]群欢迎设置成功!"+Environment.NewLine+"模板如下:"+Environment.NewLine+ template);
             }
         }
@@ -102,7 +102,7 @@ namespace Site.Traceless.SamrtT.Code.Command
                 string a = msg.Who.Substring(endIndex + 1);
                 bool islike = msg.How.Contains("模糊");
                 KeyValuePair<string, string> res = groupData.AddThesure(q, a,islike);
-                string template = res.Value.ReplaceTrimAndLine().ReplaceAtQQ();
+                string template = res.Value.ReplaceTrimAndLine().ReplaceAtQQ().ReplaceNotice(e.FromGroup.Id, e.CQApi);
                 e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]添加词库成功!" + Environment.NewLine + "如下:" + Environment.NewLine + "问:"+Environment.NewLine+q + Environment.NewLine+"答:" + Environment.NewLine+a+Environment.NewLine+"模式:"+msg.How);
             }
         }
@@ -162,7 +162,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             {
                 return;
             }
-            e.CQApi.SendGroupMessage(e.FromGroup.Id, value.ReplaceTrimAndLine().ReplaceAtQQ());
+            e.CQApi.SendGroupMessage(e.FromGroup.Id, value.ReplaceTrimAndLine().ReplaceAtQQ().ReplaceNotice(e.FromGroup.Id, e.CQApi));
         }
     }
 }
