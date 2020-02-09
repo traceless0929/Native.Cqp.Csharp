@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -56,6 +59,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Func\JxTaskTests.cs" />
+    <Compile Include="Func\QQExtendTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +69,10 @@
     <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SamrtT.Code.csproj">
       <Project>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</Project>
       <Name>Site.Traceless.SamrtT.Code</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Site.Traceless.Tools\Site.Traceless.Tools.csproj">
+      <Project>{54454067-A4E1-40C6-9C18-29FEB9C07145}</Project>
+      <Name>Site.Traceless.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

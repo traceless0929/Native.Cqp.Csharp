@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Site.Traceless.SamrtT.Code.Model.Extend;
 using Site.Traceless.SamrtT.Code.Model.SmartT;
+using Site.Traceless.Tools.Crawler;
 
 namespace Site.Traceless.SamrtT.Code.Func
 {
@@ -15,7 +17,7 @@ namespace Site.Traceless.SamrtT.Code.Func
         public static GroupNoticeResp getGroupNotice(string bkn,long gid,string cookieStr)
         {
             string url = $"{GROUP_NOTICE_STR}?bkn={bkn}&qid={gid}&ft=23&s=-1&n=10&ni=1&i=1";
-            return Tools.Http.HttpHelper.PostAPI<GroupNoticeResp>(url, cookieStr);
+            return JsonConvert.DeserializeObject<GroupNoticeResp>(JavaScriptAnalyzer.Decode(JsonConvert.SerializeObject(Tools.Http.HttpHelper.PostAPI<GroupNoticeResp>(url, cookieStr))));
         }
     }
 }
