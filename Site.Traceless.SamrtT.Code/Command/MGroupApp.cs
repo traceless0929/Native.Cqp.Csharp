@@ -98,6 +98,10 @@ namespace Site.Traceless.SamrtT.Code.Command
             {
                 int startIndex = msg.Who.IndexOf("问");
                 int endIndex = msg.Who.IndexOf("答");
+                if (startIndex == -1 || endIndex == -1 || (endIndex - startIndex - 1) < 0)
+                {
+                    return;
+                }
                 string q = msg.Who.Substring(startIndex+1, endIndex - startIndex-1);
                 string a = msg.Who.Substring(endIndex + 1);
                 bool islike = msg.How.Contains("模糊");
