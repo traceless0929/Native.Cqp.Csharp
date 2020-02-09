@@ -11,6 +11,7 @@ using Native.Csharp.Sdk.Cqp.Expand;
 using Native.Csharp.Sdk.Cqp.Model;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Model.Extend;
+using Site.Traceless.Tools.Crawler;
 using Group = Native.Csharp.Sdk.Cqp.Model.Group;
 
 namespace Site.Traceless.SamrtT.Code.Utils
@@ -63,8 +64,8 @@ namespace Site.Traceless.SamrtT.Code.Utils
                     noticeList = groupNotice.feeds;
                 }
                 raw = raw
-                    .Replace("[公告标题]", (noticeList == null || noticeList.Length < 1) ? "" : noticeList[0].msg.title)
-                    .Replace("[公告内容]", (noticeList == null || noticeList.Length < 1) ? "" : noticeList[0].msg.text);
+                    .Replace("[公告标题]", (noticeList == null || noticeList.Length < 1) ? "" : JavaScriptAnalyzer.Decode(noticeList[0].msg.title))
+                    .Replace("[公告内容]", (noticeList == null || noticeList.Length < 1) ? "" : JavaScriptAnalyzer.Decode(noticeList[0].msg.text));
             }
 
             return raw;
