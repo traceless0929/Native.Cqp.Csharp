@@ -96,15 +96,15 @@ namespace Site.Traceless.SamrtT.Code.Command
             List<long> rightIds = groupData.GetManager(QQGroupMemberType.Creator, QQGroupMemberType.Manage);
             if (rightIds.Contains(e.FromQQ.Id))
             {
-                int startIndex = msg.Who.IndexOf("问");
-                int endIndex = msg.Who.IndexOf("答");
+                int startIndex = msg.How.IndexOf("问");
+                int endIndex = msg.How.IndexOf("答");
                 if (startIndex == -1 || endIndex == -1 || (endIndex - startIndex - 1) < 0)
                 {
                     return;
                 }
-                string q = msg.Who.Substring(startIndex+1, endIndex - startIndex-1);
-                string a = msg.Who.Substring(endIndex + 1).DeReplaceTrimAndLine();
-                bool islike = msg.How.Contains("模糊");
+                string q = msg.How.Substring(startIndex+1, endIndex - startIndex-1);
+                string a = msg.How.Substring(endIndex + 1).DeReplaceTrimAndLine();
+                bool islike = msg.Who.Contains("模糊");
                 KeyValuePair<string, string> res = groupData.AddThesure(q, a,islike);
                 string template = res.Value.ReplaceTrimAndLine().ReplaceAtQQ().ReplaceNotice(e.FromGroup.Id, e.CQApi);
                 e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]添加词库成功!" + Environment.NewLine + "如下:" + Environment.NewLine + "问:"+Environment.NewLine+q + Environment.NewLine+"答:" + Environment.NewLine+a+Environment.NewLine+"模式:"+msg.How);
