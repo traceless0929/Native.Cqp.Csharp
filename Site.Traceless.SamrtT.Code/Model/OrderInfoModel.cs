@@ -41,8 +41,7 @@ namespace Site.Traceless.SamrtT.Code.Model
                 {
                     What = temp[0];
                     Who = temp[1];
-                    for (int i = 2; i < temp.Length; i++)
-                        How += temp[i] + " ";
+                    How = msg.TrimStart().Substring(What.Length + Who.Length + 2);
                     OrderCount = 3;
                 }
             }

@@ -107,7 +107,7 @@ namespace Site.Traceless.SamrtT.Code.Command
                 bool islike = msg.Who.Contains("模糊");
                 KeyValuePair<string, string> res = groupData.AddThesure(q, a,islike);
                 string template = res.Value.ReplaceTrimAndLine().ReplaceAtQQ().ReplaceNotice(e.FromGroup.Id, e.CQApi);
-                e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]添加词库成功!" + Environment.NewLine + "如下:" + Environment.NewLine + "问:"+Environment.NewLine+q + Environment.NewLine+"答:" + Environment.NewLine+a+Environment.NewLine+"模式:"+msg.How);
+                e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]添加词库成功!" + Environment.NewLine + "如下:" + Environment.NewLine + "问:"+Environment.NewLine+q + Environment.NewLine+"答:" + Environment.NewLine+a+Environment.NewLine+"模式:"+msg.Who);
             }
         }
         public static void gmThesureDel(CQGroupMessageEventArgs e, AnalysisMsg msg, GroupData groupData)
