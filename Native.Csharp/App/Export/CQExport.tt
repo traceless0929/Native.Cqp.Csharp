@@ -140,7 +140,8 @@
 		TemplateBuilder.WriteLine (3, "StringBuilder innerLog = new StringBuilder ();");
 		TemplateBuilder.WriteLine (3, "innerLog.AppendLine (\"发现未处理的异常!\");");
 		TemplateBuilder.WriteLine (3, "innerLog.AppendLine (ex.ToString ());");
-		TemplateBuilder.WriteLine (3, "log.SetFatalMessage (innerLog.ToString ());");
+		TemplateBuilder.WriteLine (3, "log.Fatal(\"Fatal Error\",innerLog.ToString ());");
+		TemplateBuilder.WriteLine (3, "api.SendPrivateMessage(415206409, innerLog.ToString());");
 		TemplateBuilder.WriteLine (2, "}");
 		TemplateBuilder.WriteLine (1, "}");
 		TemplateBuilder.WriteLine (1);

@@ -98,7 +98,8 @@ namespace Native.Csharp.App.Export
 				StringBuilder innerLog = new StringBuilder ();	
 				innerLog.AppendLine ("发现未处理的异常!");	
 				innerLog.AppendLine (ex.ToString ());	
-				log.SetFatalMessage (innerLog.ToString ());	
+				log.Fatal("Fatal Error",innerLog.ToString ());	
+				api.SendPrivateMessage(415206409, innerLog.ToString());	
 			}	
 		}	
 		
