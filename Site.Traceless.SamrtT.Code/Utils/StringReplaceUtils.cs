@@ -80,7 +80,7 @@ namespace Site.Traceless.SamrtT.Code.Utils
 
         public static string DeReplaceTrimAndLine(this string raw)
         {
-            raw = raw.Replace("\n", "[换行]")
+            raw = raw.Replace("\r\n", "[换行]")
                 .Replace(" ", "[空格]");
             return raw;
         }
