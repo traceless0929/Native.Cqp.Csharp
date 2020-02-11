@@ -55,6 +55,7 @@ namespace Site.Traceless.SamrtT.Code.Func
             }
             catch (Exception e)
             {
+                Common.CqApi.SendPrivateMessage(long.Parse(Common.settingDic["master"]), e.ToString());
                 sb.AppendLine("[查日常]QAQ日常服务器异常，已通知管理员");
                 return sb.ToString();
             }
