@@ -119,9 +119,9 @@ namespace Site.Traceless.SamrtT.Code.Command
             List<long> rightIds = groupData.GetManager(QQGroupMemberType.Creator, QQGroupMemberType.Manage);
             if (rightIds.Contains(e.FromQQ.Id))
             {
-                bool islike = msg.How.Contains("模糊");
-                groupData.DelThesure(msg.Who,islike);
-                e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]词库删除成功!" + Environment.NewLine + "删除如下:" + Environment.NewLine + "问:"+Environment.NewLine+msg.Who+ Environment.NewLine + "模式:" + msg.How);
+                bool islike = msg.Who.Contains("模糊");
+                groupData.DelThesure(msg.How,islike);
+                e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]词库删除成功!" + Environment.NewLine + "删除如下:" + Environment.NewLine + "问:"+Environment.NewLine+msg.Who+ Environment.NewLine + "模式:" + msg.Who);
             }
         }
         public static void gmThesureRead(CQGroupMessageEventArgs e, AnalysisMsg msg, GroupData groupData)
@@ -133,8 +133,8 @@ namespace Site.Traceless.SamrtT.Code.Command
             List<long> rightIds = groupData.GetManager(QQGroupMemberType.Creator, QQGroupMemberType.Manage);
             if (rightIds.Contains(e.FromQQ.Id))
             {
-                bool islike = msg.How.Contains("模糊");
-                bool parseRes = int.TryParse(msg.Who,out int nowpage);
+                bool islike = msg.Who.Contains("模糊");
+                bool parseRes = int.TryParse(msg.How, out int nowpage);
                 int pageSize = 15;
                 if (!parseRes)
                 {
@@ -142,7 +142,7 @@ namespace Site.Traceless.SamrtT.Code.Command
                 }
                 Dictionary<string, string> res= groupData.ReadThesure(islike);
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("[小T群管] "+(islike?"模糊":"精确")+"词库总数:" + res.Count + " 当前:" + msg.Who + "页 共:" + ((res.Count+ pageSize - 1)/ pageSize) + "页");
+                sb.AppendLine("[小T群管] "+(islike?"模糊":"精确")+"词库总数:" + res.Count + " 当前:" + msg.How + "页 共:" + ((res.Count+ pageSize - 1)/ pageSize) + "页");
                 int i = 1;
                 foreach (var keyValuePair in res.Skip((nowpage-1)* pageSize).Take(pageSize).AsEnumerable())
                 {
