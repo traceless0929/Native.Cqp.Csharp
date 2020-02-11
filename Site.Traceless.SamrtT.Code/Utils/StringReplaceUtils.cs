@@ -78,6 +78,13 @@ namespace Site.Traceless.SamrtT.Code.Utils
             return raw;
         }
 
+        public static string DeReplaceTrimAndLine(this string raw)
+        {
+            raw = raw.Replace("\n", "[换行]")
+                .Replace(" ", "[空格]");
+            return raw;
+        }
+
         public static string ReplaceAtQQ(this string raw)
         {
             var regexCode = @"\[AT([1-9][0-9]{4,})*\]";

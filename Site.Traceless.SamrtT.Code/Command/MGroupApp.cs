@@ -64,7 +64,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             List<long> rightIds = groupData.GetManager(QQGroupMemberType.Creator, QQGroupMemberType.Manage);
             if (rightIds.Contains(e.FromQQ.Id))
             {
-                string template = groupData.SetTemplate(SwitchEnum.welopen, msg.OriginStr.Replace(msg.What, "")).Trim();
+                string template = groupData.SetTemplate(SwitchEnum.welopen, msg.OriginStr.Replace(msg.What, "").DeReplaceTrimAndLine()).Trim();
                 template = template.ReplaceTrimAndLine().ReplaceNotice(e.FromGroup.Id,e.CQApi);
                 e.CQApi.SendGroupMessage(e.FromGroup.Id, "[小T群管]群欢迎设置成功!"+Environment.NewLine+"模板如下:"+Environment.NewLine+ template);
             }
@@ -103,7 +103,7 @@ namespace Site.Traceless.SamrtT.Code.Command
                     return;
                 }
                 string q = msg.Who.Substring(startIndex+1, endIndex - startIndex-1);
-                string a = msg.Who.Substring(endIndex + 1);
+                string a = msg.Who.Substring(endIndex + 1).DeReplaceTrimAndLine();
                 bool islike = msg.How.Contains("模糊");
                 KeyValuePair<string, string> res = groupData.AddThesure(q, a,islike);
                 string template = res.Value.ReplaceTrimAndLine().ReplaceAtQQ().ReplaceNotice(e.FromGroup.Id, e.CQApi);
