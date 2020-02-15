@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp.Enum;
-using Native.Csharp.Sdk.Cqp.Model;
+using Native.Sdk.Cqp.Enum;
+using Native.Sdk.Cqp.Model;
 using Site.Traceless.Tools.Utils;
 
 namespace Site.Traceless.SamrtT.Code.Utils

@@ -104,15 +104,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Export\CQExport.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CQExport.tt</DependentUpon>
     </None>
     <None Include="FodyWeavers.xml" />
-    <None Include="app.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -122,14 +122,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CQExport.log</LastGenOutput>
     </Content>
-    <ProjectReference Include="..\Native.Csharp.Sdk\Native.Csharp.Sdk.csproj">
-      <Project>{797eaebc-4d5b-4eef-87f4-a508fda2cb6a}</Project>
-      <Name>Native.Csharp.Sdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SamrtT.Code.csproj">
-      <Project>{a9cba998-a1da-4a85-bf67-0b9ec35ccd62}</Project>
-      <Name>Site.Traceless.SamrtT.Code</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -139,9 +131,9 @@
       <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>
       <Name>Native.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\site.traceless.nativedemo.code\Site.Traceless.Nativedemo.Code.csproj">
-      <Project>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</Project>
-      <Name>Site.Traceless.Nativedemo.Code</Name>
+    <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SamrtT.Code.csproj">
+      <Project>{a9cba998-a1da-4a85-bf67-0b9ec35ccd62}</Project>
+      <Name>Site.Traceless.SamrtT.Code</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

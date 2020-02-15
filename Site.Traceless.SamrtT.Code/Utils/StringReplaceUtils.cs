@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp;
-using Native.Csharp.Sdk.Cqp.Enum;
-using Native.Csharp.Sdk.Cqp.Expand;
-using Native.Csharp.Sdk.Cqp.Model;
+using Native.Sdk.Cqp;
+using Native.Sdk.Cqp.Enum;
+using Native.Sdk.Cqp.Expand;
+using Native.Sdk.Cqp.Model;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Model.Extend;
 using Site.Traceless.Tools.Crawler;
-using Group = Native.Csharp.Sdk.Cqp.Model.Group;
+using Group = Native.Sdk.Cqp.Model.Group;
 
 namespace Site.Traceless.SamrtT.Code.Utils
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp;
+using Native.Sdk.Cqp;
 using Site.Traceless.Gmanger.Datas;
 
 namespace Site.Traceless.Gmanger

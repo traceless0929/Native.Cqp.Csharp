@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp.Interface;
-using Native.Csharp.Sdk.Cqp.EventArgs;
-using Native.Csharp.Tool.IniConfig.Linq;
+using Native.Sdk.Cqp.Interface;
+using Native.Sdk.Cqp.EventArgs;
 using System.IO;
+using Native.Tool.IniConfig.Linq;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Model.SmartT;
 

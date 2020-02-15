@@ -1,11 +1,11 @@
-﻿using Native.Csharp.Sdk.Cqp.EventArgs;
+﻿using Native.Sdk.Cqp.EventArgs;
 using Site.Traceless.SamrtT.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp.Enum;
+using Native.Sdk.Cqp.Enum;
 using Newtonsoft.Json;
 using Site.Traceless.Gmanger.Datas;
 using Site.Traceless.SamrtT.Code.Func;

@@ -56,6 +56,13 @@
 		TemplateBuilder.WriteLine (0, "public class CQEventExport");
 		TemplateBuilder.WriteLine (0, "{");
 
+		Log.Info ("写入字段...");
+		TemplateBuilder.WriteLine (1, "#region --字段--");
+		TemplateBuilder.WriteLine (1, "private static CQApi api = null;");
+		TemplateBuilder.WriteLine (1, "private static CQLog log = null;");
+		TemplateBuilder.WriteLine (1, "#endregion");
+		TemplateBuilder.WriteLine (1);
+
 		Log.Info ("写入构造函数...");
 		TemplateBuilder.WriteLine (1, "#region --构造函数--");
 		TemplateBuilder.WriteLine (1, "/// <summary>");
@@ -141,8 +148,8 @@
 		TemplateBuilder.WriteLine (3, "StringBuilder innerLog = new StringBuilder ();");
 		TemplateBuilder.WriteLine (3, "innerLog.AppendLine (\"发现未处理的异常!\");");
 		TemplateBuilder.WriteLine (3, "innerLog.AppendLine (ex.ToString ());");
-		TemplateBuilder.WriteLine (3, "log.Fatal(\"Fatal Error\",innerLog.ToString ());");
-		TemplateBuilder.WriteLine (3, "api.SendPrivateMessage(415206409, innerLog.ToString());");
+		TemplateBuilder.WriteLine (3, "AppData.CQLog.Fatal(\"Fatal Error\",innerLog.ToString ());");
+		TemplateBuilder.WriteLine (3, "AppData.CQApi.SendPrivateMessage(415206409, innerLog.ToString());");
 		TemplateBuilder.WriteLine (2, "}");
 		TemplateBuilder.WriteLine (1, "}");
 		TemplateBuilder.WriteLine (1);

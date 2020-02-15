@@ -1,12 +1,12 @@
-﻿using Native.Csharp.Sdk.Cqp.EventArgs;
+﻿using Native.Sdk.Cqp.EventArgs;
 using Site.Traceless.SamrtT.Code.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp;
-using Native.Csharp.Sdk.Cqp.Model;
+using Native.Sdk.Cqp;
+using Native.Sdk.Cqp.Model;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.Tools.Utils;
 

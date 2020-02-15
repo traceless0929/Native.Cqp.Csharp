@@ -23,6 +23,11 @@ namespace Native.App.Export
 	/// </summary>	
 	public class CQEventExport	
 	{	
+		#region --字段--	
+		private static CQApi api = null;	
+		private static CQLog log = null;	
+		#endregion	
+		
 		#region --构造函数--	
 		/// <summary>	
 		/// 由托管环境初始化的 <see cref="CQEventExport"/> 的新实例	
@@ -50,7 +55,7 @@ namespace Native.App.Export
 		[DllExport (ExportName = "AppInfo", CallingConvention = CallingConvention.StdCall)]	
 		private static string AppInfo ()	
 		{	
-			return "9,site.traceless.nativedemo";	
+			return "9,site.traceless.smarttv2";	
 		}	
 		
 		/// <summary>	
@@ -64,12 +69,12 @@ namespace Native.App.Export
 			// 反射获取 AppData 实例	
 			Type appDataType = typeof (AppData);	
 			// 注册一个 CQApi 实例	
-			AppInfo appInfo = new AppInfo ("site.traceless.nativedemo", 1, 9, "酷Q样例应用 for C# Native", "1.0.0", 1, "Tracless", "酷Q样例应用(V9应用机制)", authCode);	
+			AppInfo appInfo = new AppInfo ("site.traceless.smarttv2", 1, 9, "剑三小T_V2", "1.0.1", 1, "Traceless", "这里是剑三小T V2全面重制版，使用NativeSDK", authCode);	
 			appDataType.GetRuntimeProperty ("CQApi").GetSetMethod (true).Invoke (null, new object[] { new CQApi (appInfo) });	
-			AppData.UnityContainer.RegisterInstance<CQApi> ("site.traceless.nativedemo", AppData.CQApi);	
+			AppData.UnityContainer.RegisterInstance<CQApi> ("site.traceless.smarttv2", AppData.CQApi);	
 			// 向容器注册一个 CQLog 实例	
 			appDataType.GetRuntimeProperty ("CQLog").GetSetMethod (true).Invoke (null, new object[] { new CQLog (authCode) });	
-			AppData.UnityContainer.RegisterInstance<CQLog> ("site.traceless.nativedemo", AppData.CQLog);	
+			AppData.UnityContainer.RegisterInstance<CQLog> ("site.traceless.smarttv2", AppData.CQLog);	
 			// 注册插件全局异常捕获回调, 用于捕获未处理的异常, 回弹给 酷Q 做处理	
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;	
 			// 本函数【禁止】处理其他任何代码，以免发生异常情况。如需执行初始化代码请在Startup事件中执行（Type=1001）。	
@@ -91,7 +96,8 @@ namespace Native.App.Export
 				StringBuilder innerLog = new StringBuilder ();	
 				innerLog.AppendLine ("发现未处理的异常!");	
 				innerLog.AppendLine (ex.ToString ());	
-				AppData.CQLog.SetFatalMessage (innerLog.ToString ());	
+				AppData.CQLog.Fatal("Fatal Error",innerLog.ToString ());	
+				AppData.CQApi.SendPrivateMessage(415206409, innerLog.ToString());	
 			}	
 		}	
 		
