@@ -81,13 +81,16 @@
     <Compile Include="Utils\StringReplaceUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Native.Csharp.Sdk\Native.Csharp.Sdk.csproj">
-      <Project>{797eaebc-4d5b-4eef-87f4-a508fda2cb6a}</Project>
-      <Name>Native.Csharp.Sdk</Name>
+    <Folder Include="Tool\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
+      <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>
+      <Name>Native.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Native.Csharp.Tool\Native.Csharp.Tool.csproj">
-      <Project>{9DB94CBF-6843-4EA3-9241-769124416FE9}</Project>
-      <Name>Native.Csharp.Tool</Name>
+    <ProjectReference Include="..\Native.Tool\Native.Tool.csproj">
+      <Project>{0ca93eb9-4e25-46c6-94d2-0f97137a1606}</Project>
+      <Name>Native.Tool</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Traceless.Gmanger\Site.Traceless.Gmanger.csproj">
       <Project>{10253821-F662-42E7-8EA6-30B435E919BB}</Project>

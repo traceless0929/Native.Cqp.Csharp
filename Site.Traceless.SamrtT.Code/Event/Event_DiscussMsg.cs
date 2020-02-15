@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp.Interface;
-using Native.Csharp.Sdk.Cqp.EventArgs;
+using Native.Sdk.Cqp.Interface;
+using Native.Sdk.Cqp.EventArgs;
 
 namespace Site.Traceless.SamrtT.Code.Event
 {
