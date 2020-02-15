@@ -1,18 +1,18 @@
-﻿using Native.Csharp.Sdk.Cqp.Interface;
-using Site.Traceless.Nativedemo.Code.Event;
+﻿using Site.Traceless.Nativedemo.Code.Event;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Native.Sdk.Cqp.Interface;
 using Unity;
 
-namespace Native.Csharp.App
+namespace Native.Core
 {
 	/// <summary>
 	/// 酷Q应用主入口类
 	/// </summary>
-	public static class CQMain
+	public class CQMain
 	{
 		/// <summary>
 		/// 在应用被加载时将调用此方法进行事件注册, 请在此方法里向 <see cref="IUnityContainer"/> 容器中注册需要使用的事件

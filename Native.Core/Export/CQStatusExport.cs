@@ -37,14 +37,14 @@ namespace Native.App.Export
 		{	
 			/*	
 			 * Id: 1	
-			 * Name: 运行时间	
+			 * Name: ����ʱ��	
 			 * Title: UPTIME	
 			 * Function: _statusUptime	
 			 * Period: 1000	
 			 */	
-			if (AppData.UnityContainer.IsRegistered<IStatusUpdate> ("运行时间"))	
+			if (AppData.UnityContainer.IsRegistered<IStatusUpdate> ("����ʱ��"))	
 			{	
-				Status_statusUptimeHandler += AppData.UnityContainer.Resolve<IStatusUpdate> ("运行时间").StatusUpdate;	
+				Status_statusUptimeHandler += AppData.UnityContainer.Resolve<IStatusUpdate> ("����ʱ��").StatusUpdate;	
 			}	
 			
 		}	
@@ -53,7 +53,7 @@ namespace Native.App.Export
 		#region --导出方法--	
 		/*	
 		 * Id: 1	
-		 * Name: 运行时间	
+		 * Name: ����ʱ��	
 		 * Title: UPTIME	
 		 * Function: _statusUptime	
 		 * Period: 1000	
@@ -62,7 +62,7 @@ namespace Native.App.Export
 		[DllExport (ExportName = "_statusUptime", CallingConvention = CallingConvention.StdCall)]	
 		public static string Status_statusUptime ()	
 		{	
-			CQStatusUpdateEventArgs args = new CQStatusUpdateEventArgs (AppData.CQApi, AppData.CQLog, 1, "运行时间", "UPTIME", "_statusUptime", 1000);	
+			CQStatusUpdateEventArgs args = new CQStatusUpdateEventArgs (AppData.CQApi, AppData.CQLog, 1, "����ʱ��", "UPTIME", "_statusUptime", 1000);	
 			if (Status_statusUptimeHandler != null)	
 			{	
 				return Status_statusUptimeHandler (typeof (CQStatusExport), args).ToSendString ();	

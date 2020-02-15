@@ -36,21 +36,21 @@ namespace Native.App.Export
 		private static void ResolveBackcall ()	
 		{	
 			/*	
-			 * Name: 设置A	
+			 * Name: ����A	
 			 * Function: _menuA	
 			 */	
-			if (AppData.UnityContainer.IsRegistered<IMenuCall> ("设置A"))	
+			if (AppData.UnityContainer.IsRegistered<IMenuCall> ("����A"))	
 			{	
-				Menu_menuAHandler += AppData.UnityContainer.Resolve<IMenuCall> ("设置A").MenuCall;	
+				Menu_menuAHandler += AppData.UnityContainer.Resolve<IMenuCall> ("����A").MenuCall;	
 			}	
 			
 			/*	
-			 * Name: 设置B	
+			 * Name: ����B	
 			 * Function: _menuB	
 			 */	
-			if (AppData.UnityContainer.IsRegistered<IMenuCall> ("设置B"))	
+			if (AppData.UnityContainer.IsRegistered<IMenuCall> ("����B"))	
 			{	
-				Menu_menuBHandler += AppData.UnityContainer.Resolve<IMenuCall> ("设置B").MenuCall;	
+				Menu_menuBHandler += AppData.UnityContainer.Resolve<IMenuCall> ("����B").MenuCall;	
 			}	
 			
 		}	
@@ -58,7 +58,7 @@ namespace Native.App.Export
 		
 		#region --导出方法--	
 		/*	
-		 * Name: 设置A	
+		 * Name: ����A	
 		 * Function: _menuA	
 		 */	
 		public static event EventHandler<CQMenuCallEventArgs> Menu_menuAHandler;	
@@ -67,14 +67,14 @@ namespace Native.App.Export
 		{	
 			if (Menu_menuAHandler != null)	
 			{	
-				CQMenuCallEventArgs args = new CQMenuCallEventArgs (AppData.CQApi, AppData.CQLog, "设置A", "_menuA");	
+				CQMenuCallEventArgs args = new CQMenuCallEventArgs (AppData.CQApi, AppData.CQLog, "����A", "_menuA");	
 				Menu_menuAHandler (typeof (CQMenuExport), args);	
 			}	
 			return 0;	
 		}	
 		
 		/*	
-		 * Name: 设置B	
+		 * Name: ����B	
 		 * Function: _menuB	
 		 */	
 		public static event EventHandler<CQMenuCallEventArgs> Menu_menuBHandler;	
@@ -83,7 +83,7 @@ namespace Native.App.Export
 		{	
 			if (Menu_menuBHandler != null)	
 			{	
-				CQMenuCallEventArgs args = new CQMenuCallEventArgs (AppData.CQApi, AppData.CQLog, "设置B", "_menuB");	
+				CQMenuCallEventArgs args = new CQMenuCallEventArgs (AppData.CQApi, AppData.CQLog, "����B", "_menuB");	
 				Menu_menuBHandler (typeof (CQMenuExport), args);	
 			}	
 			return 0;	
