@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace Site.Traceless.Tools.Http
 {
@@ -54,16 +57,23 @@ namespace Site.Traceless.Tools.Http
         /// <returns></returns>
         public static T GetAPI<T>(string url) where T : class
         {
-            System.Net.HttpWebRequest request = System.Net.WebRequest.Create(url) as System.Net.HttpWebRequest;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            System.Net.HttpWebRequest request = System.Net.WebRequest.Create(url) as HttpWebRequest;
             request.Method = "GET";
             request.UserAgent = DefaultUserAgent;
-            System.Net.HttpWebResponse result = request.GetResponse() as System.Net.HttpWebResponse;
+            System.Net.HttpWebResponse result = request.GetResponse() as HttpWebResponse;
             System.IO.StreamReader sr = new System.IO.StreamReader(result.GetResponseStream(), System.Text.Encoding.UTF8);
             string strResult = sr.ReadToEnd();
             var res = JsonConvert.DeserializeObject<T>(strResult.Replace(" ", "").Replace("\n", ""));
             sr.Close();
             //Console.WriteLine(strResult);
             return res;
+        }
+        
+
+        public static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+        {
+            return true;
         }
 
         /// <summary>
