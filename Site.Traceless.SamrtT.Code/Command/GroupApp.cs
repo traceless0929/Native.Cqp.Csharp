@@ -46,7 +46,11 @@ namespace Site.Traceless.SamrtT.Code.Command
                 $"锦鲤编号:{orderid}");
             System.Threading.Thread.Sleep(5000);
             var choseQQIndex = RandomUtil.RandomGet(0, memberInfos.Count());
-            var choseQQ = memberInfos.ToArray()[choseQQIndex].QQ.Id;
+            if (memberInfos.Count - 1 < choseQQIndex)
+            {
+                choseQQIndex = memberInfos.Count - 1;
+            }
+            var choseQQ = memberInfos[choseQQIndex].QQ.Id;
             var choseQQStr = "我自己！没想到吧！";
             if (choseQQ != e.CQApi.GetLoginQQ())
             {
