@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Native.Tool.IniConfig.Linq;
 using Site.Traceless.SamrtT.Code.Model.SmartT;
 
 namespace Site.Traceless.SamrtT.Code.Func
@@ -27,11 +28,15 @@ namespace Site.Traceless.SamrtT.Code.Func
                 }
                 else
                 {
+                    string trashSortPath = Common.CqApi.AppDirectory + "trashSort.ini";
+                    IniObject iObject = IniObject.Load(trashSortPath, Encoding.Default);
                     resp.newslist.ForEach(p =>
                     {
                         if (!Common.TrashDic.ContainsKey(p.name))
                         {
                             Common.TrashDic.Add(p.name, p);
+                            iObject["sortData"].Add(p.name, Newtonsoft.Json.JsonConvert.SerializeObject(p));
+                            iObject.Save();
                         }
                     });
                     nowSort = resp.newslist[0];
