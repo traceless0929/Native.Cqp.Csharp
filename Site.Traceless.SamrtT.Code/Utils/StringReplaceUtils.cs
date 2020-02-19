@@ -18,11 +18,11 @@ namespace Site.Traceless.SamrtT.Code.Utils
 {
     public static class StringReplaceUtils
     {
-        public static string ReplaceGroupMemberInfo(this string raw, Group gGroup,QQ fromQQ,QQ beingQQ)
+        public static string ReplaceGroupMemberInfo(this string raw, GroupInfo groupInfo,QQ fromQQ,QQ beingQQ)
         {
-            GroupInfo groupInfo = gGroup.GetGroupInfo();
-            GroupMemberInfo fromQQInfo = null== fromQQ?null:gGroup.GetGroupMemberInfo(fromQQ);
-            GroupMemberInfo beingQQInfo = null==beingQQ?null:gGroup.GetGroupMemberInfo(beingQQ);
+            Group gGroup = groupInfo.Group;
+            GroupMemberInfo fromQQInfo = null== fromQQ?null:groupInfo.Group.GetGroupMemberInfo(fromQQ,true);
+            GroupMemberInfo beingQQInfo = null==beingQQ?null:groupInfo.Group.GetGroupMemberInfo(beingQQ);
             raw = raw.Replace("[群号]", gGroup.Id + "")
                 .Replace("[群名]", groupInfo.Name)
                 .Replace("[群人数]", groupInfo.CurrentMemberCount + "")

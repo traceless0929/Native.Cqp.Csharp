@@ -16,7 +16,7 @@ namespace Site.Traceless.SamrtT.Code.Func
         {
            string template = groupData.GetTemplate(SwitchEnum.welopen);
            template = template.ReplaceTrimAndLine().ReplaceAtQQ()
-               .ReplaceGroupMemberInfo(args.FromGroup, args.FromQQ, args.BeingOperateQQ);
+               .ReplaceGroupMemberInfo(args.FromGroup.GetGroupInfo(true), args.FromQQ, args.BeingOperateQQ);
            args.CQApi.SendGroupMessage(args.FromGroup, template);
         }
     }
