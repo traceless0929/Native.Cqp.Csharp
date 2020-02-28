@@ -29,7 +29,7 @@ namespace Site.Traceless.SamrtT.Code.Utils
                 sb.AppendLine(i + ". " + item.Key);
                 i++;
             }
-            sb.AppendLine("群辅助等强大功能请访问：https://traceless.site/index.php/archives/62/");
+            sb.AppendLine("获取更多：https://traceless.site/");
             return sb.ToString();
         }
     }
