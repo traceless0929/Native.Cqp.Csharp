@@ -15,7 +15,7 @@ namespace Site.Traceless.SamrtT.Code.Func
             StringBuilder sb = new StringBuilder();
             try
             {
-                JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(@"https://www.nicemoe.cn/moe/content/");
+                JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(@"https://www.nicemoe.cn/dailylist.php");
                 if (resp["code"].ToString() != "200")
                 {
                     sb.AppendLine("[查日常]查询失败，请联系管理员QAQ");
