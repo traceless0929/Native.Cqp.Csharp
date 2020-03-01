@@ -15,6 +15,10 @@ namespace Site.Traceless.SamrtT.Code.Event
         public void PrivateMessage(object sender, CQPrivateMessageEventArgs e)
         {
             AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
+            if((e.FromQQ== 1016302195||e.FromQQ==415206409)&&e.Message.CQCodes.Count()>0)
+            {
+                FriendApp.changeQr(e, nowModel);
+            }
             if (!String.IsNullOrEmpty(nowModel.MPCommand) && e.FromQQ == long.Parse(Common.settingDic["master"]))
             {
                 var mpapp = Activator.CreateInstance(typeof(MFriendApp)) as MFriendApp;

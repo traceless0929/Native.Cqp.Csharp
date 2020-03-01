@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Site.Traceless.Gmanger.Datas;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Utils;
+using Native.Sdk.Cqp.Model;
 
 namespace Site.Traceless.SamrtT.Code.Command
 {
@@ -61,6 +62,21 @@ namespace Site.Traceless.SamrtT.Code.Command
                 e.CQApi.SendPrivateMessage(e.FromQQ, sb.ToString());
             }
             
+        }
+
+        public static void changeQr(CQPrivateMessageEventArgs e, AnalysisMsg msg)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (e.Message.CQCodes != null && e.Message.CQCodes.Where(p=>p.Function==CQFunction.Image).Any())
+            {
+                string res = ChangeQr.changeQr(e.Message.ReceiveImage(0));
+                if (String.IsNullOrEmpty(res))
+                {
+                    return;
+                }
+                e.CQApi.SendPrivateMessage(e.FromQQ, res);
+            }
+
         }
     }
 }
