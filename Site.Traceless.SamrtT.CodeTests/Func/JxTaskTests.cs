@@ -16,7 +16,7 @@ namespace Site.Traceless.SamrtT.Code.Func.Tests
         [TestMethod()]
         public void getTaskTest()
         {
-            JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(@"https://www.nicemoe.cn/moe/content/");
+            JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(@"https://www.nicemoe.cn/dailylist.php");
         }
     }
 }

@@ -15,39 +15,36 @@ namespace Site.Traceless.SamrtT.Code.Func
             StringBuilder sb = new StringBuilder();
             try
             {
-                JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(@"https://www.nicemoe.cn/moe/content/");
-                if (resp["code"].ToString() != "200")
+                JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(@"https://www.nicemoe.cn/dailylist.php");
+                if (resp["code"].ToString() != "1")
                 {
                     sb.AppendLine("[查日常]查询失败，请联系管理员QAQ");
                 }
                 else
                 {
-                    JToken timeInfo = resp["时间"].FirstOrDefault();
-                    JToken dayInfo = resp["日常"].FirstOrDefault();
-                    JToken weekInfo = resp["周常"].FirstOrDefault();
-                    if (timeInfo.HasValues)
+                    sb.AppendLine("[查日常] " + resp["时间"].ToString() + " " + resp["星期"].ToString());
+                    sb.AppendLine(Environment.NewLine + "---------日常---------");
+                    sb.AppendLine(" 「 大战 」" + resp["秘境大战"].ToString());
+                    sb.AppendLine(" 「 战场 」" + resp["今日战场"].ToString());
+                    sb.AppendLine(" 「 公共 」" + resp["公共任务"].ToString());
+                    sb.AppendLine(" 「 备注 」日常七点刷新");
+                    sb.AppendLine(Environment.NewLine + "---------周常---------");
+                    sb.AppendLine(" 「 公共任务 」");
+                    resp["武林通鉴·公共任务"].ToString().Split(',').ToList().ForEach(p =>
                     {
-                        sb.AppendLine("[查日常] " + timeInfo["日期"].ToString() + " " + timeInfo["星期"].ToString());
-                    }
-                    if (dayInfo.HasValues)
+                        sb.AppendLine("  " + p);
+                    });
+                    sb.AppendLine(" 「 秘境任务 」");
+                    resp["武林通鉴·秘境任务"].ToString().Split(',').ToList().ForEach(p =>
                     {
-                        sb.AppendLine(Environment.NewLine + "---------日常---------");
-                        foreach (var dayItem in dayInfo)
-                        {
-                            sb.AppendLine("「" + dayItem.Path.Split('.').LastOrDefault() + "」" + dayItem.FirstOrDefault().ToString() + "");
-                        }
-                        sb.AppendLine("「备注」日常七点刷新");
-                    }
-                    if (weekInfo.HasValues)
+                        sb.AppendLine("  " + p);
+                    });
+                    sb.AppendLine(" 「 团队秘境 」");
+                    resp["武林通鉴·团队秘境"].ToString().Split(',').ToList().ForEach(p =>
                     {
-                        sb.AppendLine(Environment.NewLine + "---------周常---------");
-                        foreach (var weekItem in weekInfo)
-                        {
-                            sb.AppendLine("「" + weekItem.Path.Split('.').LastOrDefault().Replace("武林通鉴·", "") + "」"
-                                          + Environment.NewLine + "  " + weekItem.FirstOrDefault().ToString().Replace(",", Environment.NewLine + "  ") + "");
-                        }
-                        sb.AppendLine("「备注」周常十二点刷新");
-                    }
+                        sb.AppendLine("  " + p);
+                    });
+                    sb.AppendLine("「备注」周常十二点刷新");
 
                     sb.AppendLine(Environment.NewLine + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 }
