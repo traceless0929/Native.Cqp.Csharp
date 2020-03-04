@@ -166,7 +166,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             {
                 return;
             }
-            e.CQApi.SendGroupMessage(e.FromGroup.Id, value.ReplaceTrimAndLine().ReplaceAtQQ().ReplaceNotice(e.FromGroup.Id, e.CQApi));
+            e.CQApi.SendGroupMessage(e.FromGroup.Id, value.ReplaceGroupMemberInfo(e.FromGroup.GetGroupInfo(),null,null).ReplaceTrimAndLine().ReplaceAtQQ().ReplaceNotice(e.FromGroup.Id, e.CQApi));
         }
     }
 }
