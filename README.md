@@ -195,6 +195,6 @@ Native.SDK  是为了方便 .Net 平台开发者高效开发 酷Q应用 的开�
 
 ### [查看更新日志](UPDATE.md)
 
-您的支持就是我更新的动力!
+**您的支持就是我更新的动力!**
 
 <img src="https://jie2gg.github.io/Image/AliPlay.png" alt="支付宝二维码" width="260" height="350"><img src="https://jie2gg.github.io/Image/WeChat.png" alt="微信二维码" width="260" height="350">
