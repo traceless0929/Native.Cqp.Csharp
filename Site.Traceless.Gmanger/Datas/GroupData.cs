@@ -79,9 +79,10 @@ namespace Site.Traceless.Gmanger.Datas
                 };
                 iniObject.Save(dataPath);
             }
-
-            ;
-            iniObject = IniObject.Load(dataPath, Encoding.Default);
+            else
+            {
+                iniObject = IniObject.Load(dataPath, Encoding.Default);
+            }
             var gCommand = iniObject["gcommands"];
             this.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
             members = Common.CqApi.GetGroupMemberList(groupId);
