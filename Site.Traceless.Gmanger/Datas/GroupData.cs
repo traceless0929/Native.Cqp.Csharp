@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Native.Sdk.Cqp.Enum;
+﻿using Native.Sdk.Cqp.Enum;
 using Native.Sdk.Cqp.Model;
 using Native.Tool.IniConfig.Linq;
 using Site.Traceless.Gmanger.Enum;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace Site.Traceless.Gmanger.Datas
 {
@@ -15,6 +15,7 @@ namespace Site.Traceless.Gmanger.Datas
         private IniObject iniObject = null;
         private long gId = -1;
         private List<GroupMemberInfo> members;
+
         public GroupData(long groupId)
         {
             gId = groupId;
@@ -86,9 +87,8 @@ namespace Site.Traceless.Gmanger.Datas
             var gCommand = iniObject["gcommands"];
             this.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
             members = Common.CqApi.GetGroupMemberList(groupId);
-            Common.GroupDataDic[groupId]= this;
+            Common.GroupDataDic[groupId] = this;
         }
-
 
         /// <summary>
         /// 命令映射路由(群聊)
@@ -102,7 +102,7 @@ namespace Site.Traceless.Gmanger.Datas
         /// <returns></returns>
         public string GetFuncName(string command)
         {
-           return this.GCommandDic.TryGetValue(command, out string cmd) ? cmd : null;
+            return this.GCommandDic.TryGetValue(command, out string cmd) ? cmd : null;
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Site.Traceless.Gmanger.Datas
         /// </summary>
         /// <param name="switchEnum"></param>
         /// <returns></returns>
-        public string SetTemplate(SwitchEnum switchEnum,string newTemplate)
+        public string SetTemplate(SwitchEnum switchEnum, string newTemplate)
         {
             var ini = iniObject["templates"];
             ini[switchEnum.ToString("G")] = new IniValue(Tools.Crawler.JavaScriptAnalyzer.Decode(newTemplate).Trim());
@@ -138,14 +138,14 @@ namespace Site.Traceless.Gmanger.Datas
         /// <param name="value"></param>
         /// <param name="isLike"></param>
         /// <returns></returns>
-        public KeyValuePair<string,string> AddThesure(string key,string value,bool isLike)
+        public KeyValuePair<string, string> AddThesure(string key, string value, bool isLike)
         {
             var thesureName = isLike ? "thesurelike" : "thesure";
             var ini = iniObject[thesureName];
             ini[key] = new IniValue(Tools.Crawler.JavaScriptAnalyzer.Decode(value).Trim());
             iniObject.Save(dataPath);
             ini.TryGetValue(key, out IniValue iniValue);
-            return new KeyValuePair<string, string>(key,iniValue.ToString());
+            return new KeyValuePair<string, string>(key, iniValue.ToString());
         }
 
         /// <summary>
@@ -166,13 +166,14 @@ namespace Site.Traceless.Gmanger.Datas
         /// </summary>
         /// <param name="isLike"></param>
         /// <returns></returns>
-        public Dictionary<string,string> ReadThesure(bool isLike)
+        public Dictionary<string, string> ReadThesure(bool isLike)
         {
             int pageSize = 15;
             var thesureName = isLike ? "thesurelike" : "thesure";
             var ini = iniObject[thesureName];
             return ini.AsEnumerable().ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.ToString());
         }
+
         /// <summary>
         /// 检索词库
         /// </summary>
@@ -199,8 +200,8 @@ namespace Site.Traceless.Gmanger.Datas
         /// <param name="switchEnum"></param>
         /// <returns></returns>
         public bool GetSwitch(SwitchEnum switchEnum)
-        { 
-            var ini = iniObject["switch"]; 
+        {
+            var ini = iniObject["switch"];
             return ini.TryGetValue(switchEnum.ToString("G"), out IniValue iniValue) && iniValue.ToBoolean();
         }
 
@@ -213,7 +214,7 @@ namespace Site.Traceless.Gmanger.Datas
         public bool ChangeSwitch(SwitchEnum switchEnum, bool newStatus)
         {
             var ini = iniObject["switch"];
-            ini[switchEnum.ToString("G")]=new IniValue(newStatus);
+            ini[switchEnum.ToString("G")] = new IniValue(newStatus);
             iniObject.Save(dataPath);
             return ini.TryGetValue(switchEnum.ToString("G"), out IniValue iniValue) && iniValue.ToBoolean();
         }
@@ -238,10 +239,11 @@ namespace Site.Traceless.Gmanger.Datas
                 var listStr = rawList.Split(',');
                 var list = listStr.Where(p => long.TryParse(p, out var _)).Select(long.Parse).ToList();
                 res.AddRange(list);
-                res.AddRange(this.members.Where(p => p.MemberType == managerEnum).Select(p=>p.QQ.Id).ToList());
+                res.AddRange(this.members.Where(p => p.MemberType == managerEnum).Select(p => p.QQ.Id).ToList());
             }
             return res;
         }
+
         /// <summary>
         /// 添加管理
         /// </summary>
@@ -253,7 +255,7 @@ namespace Site.Traceless.Gmanger.Datas
             List<long> managerList = GetManager(qqGroupMemberType);
             var ini = iniObject["manager"];
             managerList.AddRange(qq);
-            ini[qqGroupMemberType.ToString("G")] =new IniValue(string.Join(",",qq.Distinct().Select(p=>p+"").ToList()));
+            ini[qqGroupMemberType.ToString("G")] = new IniValue(string.Join(",", qq.Distinct().Select(p => p + "").ToList()));
             iniObject.Save(dataPath);
             return GetManager(qqGroupMemberType);
         }

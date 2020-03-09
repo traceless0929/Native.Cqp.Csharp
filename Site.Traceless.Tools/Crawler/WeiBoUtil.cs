@@ -1,8 +1,7 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using HtmlAgilityPack;
 
 namespace Site.Traceless.Tools.Crawler
 {
@@ -232,14 +231,17 @@ namespace Site.Traceless.Tools.Crawler
         /// 作者
         /// </summary>
         public string Author { get; set; }
+
         /// <summary>
         /// 微博正文
         /// </summary>
         public string ContentStr { get; set; }
+
         /// <summary>
         /// 微博图片
         /// </summary>
         public string Pic { get; set; }
+
         /// <summary>
         /// 时间
         /// </summary>
@@ -248,7 +250,6 @@ namespace Site.Traceless.Tools.Crawler
 
     public class WeiBoTopicRes
     {
-
         public long ok { get; set; }
         public Data data { get; set; }
 
@@ -596,12 +597,10 @@ namespace Site.Traceless.Tools.Crawler
             public string height { get; set; }
             public bool croped { get; set; }
         }
-
     }
 
     public class WeiBoDirectContentItem
     {
-
         public class WeiBoDirectRes
         {
             public long ok { get; set; }
@@ -978,6 +977,5 @@ namespace Site.Traceless.Tools.Crawler
             public string height { get; set; }
             public bool croped { get; set; }
         }
-
     }
 }

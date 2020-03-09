@@ -1,8 +1,4 @@
-﻿using HtmlAgilityPack;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,7 +8,8 @@ namespace Site.Traceless.Tools.Crawler
 {
     public class JavaScriptAnalyzer
     {
-        static Regex reUnicode = new Regex(@"\\u([0-9a-fA-F]{4})", RegexOptions.Compiled);
+        private static Regex reUnicode = new Regex(@"\\u([0-9a-fA-F]{4})", RegexOptions.Compiled);
+
         public static string Decode(string s)
         {
             var str = reUnicode.Replace(s, m =>
@@ -28,7 +25,7 @@ namespace Site.Traceless.Tools.Crawler
             return str;
         }
 
-        static Regex reUnicodeDec = new Regex(@"\&\#([0-9]{2,4})\;", RegexOptions.Compiled);
+        private static Regex reUnicodeDec = new Regex(@"\&\#([0-9]{2,4})\;", RegexOptions.Compiled);
 
         public static string EncodeDecAsciiCQ(string s)
         {
@@ -40,16 +37,15 @@ namespace Site.Traceless.Tools.Crawler
             TxdBuf = charToASCII.GetBytes(charBuf); 　　 // 转换为各字符对应的ASCII
             foreach (var b in TxdBuf)
             {
-                short c = (short) b;
+                short c = (short)b;
                 if (c == 44 || c == 91 || c == 93)
                 {
                     sb.Append(@"&#" + c + ";");
                 }
                 else
                 {
-                    sb.Append(charToASCII.GetString(new byte[]{b}));
+                    sb.Append(charToASCII.GetString(new byte[] { b }));
                 }
-
             }
             return sb.ToString();
         }

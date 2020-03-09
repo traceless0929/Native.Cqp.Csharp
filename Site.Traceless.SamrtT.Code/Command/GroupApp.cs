@@ -1,14 +1,10 @@
-﻿using Native.Sdk.Cqp.EventArgs;
-using Site.Traceless.SamrtT.Code.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Native.Sdk.Cqp;
-using Native.Sdk.Cqp.Model;
+﻿using Native.Sdk.Cqp;
+using Native.Sdk.Cqp.EventArgs;
 using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.SamrtT.Code.Model;
 using Site.Traceless.Tools.Utils;
+using System;
+using System.Linq;
 
 namespace Site.Traceless.SamrtT.Code.Command
 {
@@ -18,10 +14,12 @@ namespace Site.Traceless.SamrtT.Code.Command
         {
             e.CQApi.SendGroupMessage(e.FromGroup, Common.menuStr);
         }
+
         public static void advise(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
             e.CQApi.SendPrivateMessage(Convert.ToInt64(Common.settingDic["master"]), $"来自群{e.FromGroup}的{e.FromQQ}:{msg.Who} {msg.How}");
         }
+
         public static void trashsort(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
             if (string.IsNullOrEmpty(msg.Who))
@@ -29,12 +27,13 @@ namespace Site.Traceless.SamrtT.Code.Command
                 return;
             }
             e.CQApi.SendGroupMessage(e.FromGroup, TrashSort.goSort(msg.Who));
-
         }
+
         public static void roll(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
             e.CQApi.SendGroupMessage(e.FromGroup, CQApi.CQCode_At(e.FromQQ) + $"Roll了 {RandomUtil.RandomGet(0, 101)} 点");
         }
+
         public static void chose(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
             var memberInfos = e.FromGroup.GetGroupMemberList();
@@ -61,10 +60,12 @@ namespace Site.Traceless.SamrtT.Code.Command
                 Environment.NewLine +
                 choseQQStr);
         }
+
         public static void dayTask(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
             e.CQApi.SendGroupMessage(e.FromGroup, JxTask.getTask());
         }
+
         public static void serverRemind(CQGroupMessageEventArgs e, AnalysisMsg msg)
         {
             Common.JxServer.GoServerRemind(e.FromGroup.Id, msg.Who);

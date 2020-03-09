@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Native.Tool.IniConfig.Linq;
+﻿using Native.Tool.IniConfig.Linq;
 using Site.Traceless.SamrtT.Code.Model.SmartT;
+using System.Text;
 
 namespace Site.Traceless.SamrtT.Code.Func
 {
@@ -43,7 +39,6 @@ namespace Site.Traceless.SamrtT.Code.Func
                 }
             }
 
-
             if (nowSort != null)
             {
                 sb.AppendLine("[垃圾分类]" + what);
@@ -67,10 +62,13 @@ namespace Site.Traceless.SamrtT.Code.Func
             {
                 case 0:
                     return "可回收垃圾";
+
                 case 1:
                     return "有害垃圾";
+
                 case 2:
                     return "厨余(湿)垃圾";
+
                 default:
                     return "其他(干)垃圾";
             }

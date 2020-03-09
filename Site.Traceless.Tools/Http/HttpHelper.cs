@@ -1,18 +1,16 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
-using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Site.Traceless.Tools.Http
 {
-	/// <summary>
-	/// Http访问的操作类
-	/// </summary>
-	public static class HttpHelper
-	{
-
+    /// <summary>
+    /// Http访问的操作类
+    /// </summary>
+    public static class HttpHelper
+    {
         /// <summary>
         /// 调用GET API
         /// </summary>
@@ -36,7 +34,7 @@ namespace Site.Traceless.Tools.Http
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static string PostAPI(string url,string cookieStr)
+        public static string PostAPI(string url, string cookieStr)
         {
             System.Net.HttpWebRequest request = System.Net.WebRequest.Create(url) as System.Net.HttpWebRequest;
             request.Method = "POST";
@@ -69,7 +67,6 @@ namespace Site.Traceless.Tools.Http
             //Console.WriteLine(strResult);
             return res;
         }
-        
 
         public static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
@@ -98,13 +95,12 @@ namespace Site.Traceless.Tools.Http
 
         private static readonly string DefaultUserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
 
-
-        public static string DownUrlPic(string url,string path,string name)
+        public static string DownUrlPic(string url, string path, string name)
         {
             using (System.Net.WebClient wc = new System.Net.WebClient())
             {
                 wc.Headers.Add("User-Agent", DefaultUserAgent);
-                wc.DownloadFile(url, Path.Combine(path,name));
+                wc.DownloadFile(url, Path.Combine(path, name));
                 return name;
             }
         }

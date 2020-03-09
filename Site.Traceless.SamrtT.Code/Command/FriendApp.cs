@@ -1,16 +1,10 @@
-﻿using Native.Sdk.Cqp.EventArgs;
+﻿using Native.Sdk.Cqp.Enum;
+using Native.Sdk.Cqp.EventArgs;
+using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Native.Sdk.Cqp.Enum;
-using Newtonsoft.Json;
-using Site.Traceless.Gmanger.Datas;
-using Site.Traceless.SamrtT.Code.Func;
-using Site.Traceless.SamrtT.Code.Utils;
-using Native.Sdk.Cqp.Model;
 
 namespace Site.Traceless.SamrtT.Code.Command
 {
@@ -20,6 +14,7 @@ namespace Site.Traceless.SamrtT.Code.Command
         {
             e.CQApi.SendPrivateMessage(e.FromQQ, Common.menuStr);
         }
+
         public static void feedback(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             if (e.FromQQ != Convert.ToInt64(Common.settingDic["master"]))
@@ -28,6 +23,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             }
             e.CQApi.SendGroupMessage(long.Parse(msg.Who), msg.How + Environment.NewLine + "[来自作者的反馈]");
         }
+
         public static void trashsort(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             if (string.IsNullOrEmpty(msg.Who))
@@ -36,10 +32,12 @@ namespace Site.Traceless.SamrtT.Code.Command
             }
             e.CQApi.SendPrivateMessage(e.FromQQ, TrashSort.goSort(msg.Who));
         }
+
         public static void advise(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             e.CQApi.SendPrivateMessage(Convert.ToInt64(Common.settingDic["master"]), $"来自个人{e.FromQQ}:{msg.Who} {msg.How}");
         }
+
         public static void pfeedback(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             if (e.FromQQ != Convert.ToInt64(Common.settingDic["master"]))
@@ -48,6 +46,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             }
             e.CQApi.SendPrivateMessage(long.Parse(msg.Who), msg.How + Environment.NewLine + "[来自作者的反馈]");
         }
+
         public static void dayTask(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             e.CQApi.SendPrivateMessage(e.FromQQ, JxTask.getTask());
@@ -61,13 +60,12 @@ namespace Site.Traceless.SamrtT.Code.Command
                 e.Message.CQCodes.ForEach(p => { sb.AppendLine(Tools.Crawler.JavaScriptAnalyzer.EncodeDecAsciiCQ(p.ToString())); });
                 e.CQApi.SendPrivateMessage(e.FromQQ, sb.ToString());
             }
-            
         }
 
         public static void changeQr(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
             StringBuilder sb = new StringBuilder();
-            if (e.Message.CQCodes != null && e.Message.CQCodes.Where(p=>p.Function==CQFunction.Image).Any())
+            if (e.Message.CQCodes != null && e.Message.CQCodes.Where(p => p.Function == CQFunction.Image).Any())
             {
                 string res = ChangeQr.changeQr(e.Message.ReceiveImage(0));
                 if (String.IsNullOrEmpty(res))
@@ -76,7 +74,6 @@ namespace Site.Traceless.SamrtT.Code.Command
                 }
                 e.CQApi.SendPrivateMessage(e.FromQQ, res);
             }
-
         }
     }
 }

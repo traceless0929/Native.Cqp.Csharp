@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Site.Traceless.SamrtT.Code.Model.SmartT
+﻿namespace Site.Traceless.SamrtT.Code.Model.SmartT
 {
     public class TrashSortResp
     {
@@ -12,18 +6,22 @@ namespace Site.Traceless.SamrtT.Code.Model.SmartT
         /// 废弃物名称
         /// </summary>
         public string name { get; set; }
+
         /// <summary>
         /// 垃圾分类，0为可回收、1为有害、2为厨余(湿)、3为其他(干)
         /// </summary>
         public int type { get; set; }
+
         /// <summary>
         /// 分类解释
         /// </summary>
         public string explain { get; set; }
+
         /// <summary>
         /// 包含类型
         /// </summary>
         public string contain { get; set; }
+
         /// <summary>
         /// 投放提示
         /// </summary>

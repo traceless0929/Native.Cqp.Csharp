@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Text;
 
 namespace Site.Traceless.Tools.Utils
@@ -21,7 +18,7 @@ namespace Site.Traceless.Tools.Utils
             return File.ReadAllText(path, encoding);
         }
 
-        public static void WriteFileText(String path,Encoding encoding,String content)
+        public static void WriteFileText(String path, Encoding encoding, String content)
         {
             String pathStr = Path.GetDirectoryName(path);
             Directory.CreateDirectory(pathStr);
@@ -49,5 +46,4 @@ namespace Site.Traceless.Tools.Utils
         //    return strHTML;
         //}
     }
-
 }

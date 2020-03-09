@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Site.Traceless.Tools.Utils
 {
@@ -22,6 +19,7 @@ namespace Site.Traceless.Tools.Utils
             int r = rd.Next(min, max);
             return r;
         }
+
         /// <summary>
         /// 随机产生结果(万分之CEN)
         /// </summary>

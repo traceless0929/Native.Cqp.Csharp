@@ -1,7 +1,7 @@
-﻿using System.Text;
+﻿using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Net;
+using System.Text;
 
 namespace Site.Traceless.Tools.Utils
 {

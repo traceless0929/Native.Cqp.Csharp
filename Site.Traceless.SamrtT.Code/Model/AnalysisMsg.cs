@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Site.Traceless.SamrtT.Code.Model
+﻿namespace Site.Traceless.SamrtT.Code.Model
 {
-     public class AnalysisMsg
+    public class AnalysisMsg
     {
         private static OrderInfoModel _msg = new OrderInfoModel("");
 
@@ -20,7 +14,7 @@ namespace Site.Traceless.SamrtT.Code.Model
             get
             {
                 string _gcommand = null;
-                Common.GCommandDic.TryGetValue(_msg.What.Trim(),out _gcommand);
+                Common.GCommandDic.TryGetValue(_msg.What.Trim(), out _gcommand);
                 return _gcommand;
             }
         }

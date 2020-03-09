@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Site.Traceless.SamrtT.Code.Utils
 {
     public static class EnumUtils
     {
-        /// <summary>  
-        /// 获取枚举变量值的 Description 属性  
-        /// </summary>  
-        /// <param name="obj">枚举变量</param>  
-        /// <returns>如果包含 Description 属性，则返回 Description 属性的值，否则返回枚举变量值的名称</returns>  
+        /// <summary>
+        /// 获取枚举变量值的 Description 属性
+        /// </summary>
+        /// <param name="obj">枚举变量</param>
+        /// <returns>如果包含 Description 属性，则返回 Description 属性的值，否则返回枚举变量值的名称</returns>
         public static string GetDescription(this Enum obj)
         {
             string description = string.Empty;
@@ -50,7 +48,6 @@ namespace Site.Traceless.SamrtT.Code.Utils
             {
                 return "未设定";
             }
-
         }
 
         /// <summary>
@@ -58,7 +55,7 @@ namespace Site.Traceless.SamrtT.Code.Utils
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        static List<Enum> GetEnumValuesFromFlagsEnum(Enum value)
+        private static List<Enum> GetEnumValuesFromFlagsEnum(Enum value)
         {
             List<Enum> values = Enum.GetValues(value.GetType()).Cast<Enum>().ToList();
             List<Enum> res = new List<Enum>();

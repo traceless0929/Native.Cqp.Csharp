@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Site.Traceless.Tools.Utils;
+using System;
 using System.Linq;
 using System.Text;
 using System.Timers;
-using Site.Traceless.Tools.Utils;
 
 namespace Site.Traceless.SamrtT.Code.Func
 {
     public class JxServer
     {
         public static Timer timer;
+
         public JxServer()
         {
             if (timer == null)
@@ -107,6 +107,7 @@ namespace Site.Traceless.SamrtT.Code.Func
                 }
             }
         }
+
         public static string[,] GetSerList()
         {
             Encoding encoding = Encoding.GetEncoding("GB2312");

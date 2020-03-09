@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZXing;
-using System.Drawing.Imaging;
+﻿using Native.Sdk.Cqp.Enum;
 using Native.Sdk.Cqp.Model;
-using Native.Sdk.Cqp.Enum;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using ZXing;
 
 namespace Site.Traceless.SamrtT.Code.Func
 {
@@ -49,7 +47,7 @@ namespace Site.Traceless.SamrtT.Code.Func
                 string name = Path.Combine(pathDic, fileName);
                 g.DrawImage(imageQr, new Rectangle(new Point((int)xMin, (int)yMin), new Size((int)(xMax - xMin), (int)(yMax - yMin))), 0, 0, imageQr.Width, imageQr.Height, GraphicsUnit.Pixel);
                 image.Save(name, ImageFormat.Jpeg);
-               return new CQCode(CQFunction.Image, new KeyValuePair<string, string>("file", fileName)).ToSendString();
+                return new CQCode(CQFunction.Image, new KeyValuePair<string, string>("file", fileName)).ToSendString();
             }
         }
     }

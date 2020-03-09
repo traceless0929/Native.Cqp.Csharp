@@ -1,15 +1,11 @@
-﻿using Native.Sdk.Cqp.EventArgs;
-using Site.Traceless.SamrtT.Code.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Native.Sdk.Cqp.Enum;
+﻿using Native.Sdk.Cqp.Enum;
+using Native.Sdk.Cqp.EventArgs;
 using Newtonsoft.Json;
 using Site.Traceless.Gmanger.Datas;
-using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.SamrtT.Code.Model;
 using Site.Traceless.SamrtT.Code.Utils;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Site.Traceless.SamrtT.Code.Command
 {
@@ -20,7 +16,6 @@ namespace Site.Traceless.SamrtT.Code.Command
             e.CQApi.SendPrivateMessage(long.Parse(Common.settingDic["master"]), e.CQApi.GetCsrfToken());
             e.CQApi.SendPrivateMessage(long.Parse(Common.settingDic["master"]), e.CQApi.GetCookies("qun.qq.com"));
         }
-        
 
         public static void addGroupMenu(CQPrivateMessageEventArgs e, AnalysisMsg msg)
         {
@@ -29,7 +24,7 @@ namespace Site.Traceless.SamrtT.Code.Command
             int max = raw.Length / 2;
             for (int i = 0; i < max; i++)
             {
-                dic.Add(raw[i],raw[i+1]);
+                dic.Add(raw[i], raw[i + 1]);
             }
 
             if (string.IsNullOrEmpty(msg.How))
@@ -49,7 +44,6 @@ namespace Site.Traceless.SamrtT.Code.Command
                     groupData?.upsertMenu(dic);
                 }
             }
-            
         }
 
         public static void addManager(CQPrivateMessageEventArgs e, AnalysisMsg msg)

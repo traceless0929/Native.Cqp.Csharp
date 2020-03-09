@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Native.Sdk.Cqp;
+﻿using Native.Sdk.Cqp;
 using Site.Traceless.Gmanger.Datas;
+using System.Collections.Generic;
 
 namespace Site.Traceless.Gmanger
 {
@@ -13,7 +9,7 @@ namespace Site.Traceless.Gmanger
         public static Dictionary<long, GroupData> GroupDataDic = new Dictionary<long, GroupData>();
         public static CQApi CqApi { get; set; }
 
-        public static GroupData GetGroupData(CQApi cqApi,long gid)
+        public static GroupData GetGroupData(CQApi cqApi, long gid)
         {
             if (CqApi == null)
             {

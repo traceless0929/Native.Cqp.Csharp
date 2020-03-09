@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Native.Sdk.Cqp;
+﻿using Native.Sdk.Cqp;
 using Native.Sdk.Cqp.Enum;
-using Native.Sdk.Cqp.Expand;
 using Native.Sdk.Cqp.Model;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Model.Extend;
-using Site.Traceless.Tools.Crawler;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Group = Native.Sdk.Cqp.Model.Group;
 
 namespace Site.Traceless.SamrtT.Code.Utils
 {
     public static class StringReplaceUtils
     {
-        public static string ReplaceGroupMemberInfo(this string raw, GroupInfo groupInfo,QQ fromQQ,QQ beingQQ)
+        public static string ReplaceGroupMemberInfo(this string raw, GroupInfo groupInfo, QQ fromQQ, QQ beingQQ)
         {
             Group gGroup = groupInfo.Group;
-            GroupMemberInfo fromQQInfo = null== fromQQ?null:groupInfo.Group.GetGroupMemberInfo(fromQQ,true);
-            GroupMemberInfo beingQQInfo = null==beingQQ?null:groupInfo.Group.GetGroupMemberInfo(beingQQ);
+            GroupMemberInfo fromQQInfo = null == fromQQ ? null : groupInfo.Group.GetGroupMemberInfo(fromQQ, true);
+            GroupMemberInfo beingQQInfo = null == beingQQ ? null : groupInfo.Group.GetGroupMemberInfo(beingQQ);
             raw = raw.Replace("[群号]", gGroup.Id + "")
                 .Replace("[群名]", groupInfo.Name)
                 .Replace("[群人数]", groupInfo.CurrentMemberCount + "")
@@ -53,7 +48,7 @@ namespace Site.Traceless.SamrtT.Code.Utils
             return raw;
         }
 
-        public static string ReplaceNotice(this string raw,long qid, CQApi cqApi)
+        public static string ReplaceNotice(this string raw, long qid, CQApi cqApi)
         {
             Feed[] noticeList = null;
             if (raw.Contains("[公告标题]") || raw.Contains("[公告内容]"))
@@ -94,19 +89,19 @@ namespace Site.Traceless.SamrtT.Code.Utils
                 return raw;
             }
 
-            bool parseOk = long.TryParse(res[0],out long qqAt);
-            return parseOk?raw.Replace("[AT" + qqAt + "]",
+            bool parseOk = long.TryParse(res[0], out long qqAt);
+            return parseOk ? raw.Replace("[AT" + qqAt + "]",
                 new CQCode(CQFunction.At, new KeyValuePair<string, string>("qq", Convert.ToString(qqAt)))
-                    .ToSendString()):raw;
+                    .ToSendString()) : raw;
         }
 
         public static CQCode GetHeadCode(long qq)
         {
             string headUrl = @"http://q1.qlogo.cn/g?b=qq&nk=" + qq + "&s=100";
-            return CQUtils.GetHttpImgCqCode(headUrl,"head"+qq);
+            return CQUtils.GetHttpImgCqCode(headUrl, "head" + qq);
         }
 
-        private static List<string> GetRegexStr(string reString,string regexCode)
+        private static List<string> GetRegexStr(string reString, string regexCode)
         {
             //注意 reString 请替换为需要处理的字符串
             List<string> strList = new List<string>();
@@ -114,7 +109,7 @@ namespace Site.Traceless.SamrtT.Code.Utils
             MatchCollection mc = reg.Matches(reString);
             for (int i = 0; i < mc.Count; i++)
             {
-                GroupCollection gc = mc[i].Groups; //得到所有分组 
+                GroupCollection gc = mc[i].Groups; //得到所有分组
                 for (int j = 1; j < gc.Count; j++) //多分组 匹配的原始文本不要
                 {
                     string temp = gc[j].Value;

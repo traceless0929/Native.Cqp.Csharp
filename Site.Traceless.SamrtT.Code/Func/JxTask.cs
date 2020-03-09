@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using Site.Traceless.SamrtT.Code.Model.SmartT;
 
 namespace Site.Traceless.SamrtT.Code.Func
 {
