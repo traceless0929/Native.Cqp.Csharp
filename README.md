@@ -31,7 +31,7 @@ base分支为我自用的新建App的模板，引入了一些自己的机制简�
 if(msg=="攻击"){
     goAttack(fromQQ,target);
 }
-else if(msg="防御"){
+else if(msg=="防御"){
     goDef(fromQQ,target);
 }
 ```
@@ -45,7 +45,7 @@ NO！！
 if(msg=="攻击"||msg=="打击"){
     goAttack(fromQQ,target);
 }
-else if(msg="防御"){
+else if(msg=="防御"){
     goDef(fromQQ,target);
 }
 ```
