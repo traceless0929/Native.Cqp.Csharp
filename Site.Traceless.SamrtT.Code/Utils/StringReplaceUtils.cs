@@ -15,41 +15,61 @@ namespace Site.Traceless.SamrtT.Code.Utils
     {
         public static string ReplaceGroupMemberInfo(this string raw, GroupInfo groupInfo, QQ fromQQ, QQ beingQQ)
         {
+            if (!raw.Contains("[") || !raw.Contains("]"))
+            {
+                return raw;
+            }
             Group gGroup = groupInfo.Group;
-            GroupMemberInfo fromQQInfo = null == fromQQ ? null : groupInfo.Group.GetGroupMemberInfo(fromQQ, true);
-            GroupMemberInfo beingQQInfo = null == beingQQ ? null : groupInfo.Group.GetGroupMemberInfo(beingQQ);
+            GroupMemberInfo fromQQInfo = null == fromQQ ? null : groupInfo.Group.GetGroupMemberInfo(fromQQ);
+            GroupMemberInfo beingQQInfo;
+            try
+            {
+                beingQQInfo = null == beingQQ ? null : groupInfo.Group.GetGroupMemberInfo(beingQQ,true);
+            }
+            catch
+            {
+                beingQQInfo = null;
+            }
+            
             raw = raw.Replace("[群号]", gGroup.Id + "")
                 .Replace("[群名]", groupInfo.Name)
                 .Replace("[群人数]", groupInfo.CurrentMemberCount + "")
                 .Replace("[群上限]", groupInfo.MaxMemberCount + "");
 
-            if (null != fromQQInfo)
-            {
-                raw = raw.Replace("[操作者QQ]", fromQQInfo.QQ + "")
-                    .Replace("[操作者年龄]", fromQQInfo.Age + "")
-                    .Replace("[操作者地区]", fromQQInfo.Area + "")
-                    .Replace("[操作者昵称]", fromQQInfo.Nick + "")
-                    .Replace("[操作者角色]", fromQQInfo.MemberType.GetDescription())
+            if (null != fromQQ) {
+                raw = raw.Replace("[操作者QQ]", fromQQ.Id + "")
                     .Replace("[AT操作者]", fromQQ.CQCode_At() + "")
-                    .Replace("[操作者性别]", fromQQInfo.Sex.GetDescription() + "")
                     .Replace("[操作者头像]", GetHeadCode(fromQQ.Id).ToSendString() + "");
             }
-
+            if (null != fromQQInfo)
+            {
+                raw = raw.Replace("[操作者年龄]", fromQQInfo.Age + "")
+                    .Replace("[操作者地区]", fromQQInfo.Area + "")
+                    .Replace("[操作者昵称]", fromQQInfo.Nick + "")
+                    .Replace("[操作者角色]", fromQQInfo.MemberType.GetDescription())                    
+                    .Replace("[操作者性别]", fromQQInfo.Sex.GetDescription() + "");
+            }
+            if (null != beingQQ) {
+                raw = raw.Replace("[进群者QQ]", beingQQ.Id + "")
+                    .Replace("[AT进群者]", beingQQ.CQCode_At() + "")
+                    .Replace("[进群者头像]", GetHeadCode(beingQQ.Id).ToSendString() + "");
+            }
             if (null != beingQQInfo)
             {
-                raw = raw.Replace("[进群者QQ]", beingQQInfo.QQ + "")
-                    .Replace("[进群者年龄]", beingQQInfo.Age + "")
+                raw = raw.Replace("[进群者年龄]", beingQQInfo.Age + "")
                     .Replace("[进群者地区]", beingQQInfo.Area + "")
                     .Replace("[进群者昵称]", beingQQInfo.Nick + "")
-                    .Replace("[AT进群者]", beingQQ.CQCode_At() + "")
-                    .Replace("[进群者性别]", beingQQInfo.Sex.GetDescription() + "")
-                    .Replace("[进群者头像]", GetHeadCode(beingQQ.Id).ToSendString() + "");
+                    .Replace("[进群者性别]", beingQQInfo.Sex.GetDescription() + "");
             }
             return raw;
         }
 
         public static string ReplaceNotice(this string raw, long qid, CQApi cqApi)
         {
+            if (!raw.Contains("[") || !raw.Contains("]"))
+            {
+                return raw;
+            }
             Feed[] noticeList = null;
             if (raw.Contains("[公告标题]") || raw.Contains("[公告内容]"))
             {
@@ -68,6 +88,10 @@ namespace Site.Traceless.SamrtT.Code.Utils
 
         public static string ReplaceTrimAndLine(this string raw)
         {
+            if (!raw.Contains("[") || !raw.Contains("]"))
+            {
+                return raw;
+            }
             raw = raw.Replace("[空格]", " ")
                 .Replace("[换行]", Environment.NewLine);
             return raw;
@@ -82,6 +106,10 @@ namespace Site.Traceless.SamrtT.Code.Utils
 
         public static string ReplaceAtQQ(this string raw)
         {
+            if (!raw.Contains("[") || !raw.Contains("]"))
+            {
+                return raw;
+            }
             var regexCode = @"\[AT([1-9][0-9]{4,})*\]";
             var res = GetRegexStr(raw, regexCode);
             if (null == res || !res.Any())
