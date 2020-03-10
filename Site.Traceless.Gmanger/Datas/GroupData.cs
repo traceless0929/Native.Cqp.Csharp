@@ -2,6 +2,7 @@
 using Native.Sdk.Cqp.Model;
 using Native.Tool.IniConfig.Linq;
 using Site.Traceless.Gmanger.Enum;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -182,16 +183,23 @@ namespace Site.Traceless.Gmanger.Datas
         public string ScanThesure(string key)
         {
             var thesureName = "thesure";
-            var ini = iniObject[thesureName];
-            var res = ini.TryGetValue(key, out IniValue iniValue);
-            if (res)
+            try
             {
-                return iniValue.ToString();
+                var ini = iniObject[thesureName];
+                var res = ini.TryGetValue(key, out IniValue iniValue);
+                if (res)
+                {
+                    return iniValue.ToString();
+                }
+                thesureName = "thesurelike";
+                ini = iniObject[thesureName];
+                string likeKey = ini.Keys.FirstOrDefault(key.Contains);
+                return string.IsNullOrEmpty(likeKey) ? null : ini[likeKey].Value.ToString();
             }
-            thesureName = "thesurelike";
-            ini = iniObject[thesureName];
-            string likeKey = ini.Keys.FirstOrDefault(key.Contains);
-            return string.IsNullOrEmpty(likeKey) ? null : ini[likeKey].Value.ToString();
+            catch (Exception ex)
+            {
+                return ScanThesure(key);
+            }
         }
 
         /// <summary>
