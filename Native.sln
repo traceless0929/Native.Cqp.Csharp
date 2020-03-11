@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.SamrtT.CodeT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.Gmanger", "Site.Traceless.Gmanger\Site.Traceless.Gmanger.csproj", "{10253821-F662-42E7-8EA6-30B435E919BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.RestService", "Site.Traceless.RestService\Site.Traceless.RestService.csproj", "{EFDA8901-8494-48A9-A37F-4A628104A583}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,14 @@ Global
 		{10253821-F662-42E7-8EA6-30B435E919BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{10253821-F662-42E7-8EA6-30B435E919BB}.Release|x86.ActiveCfg = Release|Any CPU
 		{10253821-F662-42E7-8EA6-30B435E919BB}.Release|x86.Build.0 = Release|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Debug|x86.Build.0 = Debug|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Release|x86.ActiveCfg = Release|Any CPU
+		{EFDA8901-8494-48A9-A37F-4A628104A583}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

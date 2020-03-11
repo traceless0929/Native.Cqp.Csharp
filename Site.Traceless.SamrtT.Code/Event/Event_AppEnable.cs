@@ -1,6 +1,7 @@
 ﻿using Native.Sdk.Cqp.EventArgs;
 using Native.Sdk.Cqp.Interface;
 using Native.Tool.IniConfig.Linq;
+using Site.Traceless.RestService;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Model.SmartT;
 using System.IO;
@@ -93,6 +94,9 @@ namespace Site.Traceless.SamrtT.Code.Event
             e.CQLog.Info("初始化", "初始化开服监控正常");
             Common.menuStr = Utils.MenuUitls.getMenuStr();
             e.CQLog.Info("初始化", "初始化菜单正常");
+            ServiceMain.Start(e.CQApi,e.CQLog);
+            e.CQLog.Info("初始化", "Web服务初始化正常");
+
         }
     }
 }

@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -103,6 +104,10 @@
     <ProjectReference Include="..\Site.Traceless.Gmanger\Site.Traceless.Gmanger.csproj">
       <Project>{10253821-F662-42E7-8EA6-30B435E919BB}</Project>
       <Name>Site.Traceless.Gmanger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Site.Traceless.RestService\Site.Traceless.RestService.csproj">
+      <Project>{efda8901-8494-48a9-a37f-4a628104a583}</Project>
+      <Name>Site.Traceless.RestService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Traceless.Tools\Site.Traceless.Tools.csproj">
       <Project>{54454067-a4e1-40c6-9c18-29feb9c07145}</Project>
