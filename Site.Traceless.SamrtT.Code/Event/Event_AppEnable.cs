@@ -57,7 +57,8 @@ namespace Site.Traceless.SamrtT.Code.Event
                 {
                     new IniSection("setting")
                     {
-                        { "master",415206409}
+                        { "master",415206409},
+                        { "taskAddr",@"https://nico.nicemoe.cn/dailylist.php"}
                     }
                 };
                 iObject.Save(commandPath);
