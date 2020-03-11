@@ -28,10 +28,11 @@ namespace Site.Traceless.SamrtT.Code.Func
 
             ResultPoint[] points;
             points = result.ResultPoints;
-            float xMin = points.Select(p => p.X).Min() - 10;
-            float xMax = points.Select(p => p.X).Max() + 10;
-            float yMin = points.Select(p => p.Y).Min() - 10;
-            float yMax = points.Select(p => p.Y).Max() + 10;
+            int margin = 1;
+            float xMin = points.Select(p => p.X).Min() - margin;
+            float xMax = points.Select(p => p.X).Max() + margin;
+            float yMin = points.Select(p => p.Y).Min() - margin;
+            float yMax = points.Select(p => p.Y).Max() + margin;
 
             string qrPath = Common.CqApi.AppDirectory + "changeqr.jpg";
             if (!File.Exists(qrPath))
