@@ -111,7 +111,7 @@ namespace Site.Traceless.SamrtT.Code.Func
         public static string[,] GetSerList()
         {
             Encoding encoding = Encoding.GetEncoding("GB2312");
-            string[] serIni = Site.Traceless.Tools.Utils.FileUtil.GetFileContent(Common.CqApi.AppDirectory + "serverlist.ini", encoding);
+            string[] serIni = FileUtil.GetFileContent(Common.CqApi.AppDirectory + "serverlist.ini", encoding);
             string[,] array = new string[serIni.Length, 5];
             string[] array2 = new string[5];
             int num = 0;

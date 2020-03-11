@@ -87,7 +87,6 @@ namespace Site.Traceless.SamrtT.Code.Event
                 Common.TrashDic.Add(sortItem.name, sortItem);
             }
             e.CQLog.Info("初始化", "读取垃圾分类正常");
-
             Common.SerList = JxServer.GetSerList();
             e.CQLog.Info("初始化", "读取服务器列表正常");
             Common.JxServer = new JxServer();

@@ -25,7 +25,7 @@ namespace Site.Traceless.SamrtT.Code.Utils
                 sb.AppendLine(i + ". " + item.Key);
                 i++;
             }
-            sb.AppendLine("获取更多：https://traceless.site/");
+            sb.AppendLine("获取更多：https://traceless.site/index.php/archives/10");
             return sb.ToString();
         }
     }
