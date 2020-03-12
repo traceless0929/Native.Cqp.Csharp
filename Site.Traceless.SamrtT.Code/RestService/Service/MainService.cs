@@ -117,7 +117,7 @@ namespace Site.Traceless.RestService.Service
 
         public BaseResp<bool> GithubHook(Hook_Github req)
         {
-            if (Common.gmGroupId > 0)
+            if (Common.gmGroupId > 0&&req._ref.Contains("SmartT_V2"))
             {
                  Common.CqApi.SendGroupMessage(Common.gmGroupId, Hooks.OptHookCommit(req));
             }
