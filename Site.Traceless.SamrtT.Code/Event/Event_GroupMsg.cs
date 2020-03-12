@@ -14,6 +14,11 @@ namespace Site.Traceless.SamrtT.Code.Event
         {
             try
             {
+                if (e.FromGroup.Id != 516141713)
+                {
+                    e.Handler = false;
+                    return;
+                }
                 AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
                 if (string.IsNullOrEmpty(nowModel.GCommand))
                 {

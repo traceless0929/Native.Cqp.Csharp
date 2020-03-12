@@ -4,6 +4,7 @@ using Native.Tool.IniConfig.Linq;
 using Site.Traceless.RestService;
 using Site.Traceless.SamrtT.Code.Func;
 using Site.Traceless.SamrtT.Code.Model.SmartT;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -59,7 +60,10 @@ namespace Site.Traceless.SamrtT.Code.Event
                     new IniSection("setting")
                     {
                         { "master",415206409},
-                        { "taskAddr",@"https://nico.nicemoe.cn/dailylist.php"}
+                        { "taskAddr",@"https://nico.nicemoe.cn/dailylist.php"},
+                        { "webPort",7799},
+                        { "webIp","127.0.0.1"},
+                        { "skey","gd1h23f1h5re43h21df"}
                     }
                 };
                 iObject.Save(commandPath);
@@ -94,8 +98,19 @@ namespace Site.Traceless.SamrtT.Code.Event
             e.CQLog.Info("初始化", "初始化开服监控正常");
             Common.menuStr = Utils.MenuUitls.getMenuStr();
             e.CQLog.Info("初始化", "初始化菜单正常");
-            ServiceMain.Start(e.CQApi,e.CQLog);
-            e.CQLog.Info("初始化", "Web服务初始化正常");
+            Common.settingDic.TryGetValue("webPort", out string portStr);
+            Common.settingDic.TryGetValue("skey", out string sKey);
+            Common.settingDic.TryGetValue("webIp", out string ipStr);
+            if (!string.IsNullOrEmpty(ipStr))
+            {
+                e.CQLog.Info("初始化", "Web服务设置：开");
+                ServiceMain.Start(e.CQApi,e.CQLog,ipStr,Convert.ToInt32(portStr),sKey);
+            }
+            else
+            {
+                 e.CQLog.Info("初始化", "Web服务设置：关");
+            }
+            
 
         }
     }

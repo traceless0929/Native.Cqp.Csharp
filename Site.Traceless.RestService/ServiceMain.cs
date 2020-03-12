@@ -2,6 +2,8 @@
 using Site.Traceless.RestService.Interface;
 using Site.Traceless.RestService.Service;
 using System;
+using System.Linq;
+using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
@@ -9,12 +11,12 @@ namespace Site.Traceless.RestService
 {
     public class ServiceMain
     {
-        public static ServiceHost Start(CQApi CqApi, CQLog CQLog)
+        public static ServiceHost Start(CQApi CqApi, CQLog CQLog,string ip,int port,string sKey)
         {
             try
             {
-                Uri baseAddress = new Uri("http://127.0.0.1:7789/");
-                ServiceHost _serviceHost = new WebServiceHost(typeof(TestService), baseAddress);
+                Uri baseAddress = new Uri($"http://{ip}:{port}/");
+                WebServiceHost _serviceHost = new WebServiceHost(typeof(MainService), baseAddress);
                 //如果不设置MaxBufferSize,当传输的数据特别大的时候，很容易出现“提示:413 Request Entity Too Large”错误信息,最大设置为20M
                 WebHttpBinding binding = new WebHttpBinding
                 {
@@ -25,7 +27,13 @@ namespace Site.Traceless.RestService
                     ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max,
                     Security = { Mode = WebHttpSecurityMode.None }
                 };
-                _serviceHost.AddServiceEndpoint(typeof(ITest), binding, baseAddress);
+                Assembly ass = Assembly.GetExecutingAssembly();
+                Type[] types = ass.GetTypes();
+                //反射扫描指定命名空间下的所有接口并注册
+                foreach(Type item in types.Where(p=>p.IsInterface&&p.Namespace=="Site.Traceless.RestService.Interface")){
+                    _serviceHost.AddServiceEndpoint(item, binding, baseAddress+item.Name+"/"+sKey+"/");
+                    CQLog.Info("初始化", $"服务{item.Name}完成");
+                }
                 _serviceHost.Opened += delegate
                 {
                     Common.CqApi = CqApi;
