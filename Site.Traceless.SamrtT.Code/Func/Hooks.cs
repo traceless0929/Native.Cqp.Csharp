@@ -19,27 +19,29 @@ namespace Site.Traceless.SamrtT.Code.Func
             List<Commit> commits = hook_Github.commits.ToList();
             sb.AppendLine($"有 {commits.Count} 个新的提交 by {hook_Github.head_commit.committer.name}");
             string tag = "";
+            bool isRelease = hook_Github.head_commit.message.Contains("[release]");
             foreach(Commit commit in commits)
             {
-                string tagContent = GetTagContent(commit.message,"ct");
+                string tagContent = GetTagContent(commit.message.Replace("[release]",""),"ct");
                 if (!string.IsNullOrEmpty(tagContent))
                 {
                     tag += tagContent;
                 }
-                sb.AppendLine($"{commit.id.Substring(0, 8)} {commit.message.Replace("[ct]"+tagContent,"")}-{commit.committer.name}");
+                sb.AppendLine($"{commit.id.Substring(0, 8)} {commit.message.Replace("[ct]"+tagContent,"").Replace("[release]","")}-{commit.committer.name}");
             }
-            sb.AppendLine($"总计修改文件 {commits.Select(P=>P.modified.Length).Sum()} 个\n");
+            sb.AppendLine($"总计修改文件 {commits.Select(P=>P.modified.Length).Sum()} 个");
             if (!string.IsNullOrEmpty(tag))
             {
-                sb.AppendLine(tag+"\n");
+                sb.AppendLine(tag);
             }
+            sb.AppendLine("版本发布:" + (isRelease ? "✔" : "✖"));
             sb.AppendLine("更新时间:"+DateTime.Now.ToString());
             return sb.ToString();
         }
 
         private static string GetTagContent(string raw,string tagName) {
             string tag = $"[{tagName}]";
-            return raw.Substring(raw.LastIndexOf(tag)+tag.Length+1);
+            return raw.Substring(raw.LastIndexOf(tag)+tag.Length);
         }
     }
 }
