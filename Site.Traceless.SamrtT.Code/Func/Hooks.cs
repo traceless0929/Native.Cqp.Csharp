@@ -18,13 +18,28 @@ namespace Site.Traceless.SamrtT.Code.Func
             //提交信息
             List<Commit> commits = hook_Github.commits.ToList();
             sb.AppendLine($"有 {commits.Count} 个新的提交 by {hook_Github.head_commit.committer.name}");
+            string tag = "";
             foreach(Commit commit in commits)
             {
-                sb.AppendLine($"{commit.id.Substring(0, 8)} {commit.message}-{commit.committer.name}");
+                string tagContent = GetTagContent(commit.message,"ct");
+                if (!string.IsNullOrEmpty(tagContent))
+                {
+                    tag += tagContent;
+                }
+                sb.AppendLine($"{commit.id.Substring(0, 8)} {commit.message.Replace("[ct]"+tagContent,"")}-{commit.committer.name}");
             }
-            sb.AppendLine("代码都更新了，功能还会远么？");
+            sb.AppendLine($"总计修改文件 {commits.Select(P=>P.modified.Length).Sum()} 个\n");
+            if (!string.IsNullOrEmpty(tag))
+            {
+                sb.AppendLine(tag+"\n");
+            }
             sb.AppendLine("更新时间:"+DateTime.Now.ToString());
             return sb.ToString();
+        }
+
+        private static string GetTagContent(string raw,string tagName) {
+            string tag = $"[{tagName}]";
+            return raw.Substring(raw.LastIndexOf(tag + tag.Length + 1));
         }
     }
 }
