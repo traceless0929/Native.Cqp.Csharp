@@ -53,9 +53,9 @@ namespace Site.Traceless.SamrtT.Code
         /// </summary>
         public static string[,] SerList;
 
-        public static CQApi CqApi
-        {
-            get; set;
-        }
+        public static CQApi CqApi { get; set; }
+        public static CQLog CqLog { get; set; }
+        public static string token { get; set; }
+        public static long gmGroupId { get; set; } = -1;
     }
 }

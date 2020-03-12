@@ -16,6 +16,7 @@ namespace Site.Traceless.SamrtT.Code.Event
         public void AppEnable(object sender, CQAppEnableEventArgs e)
         {
             Common.CqApi = e.CQApi;
+            Common.CqLog = e.CQLog;
             string commandPath = e.CQApi.AppDirectory + "command.ini";
             IniObject iObject;
             if (!File.Exists(commandPath))
@@ -61,6 +62,7 @@ namespace Site.Traceless.SamrtT.Code.Event
                     {
                         { "master",415206409},
                         { "taskAddr",@"https://nico.nicemoe.cn/dailylist.php"},
+                        { "gmGroup",32235656},
                         { "webPort",7799},
                         { "webIp","127.0.0.1"},
                         { "skey","gd1h23f1h5re43h21df"}
@@ -101,6 +103,11 @@ namespace Site.Traceless.SamrtT.Code.Event
             Common.settingDic.TryGetValue("webPort", out string portStr);
             Common.settingDic.TryGetValue("skey", out string sKey);
             Common.settingDic.TryGetValue("webIp", out string ipStr);
+            Common.settingDic.TryGetValue("gmGroup", out string gmGroupStr);
+            if (!string.IsNullOrEmpty(gmGroupStr))
+            {
+                Common.gmGroupId = Convert.ToInt64(gmGroupStr);
+            }
             if (!string.IsNullOrEmpty(ipStr))
             {
                 e.CQLog.Info("初始化", "Web服务设置：开");

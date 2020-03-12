@@ -169,7 +169,6 @@ namespace Site.Traceless.Gmanger.Datas
         /// <returns></returns>
         public Dictionary<string, string> ReadThesure(bool isLike)
         {
-            int pageSize = 15;
             var thesureName = isLike ? "thesurelike" : "thesure";
             var ini = iniObject[thesureName];
             return ini.AsEnumerable().ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.ToString());

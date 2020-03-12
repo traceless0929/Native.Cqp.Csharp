@@ -47,14 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Native.Csharp.Sdk\Native.Csharp.Sdk.csproj">
-      <Project>{797EAEBC-4D5B-4EEF-87F4-A508FDA2CB6A}</Project>
-      <Name>Native.Csharp.Sdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Native.Csharp.Tool\Native.Csharp.Tool.csproj">
-      <Project>{9db94cbf-6843-4ea3-9241-769124416fe9}</Project>
-      <Name>Native.Csharp.Tool</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
       <Project>{D7A958B3-79D9-49F8-8BB4-9619BAB6ECBA}</Project>
       <Name>Native.Sdk</Name>
