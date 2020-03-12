@@ -114,6 +114,7 @@ namespace Site.Traceless.RestService.Service
         public BaseResp<Hook_Github> GithubHook(Hook_Github req)
         {
             Common.CqApi.SendPrivateMessage(415206409, JsonConvert.SerializeObject(req));
+
             return BaseResp<Hook_Github>.respSuc(req);
         }
         #endregion
