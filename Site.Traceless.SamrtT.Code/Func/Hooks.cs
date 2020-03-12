@@ -14,7 +14,7 @@ namespace Site.Traceless.SamrtT.Code.Func
             StringBuilder sb = new StringBuilder();
             Repository repository = hook_Github.repository;
             //仓库信息
-            sb.AppendLine("[代码更新]" + repository.full_name);
+            sb.AppendLine($"[代码更新]{repository.full_name}:{hook_Github._ref.Substring(hook_Github._ref.LastIndexOf("/")+1)}");
             //提交信息
             List<Commit> commits = hook_Github.commits.ToList();
             sb.AppendLine($"有 {commits.Count} 个新的提交 by {hook_Github.head_commit.committer.name}");
