@@ -7,5 +7,6 @@ namespace Site.Traceless.RestService
     {
         public static CQApi CqApi { get; set; }
         public static CQLog CQLog { get; set; }
+        public static string token { get; set; }
     }
 }

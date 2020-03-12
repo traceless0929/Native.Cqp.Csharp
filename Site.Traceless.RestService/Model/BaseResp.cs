@@ -11,7 +11,7 @@ namespace Site.Traceless.RestService.Model
     public class BaseResp<T>
     {
         [DataMember]
-        public long ts { get; set; } = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
+        public long ts { get; set; } = (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
         [DataMember]
         public T data { get; set; }
         [DataMember]

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -44,11 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IHook.cs" />
+    <Compile Include="Interface\IInfo.cs" />
+    <Compile Include="MessageBehavior.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Inspector\MessageInspector.cs" />
     <Compile Include="Interface\IFriend.cs" />
     <Compile Include="Interface\IGroup.cs" />
     <Compile Include="Model\BaseResp.cs" />
     <Compile Include="Model\BaseReq.cs" />
+    <Compile Include="Model\Req\Set_Info.cs" />
+    <Compile Include="Model\Req\Get_Info.cs" />
+    <Compile Include="Model\Req\Send_Praise.cs" />
     <Compile Include="Model\Req\Send_Msg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceMain.cs" />
@@ -63,6 +73,9 @@
       <Project>{0ca93eb9-4e25-46c6-94d2-0f97137a1606}</Project>
       <Name>Native.Tool</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

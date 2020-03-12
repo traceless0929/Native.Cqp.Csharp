@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using Site.Traceless.RestService.Model;
 using Site.Traceless.RestService.Model.Req;
+using Native.Sdk.Cqp.Model;
 
 namespace Site.Traceless.RestService.Interface
 {
@@ -30,6 +31,12 @@ namespace Site.Traceless.RestService.Interface
 
         [OperationContract]
         [WebInvoke(Method = "POST",UriTemplate = "send_private_msg", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        BaseResp<int> sendPrivateMsg(BaseReq<Send_Msg> content);
+        BaseResp<int> SendPrivateMsg(BaseReq<Send_Msg> content);
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "send_praise", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        BaseResp<bool> SendPraise(BaseReq<Send_Praise> req);
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "get_stranger_info", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        BaseResp<StrangerInfo> GetStrangerInfo(BaseReq<Get_Info> req);
     }
 }

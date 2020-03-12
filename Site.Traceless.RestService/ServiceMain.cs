@@ -1,5 +1,4 @@
 ﻿using Native.Sdk.Cqp;
-using Site.Traceless.RestService.Interface;
 using Site.Traceless.RestService.Service;
 using System;
 using System.Linq;
@@ -34,10 +33,16 @@ namespace Site.Traceless.RestService
                     _serviceHost.AddServiceEndpoint(item, binding, baseAddress+item.Name+"/"+sKey+"/");
                     CQLog.Info("初始化", $"服务{item.Name}完成");
                 }
+                // 把自定义的IEndPointBehavior插入到终结点中
+                foreach (var endpont in _serviceHost.Description.Endpoints)
+                {
+                    endpont.EndpointBehaviors.Add(new MessageBehavior());
+                }
                 _serviceHost.Opened += delegate
                 {
                     Common.CqApi = CqApi;
                     Common.CQLog = CQLog;
+                    Common.token = sKey;
                     CQLog.Info("初始化", "Web服务已开启...");
                 };
                 _serviceHost.Open();

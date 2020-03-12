@@ -11,11 +11,11 @@ namespace Site.Traceless.SamrtT.Code.Event
     {
         public void PrivateMessage(object sender, CQPrivateMessageEventArgs e)
         {
-            if (e.FromQQ.Id != 415206409)
-            {
-                e.Handler = false;
-                return;
-            }
+            //if (e.FromQQ.Id != 415206409)
+            //{
+            //    e.Handler = false;
+            //    return;
+            //}
             try
             {
                 AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
