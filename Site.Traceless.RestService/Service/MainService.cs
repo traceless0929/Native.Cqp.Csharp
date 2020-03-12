@@ -113,7 +113,6 @@ namespace Site.Traceless.RestService.Service
         #region hook业务
         public BaseResp<object> GithubHook(object req)
         {
-            Common.CqApi.SendPrivateMessage(415206409, JsonConvert.SerializeObject(req));
             return BaseResp<object>.respSuc(req);
         }
         #endregion
