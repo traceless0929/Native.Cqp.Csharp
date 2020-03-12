@@ -73,7 +73,7 @@ namespace Site.Traceless.RestService.Model.Req
         public string releases_url { get; set; }
         public string deployments_url { get; set; }
         public int created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public string updated_at { get; set; }
         public int pushed_at { get; set; }
         public string git_url { get; set; }
         public string ssh_url { get; set; }
@@ -170,7 +170,7 @@ namespace Site.Traceless.RestService.Model.Req
         public string tree_id { get; set; }
         public bool distinct { get; set; }
         public string message { get; set; }
-        public DateTime timestamp { get; set; }
+        public string timestamp { get; set; }
         public string url { get; set; }
         public Author author { get; set; }
         public Committer committer { get; set; }
@@ -199,7 +199,7 @@ namespace Site.Traceless.RestService.Model.Req
         public string tree_id { get; set; }
         public bool distinct { get; set; }
         public string message { get; set; }
-        public DateTime timestamp { get; set; }
+        public string timestamp { get; set; }
         public string url { get; set; }
         public Author author { get; set; }
         public Committer committer { get; set; }
