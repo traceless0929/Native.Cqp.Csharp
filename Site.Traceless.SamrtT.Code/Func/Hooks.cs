@@ -17,6 +17,11 @@ namespace Site.Traceless.SamrtT.Code.Func
             sb.AppendLine($"[代码更新]{repository.name}:SmartT_V2");
             //提交信息
             List<Commit> commits = hook_Github.commits.ToList();
+            bool isSend=!hook_Github.head_commit.message.Contains("[not]");
+            if (!isSend)
+            {
+                return "";
+            }
             sb.AppendLine($"有 {commits.Count} 个新的提交 by {hook_Github.head_commit.committer.name}");
             string tag = "";
             bool isRelease = hook_Github.head_commit.message.Contains("[release]");

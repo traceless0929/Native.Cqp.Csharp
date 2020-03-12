@@ -119,7 +119,11 @@ namespace Site.Traceless.RestService.Service
         {
             if (Common.gmGroupId > 0&&req.@ref.Contains("SmartT_V2"))
             {
-                 Common.CqApi.SendGroupMessage(Common.gmGroupId, Hooks.OptHookCommit(req));
+                string content = Hooks.OptHookCommit(req);
+                if (!string.IsNullOrEmpty(content))
+                {
+                     Common.CqApi.SendGroupMessage(Common.gmGroupId,content);
+                }
             }
             return BaseResp<bool>.respSuc(true);
         }
