@@ -9,7 +9,7 @@ namespace Site.Traceless.RestService.Model.Req
 
     public class Hook_Github
     {
-        public string _ref { get; set; }
+        public string @ref { get; set; }
         public string before { get; set; }
         public string after { get; set; }
         public Repository repository { get; set; }
