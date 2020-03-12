@@ -16,6 +16,6 @@ namespace Site.Traceless.RestService.Interface
     {
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "hook_github", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        BaseResp<object> GithubHook(object req);
+        BaseResp<Hook_Github> GithubHook(Hook_Github req);
     }
 }
