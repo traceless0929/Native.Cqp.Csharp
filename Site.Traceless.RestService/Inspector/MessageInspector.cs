@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -13,7 +14,7 @@ namespace Site.Traceless.RestService.Inspector
     {
         public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext)
         {
-            Common.CQLog.Debug("http api req", request.ToString());
+            Common.CQLog.Debug("http api req",request.ToString());
             return null;
         }
 
