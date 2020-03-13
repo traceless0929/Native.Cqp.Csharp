@@ -7,6 +7,7 @@ namespace Site.Traceless.SmartT.DB
     {
         public static CQApi CqApi { get; set; }
         public static CQLog CqLog { get; set; }
-        public static string ConnectStr { get; set; }
+        public static string DbPath { get; set; }
+        public static SQLiteHelper sqliteHelper { get; set; }
     }
 }

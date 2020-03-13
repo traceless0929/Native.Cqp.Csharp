@@ -9,7 +9,7 @@ using System.ServiceModel.Web;
 
 namespace Site.Traceless.RestService
 {
-    public class ServiceMain
+    public class RestMain
     {
         public static ServiceHost Start(CQApi CqApi, CQLog CQLog,string ip,int port,string sKey)
         {

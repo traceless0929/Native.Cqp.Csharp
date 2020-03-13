@@ -19,6 +19,8 @@ namespace Site.Traceless.SmartT.Code.Event
             Common.CqLog = e.CQLog;
             DB.Common.CqApi = e.CQApi;
             DB.Common.CqLog = e.CQLog;
+            DB.Common.DbPath = e.CQApi.AppDirectory + "smartdb.db";
+            DB.Common.sqliteHelper = new DB.SQLiteHelper(DB.Common.DbPath);
             string commandPath = e.CQApi.AppDirectory + "command.ini";
             IniObject iObject;
             if (!File.Exists(commandPath))
@@ -68,26 +70,11 @@ namespace Site.Traceless.SmartT.Code.Event
                         { "webPort",7799},
                         { "webIp","127.0.0.1"},
                         { "skey","gd1h23f1h5re43h21df"}
-                    },
-                    new IniSection("mysql")
-                    {
-                        //server=.;uid=***;pwd=***;database=***
-                        { "server","" },
-                        { "uid","" },
-                        { "pwd","" },
-                        { "database","" }
                     }
                 };
                 iObject.Save(commandPath);
             };
             iObject = IniObject.Load(commandPath, Encoding.Default);
-            IniSection mysqlsettings = iObject["mysql"];
-            if (mysqlsettings.Count == 4)
-            {
-                string dbConnect = $"server={mysqlsettings["server"]};uid={mysqlsettings["uid"]};pwd={mysqlsettings["pwd"]};database={mysqlsettings["database"]}";
-                DB.Common.ConnectStr = dbConnect;
-            }
-            
             IniSection settings = iObject["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
             e.CQLog.Info("初始化", "读取设置正常");
@@ -123,7 +110,7 @@ namespace Site.Traceless.SmartT.Code.Event
             if (!string.IsNullOrEmpty(ipStr))
             {
                 e.CQLog.Info("初始化", "Web服务设置：开");
-                ServiceMain.Start(e.CQApi,e.CQLog,ipStr,Convert.ToInt32(portStr),sKey);
+                RestMain.Start(e.CQApi,e.CQLog,ipStr,Convert.ToInt32(portStr),sKey);
             }
             else
             {

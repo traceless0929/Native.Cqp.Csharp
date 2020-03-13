@@ -50,12 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bll\AuthBll.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Model\T_Account_Bind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLiteHelper.cs" />
+    <Compile Include="SQLiteResources\SQLite.cs" />
+    <Compile Include="SQLiteResources\SQLiteAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">

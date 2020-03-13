@@ -102,7 +102,7 @@
     <Compile Include="RestService\Model\Req\Send_Msg.cs" />
     <Compile Include="RestService\Model\Req\Send_Praise.cs" />
     <Compile Include="RestService\Model\Req\Set_Info.cs" />
-    <Compile Include="RestService\ServiceMain.cs" />
+    <Compile Include="RestService\RestMain.cs" />
     <Compile Include="RestService\Service\MainService.cs" />
     <Compile Include="Utils\CQUtils.cs" />
     <Compile Include="Utils\EnumUtils.cs" />
