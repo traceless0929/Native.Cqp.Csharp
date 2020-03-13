@@ -1,4 +1,4 @@
-﻿namespace Site.Traceless.SamrtT.Code.Model.SmartT
+﻿namespace Site.Traceless.SmartT.Code.Model.SmartT
 {
     public class TrashSortResp
     {

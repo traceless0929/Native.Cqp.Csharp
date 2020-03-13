@@ -1,6 +1,6 @@
 ﻿using Native.Sdk.Cqp;
 using Site.Traceless.RestService.Service;
-using Site.Traceless.SamrtT.Code;
+using Site.Traceless.SmartT.Code;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -45,6 +45,7 @@ namespace Site.Traceless.RestService
                     CQLog.Info("初始化", "Web服务已开启...");
                 };
                 _serviceHost.Open();
+                
                 return _serviceHost;
             }
             catch (Exception ex)

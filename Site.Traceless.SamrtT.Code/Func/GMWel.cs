@@ -1,9 +1,9 @@
 ﻿using Native.Sdk.Cqp.EventArgs;
 using Site.Traceless.Gmanger.Datas;
 using Site.Traceless.Gmanger.Enum;
-using Site.Traceless.SamrtT.Code.Utils;
+using Site.Traceless.SmartT.Code.Utils;
 
-namespace Site.Traceless.SamrtT.Code.Func
+namespace Site.Traceless.SmartT.Code.Func
 {
     public class GMWel
     {

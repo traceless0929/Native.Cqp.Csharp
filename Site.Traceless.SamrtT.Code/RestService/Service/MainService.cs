@@ -1,10 +1,10 @@
 ﻿using Native.Sdk.Cqp.Model;
-using Newtonsoft.Json;
 using Site.Traceless.RestService.Interface;
 using Site.Traceless.RestService.Model;
 using Site.Traceless.RestService.Model.Req;
-using Site.Traceless.SamrtT.Code;
-using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.SmartT.Code;
+using Site.Traceless.SmartT.Code.Func;
+using Site.Traceless.SmartT.DB.Model;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -14,7 +14,7 @@ namespace Site.Traceless.RestService.Service
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Single, IncludeExceptionDetailInFaults = true)]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class MainService : IHook, IInfo, IGroup, IFriend
+    public class MainService : IAuth, IHook, IInfo, IGroup, IFriend
     {
         #region 机器人QQ相关
 
@@ -117,17 +117,34 @@ namespace Site.Traceless.RestService.Service
 
         public BaseResp<bool> GithubHook(Hook_Github req)
         {
-            if (Common.gmGroupId > 0&&req.@ref.Contains("SmartT_V2"))
+            if (Common.gmGroupId > 0 && req.@ref.Contains("SmartT_V2"))
             {
                 string content = Hooks.OptHookCommit(req);
                 if (!string.IsNullOrEmpty(content))
                 {
-                     Common.CqApi.SendGroupMessage(Common.gmGroupId,content);
+                    Common.CqApi.SendGroupMessage(Common.gmGroupId, content);
                 }
             }
             return BaseResp<bool>.respSuc(true);
         }
 
         #endregion hook业务
+
+        #region 第三方认证
+
+        public BaseResp<string> Wechat_Binding(BaseReq<Send_Msg> req)
+        {
+            Send_Msg p = req.data;
+            //AccountBindBLL accountBindBLL = new AccountBindBLL();
+            //T_Account_Bind res = accountBindBLL.findWeChatBind(p.target, p.msg);
+            //if (res.Suc)
+            //{
+            //    return BaseResp<string>.respSuc(p.msg);
+            //}
+            //Common.CqApi.SendPrivateMessage(p.target, "您的绑定验证码为:" + res.CheckCode);
+            return BaseResp<string>.respSuc("");
+        }
+
+        #endregion 第三方认证
     }
 }

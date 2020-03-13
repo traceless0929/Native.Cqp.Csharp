@@ -1,9 +1,9 @@
 ﻿using Native.Sdk.Cqp;
-using Site.Traceless.SamrtT.Code.Func;
-using Site.Traceless.SamrtT.Code.Model.SmartT;
+using Site.Traceless.SmartT.Code.Func;
+using Site.Traceless.SmartT.Code.Model.SmartT;
 using System.Collections.Generic;
 
-namespace Site.Traceless.SamrtT.Code
+namespace Site.Traceless.SmartT.Code
 {
     public static class Common
     {
@@ -57,5 +57,6 @@ namespace Site.Traceless.SamrtT.Code
         public static CQLog CqLog { get; set; }
         public static string token { get; set; }
         public static long gmGroupId { get; set; } = -1;
+        public static Dictionary<string, long> weChatBindDic = new Dictionary<string, long>();
     }
 }

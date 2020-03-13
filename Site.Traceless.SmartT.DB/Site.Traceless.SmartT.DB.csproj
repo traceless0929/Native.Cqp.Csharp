@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{10253821-F662-42E7-8EA6-30B435E919BB}</ProjectGuid>
+    <ProjectGuid>{B41CD89D-365E-458D-9288-E283AEA73858}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Site.Traceless.Gmanger</RootNamespace>
-    <AssemblyName>Site.Traceless.Gmanger</AssemblyName>
+    <RootNamespace>Site.Traceless.SmartT.DB</RootNamespace>
+    <AssemblyName>Site.Traceless.SmartT.DB</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,7 +33,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,24 +51,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
-    <Compile Include="Datas\GroupData.cs" />
-    <Compile Include="Enum\SwitchEnum.cs" />
+    <Compile Include="Model\T_Account_Bind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
       <Project>{D7A958B3-79D9-49F8-8BB4-9619BAB6ECBA}</Project>
       <Name>Native.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Native.Tool\Native.Tool.csproj">
-      <Project>{0CA93EB9-4E25-46C6-94D2-0F97137A1606}</Project>
-      <Name>Native.Tool</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Site.Traceless.Tools\Site.Traceless.Tools.csproj">
-      <Project>{54454067-a4e1-40c6-9c18-29feb9c07145}</Project>
+      <Project>{54454067-A4E1-40C6-9C18-29FEB9C07145}</Project>
       <Name>Site.Traceless.Tools</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

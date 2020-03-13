@@ -1,7 +1,7 @@
 ﻿using Native.Sdk.Cqp.EventArgs;
 using Native.Sdk.Cqp.Interface;
 
-namespace Site.Traceless.SamrtT.Code.Event
+namespace Site.Traceless.SmartT.Code.Event
 {
     public class Event_CQExit : ICQExit
     {

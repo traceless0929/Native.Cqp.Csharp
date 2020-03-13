@@ -1,11 +1,11 @@
 ﻿using Native.Sdk.Cqp.EventArgs;
 using Native.Sdk.Cqp.Interface;
-using Site.Traceless.SamrtT.Code.Command;
-using Site.Traceless.SamrtT.Code.Model;
+using Site.Traceless.SmartT.Code.Command;
+using Site.Traceless.SmartT.Code.Model;
 using System;
 using System.Linq;
 
-namespace Site.Traceless.SamrtT.Code.Event
+namespace Site.Traceless.SmartT.Code.Event
 {
     public class Event_PrivateMsg : IPrivateMessage
     {

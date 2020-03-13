@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Native.Sdk.Cqp.Interface;
-using Site.Traceless.SamrtT.Code.Event;
+using Site.Traceless.SmartT.Code.Event;
 using Unity;
 
 namespace Native.Core

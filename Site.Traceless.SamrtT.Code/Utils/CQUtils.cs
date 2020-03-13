@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Site.Traceless.SamrtT.Code.Utils
+namespace Site.Traceless.SmartT.Code.Utils
 {
     public static class CQUtils
     {

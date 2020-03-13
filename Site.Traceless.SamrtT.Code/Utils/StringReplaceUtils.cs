@@ -1,15 +1,15 @@
 ﻿using Native.Sdk.Cqp;
 using Native.Sdk.Cqp.Enum;
 using Native.Sdk.Cqp.Model;
-using Site.Traceless.SamrtT.Code.Func;
-using Site.Traceless.SamrtT.Code.Model.Extend;
+using Site.Traceless.SmartT.Code.Func;
+using Site.Traceless.SmartT.Code.Model.Extend;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Group = Native.Sdk.Cqp.Model.Group;
 
-namespace Site.Traceless.SamrtT.Code.Utils
+namespace Site.Traceless.SmartT.Code.Utils
 {
     public static class StringReplaceUtils
     {

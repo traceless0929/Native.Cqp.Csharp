@@ -2,9 +2,9 @@
 using Native.Sdk.Cqp.Interface;
 using Site.Traceless.Gmanger.Datas;
 using Site.Traceless.Gmanger.Enum;
-using Site.Traceless.SamrtT.Code.Func;
+using Site.Traceless.SmartT.Code.Func;
 
-namespace Site.Traceless.SamrtT.Code.Event
+namespace Site.Traceless.SmartT.Code.Event
 {
     public class Event_GroupMemberIncrease : IGroupMemberIncrease
     {

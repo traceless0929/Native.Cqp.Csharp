@@ -1,8 +1,8 @@
 ﻿using Native.Tool.IniConfig.Linq;
-using Site.Traceless.SamrtT.Code.Model.SmartT;
+using Site.Traceless.SmartT.Code.Model.SmartT;
 using System.Text;
 
-namespace Site.Traceless.SamrtT.Code.Func
+namespace Site.Traceless.SmartT.Code.Func
 {
     public static class TrashSort
     {

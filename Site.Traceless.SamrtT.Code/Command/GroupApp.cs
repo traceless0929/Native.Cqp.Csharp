@@ -1,12 +1,12 @@
 ﻿using Native.Sdk.Cqp;
 using Native.Sdk.Cqp.EventArgs;
-using Site.Traceless.SamrtT.Code.Func;
-using Site.Traceless.SamrtT.Code.Model;
+using Site.Traceless.SmartT.Code.Func;
+using Site.Traceless.SmartT.Code.Model;
 using Site.Traceless.Tools.Utils;
 using System;
 using System.Linq;
 
-namespace Site.Traceless.SamrtT.Code.Command
+namespace Site.Traceless.SmartT.Code.Command
 {
     public class GroupApp
     {

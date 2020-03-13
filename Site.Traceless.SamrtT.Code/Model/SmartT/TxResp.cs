@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Site.Traceless.SamrtT.Code.Model.SmartT
+namespace Site.Traceless.SmartT.Code.Model.SmartT
 {
     public class TxResp<T> where T : class
     {

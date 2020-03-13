@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 
-namespace Site.Traceless.SamrtT.Code.Func
+namespace Site.Traceless.SmartT.Code.Func
 {
     public class JxServer
     {

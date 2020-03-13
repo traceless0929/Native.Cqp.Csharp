@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Site.Traceless.SamrtT.Code.Model.Extend;
+using Site.Traceless.SmartT.Code.Model.Extend;
 using Site.Traceless.Tools.Crawler;
 
-namespace Site.Traceless.SamrtT.Code.Func
+namespace Site.Traceless.SmartT.Code.Func
 {
     public static class QQExtend
     {

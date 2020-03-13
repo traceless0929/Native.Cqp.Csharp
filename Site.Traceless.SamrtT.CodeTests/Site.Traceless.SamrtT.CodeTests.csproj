@@ -66,9 +66,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SamrtT.Code.csproj">
+    <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SmartT.Code.csproj">
       <Project>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</Project>
-      <Name>Site.Traceless.SamrtT.Code</Name>
+      <Name>Site.Traceless.SmartT.Code</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Traceless.Tools\Site.Traceless.Tools.csproj">
       <Project>{54454067-A4E1-40C6-9C18-29FEB9C07145}</Project>

@@ -7,11 +7,12 @@
     <ProjectGuid>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Site.Traceless.SamrtT.Code</RootNamespace>
-    <AssemblyName>Site.Traceless.SamrtT.Code</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Site.Traceless.SmartT.Code</RootNamespace>
+    <AssemblyName>Site.Traceless.SmartT.Code</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +92,7 @@
     <Compile Include="RestService\Interface\IFriend.cs" />
     <Compile Include="RestService\Interface\IGroup.cs" />
     <Compile Include="RestService\Interface\IHook.cs" />
+    <Compile Include="RestService\Interface\IAuth.cs" />
     <Compile Include="RestService\Interface\IInfo.cs" />
     <Compile Include="RestService\MessageBehavior.cs" />
     <Compile Include="RestService\Model\BaseReq.cs" />
@@ -123,6 +125,10 @@
       <Project>{10253821-F662-42E7-8EA6-30B435E919BB}</Project>
       <Name>Site.Traceless.Gmanger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Site.Traceless.SmartT.DB\Site.Traceless.SmartT.DB.csproj">
+      <Project>{b41cd89d-365e-458d-9288-e283aea73858}</Project>
+      <Name>Site.Traceless.SmartT.DB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Site.Traceless.Tools\Site.Traceless.Tools.csproj">
       <Project>{54454067-a4e1-40c6-9c18-29feb9c07145}</Project>
       <Name>Site.Traceless.Tools</Name>
@@ -130,6 +136,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

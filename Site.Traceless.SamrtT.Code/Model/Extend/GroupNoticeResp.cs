@@ -1,4 +1,4 @@
-﻿namespace Site.Traceless.SamrtT.Code.Model.Extend
+﻿namespace Site.Traceless.SmartT.Code.Model.Extend
 {
     // { "ec": 0, "em": "", "ltsm": 1581237450, "srv_code": 0, "read_only": 0, "role": 1, "feeds": [
     // { "u": 415206409, "fid": "27b5c92900000000625af05d5e220900", "pubt": 1576032866, "msg": {

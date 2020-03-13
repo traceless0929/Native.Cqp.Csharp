@@ -2,14 +2,14 @@
 using Native.Sdk.Cqp.Interface;
 using Native.Tool.IniConfig.Linq;
 using Site.Traceless.RestService;
-using Site.Traceless.SamrtT.Code.Func;
-using Site.Traceless.SamrtT.Code.Model.SmartT;
+using Site.Traceless.SmartT.Code.Func;
+using Site.Traceless.SmartT.Code.Model.SmartT;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Site.Traceless.SamrtT.Code.Event
+namespace Site.Traceless.SmartT.Code.Event
 {
     public class Event_AppEnable : IAppEnable
     {
@@ -17,6 +17,8 @@ namespace Site.Traceless.SamrtT.Code.Event
         {
             Common.CqApi = e.CQApi;
             Common.CqLog = e.CQLog;
+            DB.Common.CqApi = e.CQApi;
+            DB.Common.CqLog = e.CQLog;
             string commandPath = e.CQApi.AppDirectory + "command.ini";
             IniObject iObject;
             if (!File.Exists(commandPath))
@@ -66,11 +68,26 @@ namespace Site.Traceless.SamrtT.Code.Event
                         { "webPort",7799},
                         { "webIp","127.0.0.1"},
                         { "skey","gd1h23f1h5re43h21df"}
+                    },
+                    new IniSection("mysql")
+                    {
+                        //server=.;uid=***;pwd=***;database=***
+                        { "server","" },
+                        { "uid","" },
+                        { "pwd","" },
+                        { "database","" }
                     }
                 };
                 iObject.Save(commandPath);
             };
             iObject = IniObject.Load(commandPath, Encoding.Default);
+            IniSection mysqlsettings = iObject["mysql"];
+            if (mysqlsettings.Count == 4)
+            {
+                string dbConnect = $"server={mysqlsettings["server"]};uid={mysqlsettings["uid"]};pwd={mysqlsettings["pwd"]};database={mysqlsettings["database"]}";
+                DB.Common.ConnectStr = dbConnect;
+            }
+            
             IniSection settings = iObject["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
             e.CQLog.Info("初始化", "读取设置正常");
@@ -87,12 +104,7 @@ namespace Site.Traceless.SamrtT.Code.Event
             }
             iObject = IniObject.Load(trashSortPath, Encoding.Default);
             IniSection sortData = iObject["sortData"];
-            var temp = sortData.ToDictionary(p => p.Key, p => p.Value.ToString());
-            foreach (var item in temp)
-            {
-                TrashSortResp sortItem = Newtonsoft.Json.JsonConvert.DeserializeObject<TrashSortResp>(item.Value);
-                Common.TrashDic.Add(sortItem.name, sortItem);
-            }
+            Common.TrashDic = sortData.ToDictionary(p => p.Key, p => Newtonsoft.Json.JsonConvert.DeserializeObject<TrashSortResp>(p.Value.ToString()));
             e.CQLog.Info("初始化", "读取垃圾分类正常");
             Common.SerList = JxServer.GetSerList();
             e.CQLog.Info("初始化", "读取服务器列表正常");

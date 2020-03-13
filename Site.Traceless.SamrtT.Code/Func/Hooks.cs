@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Site.Traceless.SamrtT.Code.Func
+namespace Site.Traceless.SmartT.Code.Func
 {
     public class Hooks
     {

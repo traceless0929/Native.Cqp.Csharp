@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-namespace Site.Traceless.SamrtT.Code.Func
+namespace Site.Traceless.SmartT.Code.Func
 {
     public static class JxTask
     {

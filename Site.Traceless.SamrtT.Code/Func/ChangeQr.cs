@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using ZXing;
 
-namespace Site.Traceless.SamrtT.Code.Func
+namespace Site.Traceless.SmartT.Code.Func
 {
     public class ChangeQr
     {

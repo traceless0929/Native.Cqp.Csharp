@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Site.Traceless.SamrtT.Code.Model
+namespace Site.Traceless.SmartT.Code.Model
 {
     public class OrderInfoModel
     {

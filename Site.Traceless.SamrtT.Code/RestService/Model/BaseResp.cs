@@ -16,6 +16,8 @@ namespace Site.Traceless.RestService.Model
         public T data { get; set; }
         [DataMember]
         public int code { get; set; } = 1;
+        [DataMember]
+        public string msg { get; set; } = "";
 
         public BaseResp(T data) {
             this.data = data;
@@ -25,10 +27,11 @@ namespace Site.Traceless.RestService.Model
             return new BaseResp<T>(data);
         }
 
-        public static BaseResp<T> respFail(T data)
+        public static BaseResp<T> respFail(string msg)
         {
-            BaseResp<T> baseResp = new BaseResp<T>(data);
+            BaseResp<T> baseResp = new BaseResp<T>(default(T));
             baseResp.code = 0;
+            baseResp.msg = msg;
             return baseResp;
         }
     }

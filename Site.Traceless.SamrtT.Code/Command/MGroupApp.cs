@@ -2,14 +2,14 @@
 using Native.Sdk.Cqp.EventArgs;
 using Site.Traceless.Gmanger.Datas;
 using Site.Traceless.Gmanger.Enum;
-using Site.Traceless.SamrtT.Code.Model;
-using Site.Traceless.SamrtT.Code.Utils;
+using Site.Traceless.SmartT.Code.Model;
+using Site.Traceless.SmartT.Code.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Site.Traceless.SamrtT.Code.Command
+namespace Site.Traceless.SmartT.Code.Command
 {
     public class MGroupApp
     {

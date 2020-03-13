@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Site.Traceless.SamrtT.Code.Utils
+namespace Site.Traceless.SmartT.Code.Utils
 {
     public static class EnumUtils
     {

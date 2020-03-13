@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Native.Core</RootNamespace>
     <AssemblyName>site.traceless.smarttv2</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <DllExportIdent>D63C3FB7-18B9-4CDE-A8F4-F2ACE3FC382F</DllExportIdent>
@@ -104,6 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="app.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -131,9 +133,9 @@
       <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>
       <Name>Native.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SamrtT.Code.csproj">
+    <ProjectReference Include="..\Site.Traceless.SamrtT.Code\Site.Traceless.SmartT.Code.csproj">
       <Project>{a9cba998-a1da-4a85-bf67-0b9ec35ccd62}</Project>
-      <Name>Site.Traceless.SamrtT.Code</Name>
+      <Name>Site.Traceless.SmartT.Code</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
