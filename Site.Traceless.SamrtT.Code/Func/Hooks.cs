@@ -46,7 +46,11 @@ namespace Site.Traceless.SmartT.Code.Func
 
         private static string GetTagContent(string raw,string tagName) {
             string tag = $"[{tagName}]";
-            return raw.Substring(raw.LastIndexOf(tag)+tag.Length);
+            if (raw.Contains(tag))
+            {
+                return raw.Substring(raw.LastIndexOf(tag)+tag.Length);
+            }
+            return "";
         }
     }
 }
