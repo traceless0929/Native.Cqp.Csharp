@@ -13,7 +13,7 @@ namespace Site.Traceless.SmartT.Code.Func
             try
             {
                 Common.settingDic.TryGetValue("taskAddr",out string addr);
-                JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(addr);
+                JObject resp = Tools.Http.HttpHelper.GetAPI<JObject>(addr+"?"+ ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000));
                 if (resp["code"].ToString() != "1")
                 {
                     sb.AppendLine("[查日常]查询失败，请联系管理员QAQ");
