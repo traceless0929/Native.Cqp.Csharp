@@ -18,7 +18,7 @@ namespace Site.Traceless.Nativedemo.Code.Event
             if (String.IsNullOrEmpty(nowModel.PCommand))
             {
                 e.Handler = false;
-                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+                return;
             }
             var papp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
             var method = papp.GetType().GetMethod(nowModel.PCommand);

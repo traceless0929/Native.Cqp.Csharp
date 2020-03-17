@@ -18,7 +18,7 @@ namespace Site.Traceless.Nativedemo.Code.Event
             if (String.IsNullOrEmpty(nowModel.GCommand))
             {
                 e.Handler = false;
-                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+                return;
             }
             var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
             var method = gapp.GetType().GetMethod(nowModel.GCommand);
