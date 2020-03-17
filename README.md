@@ -9,6 +9,12 @@ base分支为我自用的新建App的模板，引入了一些自己的机制简�
 
 ### 样例应用
 
+系列教程地址：
+
+[手摸手教你开发QQ机器人]: https://traceless.site/index.php/archives/20/	"手摸手教你开发QQ机器人"
+
+
+
 | 应用名                                                       | 描述                                    | 备注 |
 | ------------------------------------------------------------ | --------------------------------------- | ---- |
 | [彩虹六号战绩查询](https://github.com/traceless0929/Native.Cqp.Csharp/tree/rainbow6) | 彩虹六号战绩查询插件，数据来源于R6stats |      |
@@ -97,7 +103,7 @@ public class Event_GroupMsg : IGroupMessage
             if (String.IsNullOrEmpty(nowModel.GCommand))
             {
                 e.Handler = false;
-                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+                return;
             }
             var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
             var method = gapp.GetType().GetMethod(nowModel.GCommand);
@@ -119,7 +125,7 @@ public class Event_GroupMsg : IGroupMessage
             if (String.IsNullOrEmpty(nowModel.PCommand))
             {
                 e.Handler = false;
-                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+                return;
             }
             var papp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
             var method = papp.GetType().GetMethod(nowModel.PCommand);
