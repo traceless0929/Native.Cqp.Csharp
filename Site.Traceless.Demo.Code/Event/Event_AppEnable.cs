@@ -26,7 +26,8 @@ namespace Site.Traceless.Demo.Code.Event
                     new IniSection("pcommands")
                     {
                         { "功能1","funcOne"},
-                        { "功能2","funcTwo"}
+                        { "功能2","funcTwo"},
+                        { "公告","getGNotice"},
                     }
                 };
                 iObject.Save(commandPath);

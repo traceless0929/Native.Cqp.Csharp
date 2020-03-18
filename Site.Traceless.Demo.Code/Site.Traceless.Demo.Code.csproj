@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,9 +62,12 @@
     <Compile Include="Event\Event_GroupMsg.cs" />
     <Compile Include="Event\Event_GroupUpload.cs" />
     <Compile Include="Event\Event_PrivateMsg.cs" />
+    <Compile Include="Func\QGroupExtend.cs" />
     <Compile Include="Model\AnalysisMsg.cs" />
+    <Compile Include="Model\GroupNoticeResp.cs" />
     <Compile Include="Model\OrderInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\HttpHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
@@ -72,6 +78,9 @@
       <Project>{0CA93EB9-4E25-46C6-94D2-0F97137A1606}</Project>
       <Name>Native.Tool</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
