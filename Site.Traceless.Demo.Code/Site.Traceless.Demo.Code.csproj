@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Site.Traceless.Demo.Code</RootNamespace>
-    <AssemblyName>site.traceless.demo.code</AssemblyName>
+    <AssemblyName>Site.Traceless.Demo.Code</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
