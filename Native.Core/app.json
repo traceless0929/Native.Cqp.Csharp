@@ -5,11 +5,11 @@
 {
   "ret": 1,
   "apiver": 9,
-  "name": "酷Q样例应用 for C# Native",
+  "name": "手摸手插件DEMO",
   "version": "1.0.0",
   "version_id": 1,
   "author": "Tracless",
-  "description": "酷Q样例应用(V9应用机制)",
+  "description": "这里是手摸手插件开发系列教程DEMO",
   "event": [
     {
       "id": 1,

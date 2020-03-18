@@ -131,9 +131,9 @@
       <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>
       <Name>Native.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\site.traceless.nativedemo.code\Site.Traceless.Nativedemo.Code.csproj">
-      <Project>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</Project>
-      <Name>Site.Traceless.Nativedemo.Code</Name>
+    <ProjectReference Include="..\Site.Traceless.Demo.Code\Site.Traceless.Demo.Code.csproj">
+      <Project>{320fba08-e8d9-404f-a08e-46f7efc2504f}</Project>
+      <Name>Site.Traceless.Demo.Code</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
