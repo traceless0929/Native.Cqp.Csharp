@@ -1,4 +1,4 @@
-﻿using Native.Csharp.Sdk.Cqp.EventArgs;
+﻿using Native.Sdk.Cqp.EventArgs;
 using Site.Traceless.R6.Code.Http;
 using Site.Traceless.R6.Code.Model;
 using Site.Traceless.R6.Code.Model.R6;

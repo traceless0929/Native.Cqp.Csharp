@@ -63,13 +63,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Native.Csharp.Sdk\Native.Csharp.Sdk.csproj">
-      <Project>{797eaebc-4d5b-4eef-87f4-a508fda2cb6a}</Project>
-      <Name>Native.Csharp.Sdk</Name>
+    <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
+      <Project>{D7A958B3-79D9-49F8-8BB4-9619BAB6ECBA}</Project>
+      <Name>Native.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Native.Csharp.Tool\Native.Csharp.Tool.csproj">
-      <Project>{9db94cbf-6843-4ea3-9241-769124416fe9}</Project>
-      <Name>Native.Csharp.Tool</Name>
+    <ProjectReference Include="..\Native.Tool\Native.Tool.csproj">
+      <Project>{0CA93EB9-4E25-46C6-94D2-0F97137A1606}</Project>
+      <Name>Native.Tool</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

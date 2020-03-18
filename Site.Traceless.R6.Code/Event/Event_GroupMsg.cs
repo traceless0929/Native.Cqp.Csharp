@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Native.Csharp.Sdk.Cqp.Interface;
-using Native.Csharp.Sdk.Cqp.EventArgs;
 using Site.Traceless.R6.Code.Model;
 using Site.Traceless.R6.Code.Command;
+using Native.Sdk.Cqp.EventArgs;
+using Native.Sdk.Cqp.Interface;
 
 namespace Site.Traceless.R6.Code.Event
 {
@@ -18,7 +18,7 @@ namespace Site.Traceless.R6.Code.Event
             if (String.IsNullOrEmpty(nowModel.GCommand))
             {
                 e.Handler = false;
-                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+                return;
             }
             var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
             var method = gapp.GetType().GetMethod(nowModel.GCommand);
