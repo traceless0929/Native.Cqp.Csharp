@@ -49,10 +49,6 @@ namespace Native.Tool.IniConfig.Linq
 				{
 					throw new SectionNotFoundException (string.Format ("无法通过指定的名称 {0} 找到对应的 IniSection", name), ex);
 				}
-				finally
-				{
-					this.Add(new IniSection(name));
-				}
 			}
 			set
 			{
