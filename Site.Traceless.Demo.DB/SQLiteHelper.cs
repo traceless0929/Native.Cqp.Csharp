@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using Site.Traceless.Demo.DB.Model;
+using SQLite;
 using System.Collections.Generic;
 
 namespace Site.Traceless.Demo.DB
@@ -10,7 +11,7 @@ namespace Site.Traceless.Demo.DB
         public SQLiteHelper(string connstr)
         {
             db = new SQLiteConnection(connstr);
-            //db.CreateTable<T_Account_Bind>();//表已存在不会重复创建
+            db.CreateTable<T_User>();//表已存在不会重复创建
         }
 
         public int Add<T>(T model)

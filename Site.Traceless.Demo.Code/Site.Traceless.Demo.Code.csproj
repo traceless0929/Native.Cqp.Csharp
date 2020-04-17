@@ -78,6 +78,10 @@
       <Project>{0CA93EB9-4E25-46C6-94D2-0F97137A1606}</Project>
       <Name>Native.Tool</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Site.Traceless.Demo.DB\Site.Traceless.Demo.DB.csproj">
+      <Project>{FCD94D72-508C-4157-99C0-4A66A6B6F08A}</Project>
+      <Name>Site.Traceless.Demo.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

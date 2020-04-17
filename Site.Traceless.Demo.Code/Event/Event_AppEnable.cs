@@ -4,6 +4,7 @@ using Native.Sdk.Cqp.Interface;
 using Native.Sdk.Cqp.EventArgs;
 using System.IO;
 using Native.Tool.IniConfig.Linq;
+using Site.Traceless.Demo.DB;
 
 namespace Site.Traceless.Demo.Code.Event
 {
@@ -12,6 +13,12 @@ namespace Site.Traceless.Demo.Code.Event
         public void AppEnable(object sender, CQAppEnableEventArgs e)
         {
             Common.CqApi = e.CQApi;
+
+            DB.Common.CqApi = e.CQApi;
+            DB.Common.CqLog = e.CQLog;
+            DB.Common.DbPath = e.CQApi.AppDirectory + "yourname.db";//".db前面的文字可以修改为你想要的数据库文件名称，建议使用英文"
+            DB.Common.sqliteHelper = new SQLiteHelper(DB.Common.DbPath);
+
             string commandPath = Common.CqApi.AppDirectory + "command.ini";
             IniObject iObject;
             if (!File.Exists(commandPath))
