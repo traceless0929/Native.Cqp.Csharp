@@ -9,12 +9,12 @@ namespace Site.Traceless.R6.Code.Http
 {
     public class Utils
     {
-        public static string ConvertToRankDes(int rank)
+        public static string ConvertToRankDes(int? rank)
         {
-            if (rank == 0) return "无";
+            if (rank==null||rank == 0) return "无";
             rank = rank - 1;
-            int rankAera = rank / 4;
-            int rankLevel = 4 - (rank % 4);
+            int rankAera = rank.Value / 4;
+            int rankLevel = 4 - (rank.Value % 4);
             StringBuilder sb = new StringBuilder();
             switch (rankAera)
             {

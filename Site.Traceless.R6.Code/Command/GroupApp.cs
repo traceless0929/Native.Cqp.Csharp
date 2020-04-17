@@ -24,6 +24,16 @@ namespace Site.Traceless.R6.Code.Command
             List<SeasonItem> infos = res.GetSeasons().OrderByDescending(p => p.id).Take(3).ToList();
             StringBuilder sb = new StringBuilder();
             RegionsItem nowSeason = infos.FirstOrDefault().regions.getBest();
+            if (null == nowSeason)
+            {
+                nowSeason = new RegionsItem()
+                {
+                    mmr = null,
+                    prev_rank_mmr = null,
+                    next_rank_mmr = null,
+                    max_rank=null
+                };
+            }
             var rankItem = infos.FirstOrDefault().rankings;
             sb.AppendLine($"[{baseRes.progressionStats.level}]{baseRes.username}-排名(全球/亚/美/欧):{rankItem.global}/{rankItem.apac}/{rankItem.ncsa}/{rankItem.emea}-MMR[{nowSeason.mmr}]-({nowSeason.prev_rank_mmr}/{nowSeason.next_rank_mmr})");
             infos.ForEach(p =>

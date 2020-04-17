@@ -131,19 +131,19 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 最高段位
         /// </summary>
-        public int max_rank { get; set; }
+        public int? max_rank { get; set; }
         /// <summary>
         /// 当前分值
         /// </summary>
-        public float mmr { get; set; }
+        public float? mmr { get; set; }
         /// <summary>
         /// 下一级分值
         /// </summary>
-        public float next_rank_mmr { get; set; }
+        public float? next_rank_mmr { get; set; }
         /// <summary>
         /// 上一级分值
         /// </summary>
-        public float prev_rank_mmr { get; set; }
+        public float? prev_rank_mmr { get; set; }
         /// <summary>
         /// 当前段位
         /// </summary>
