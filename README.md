@@ -63,29 +63,27 @@ public void AppEnable(object sender, CQAppEnableEventArgs e)
         //此处仅演示 私聊 和 群聊
             Common.CqApi = e.CQApi;
             string commandPath = Common.CqApi.AppDirectory + "command.ini";
-            IniObject iObject;
+            IniConfig rootConfig=null;
             if (!File.Exists(commandPath))
             {
-                iObject = new IniObject
-                {
-                    new IniSection("gcommands")
-                    {
-                        { "攻击","funcOne"},
-                        { "打击","funcOne"},
-                        { "防御","funcTwo"},
-                    },
-                    new IniSection("pcommands")
-                    {
-                        { "功能1","funcOne"},
-                        { "功能2","funcTwo"}
-                    }
-                };
-                iObject.Save(commandPath);
-            };
-            iObject = IniObject.Load(commandPath, Encoding.Default);
-            IniSection pCommand = iObject["pcommands"];
+                rootConfig = new IniConfig(commandPath);
+                rootConfig.Object["gcommands"]["功能1"] = "funcOne";
+                rootConfig.Object["gcommands"]["功能2"] = "funcTwo";
+                rootConfig.Object["pcommands"]["功能1"] = "funcOne";
+                rootConfig.Object["pcommands"]["功能2"] = "funcTwo";
+
+                rootConfig.Save();
+            }
+            else
+            {
+                rootConfig = new IniConfig(commandPath);
+                rootConfig.Load();
+            }
+            
+
+            ISection pCommand = rootConfig.Object["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
-            IniSection gCommand = iObject["gcommands"];
+            ISection gCommand = rootConfig.Object["gcommands"];
             Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
 ```
 
