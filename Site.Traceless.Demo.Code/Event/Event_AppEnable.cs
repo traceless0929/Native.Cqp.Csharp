@@ -32,8 +32,12 @@ namespace Site.Traceless.Demo.Code.Event
                 rootIni.Object["gcommands"]["公告"] = "getGNotice";
 
                 rootIni.Save();
-            };
-            rootIni.Load();
+            }
+            else
+            {
+                rootIni = new IniConfig (commandPath);
+                rootIni.Load();
+            }
 
             ISection pCommand = rootIni.Object["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
@@ -48,8 +52,12 @@ namespace Site.Traceless.Demo.Code.Event
                 configIni.Object["setting"]["master"] = 415206409;
 
                 configIni.Save();
-            };
-            configIni.Load();
+            }
+            else
+            {
+                configIni = new IniConfig (commandPath);
+                configIni.Load();
+            }
 
             ISection settings = configIni.Object["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
