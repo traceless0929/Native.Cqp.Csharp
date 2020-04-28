@@ -21,29 +21,35 @@ namespace Site.Traceless.Demo.Code.Event
             DB.Common.sqliteHelper = new SQLiteHelper(DB.Common.DbPath);
 
             string commandPath = Common.CqApi.AppDirectory + "command.ini";
-            IniConfig rootIni = new IniConfig (commandPath);
-            IObject iObject;
+            IniConfig rootIni = null;
             if (!File.Exists(commandPath))
             {
+                rootIni = new IniConfig (commandPath);
                 rootIni.Object["gcommands"]["功能1"] = "funcOne";
                 rootIni.Object["gcommands"]["功能2"] = "funcTwo";
                 rootIni.Object["pcommands"]["功能1"] = "funcOne";
                 rootIni.Object["pcommands"]["功能2"] = "funcTwo";
                 rootIni.Object["gcommands"]["公告"] = "getGNotice";
+
                 rootIni.Save();
             };
+            rootIni.Load();
+
             ISection pCommand = rootIni.Object["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
             ISection gCommand = rootIni.Object["gcommands"];
             Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
 
             commandPath = Common.CqApi.AppDirectory + "setting.ini";
-            IniConfig configIni = new IniConfig (commandPath);
+            IniConfig configIni = null;
             if (!File.Exists(commandPath))
             {
+                configIni = new IniConfig(commandPath);
                 configIni.Object["setting"]["master"] = 415206409;
+
                 configIni.Save();
             };
+            configIni.Load();
 
             ISection settings = configIni.Object["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
