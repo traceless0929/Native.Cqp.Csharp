@@ -27,8 +27,13 @@ namespace Site.Traceless.Nativedemo.Code.Event
                 rootConfig.Object["pcommands"]["功能2"] = "funcTwo";
 
                 rootConfig.Save();
-            };
-            rootConfig.Load();
+            }
+            else
+            {
+                rootConfig = new IniConfig(commandPath);
+                rootConfig.Load();
+            }
+            
 
             ISection pCommand = rootConfig.Object["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
@@ -43,8 +48,12 @@ namespace Site.Traceless.Nativedemo.Code.Event
                 settingConfig.Object["setting"]["master"] = 415206409;
 
                 settingConfig.Save();
-            };
-            settingConfig.Load();
+            }
+            else
+            {
+                settingConfig = new IniConfig(commandPath);
+                settingConfig.Load();
+            }
 
             ISection settings = settingConfig.Object["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
