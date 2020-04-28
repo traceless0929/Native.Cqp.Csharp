@@ -25,9 +25,13 @@ namespace Site.Traceless.R6.Code.Event
                 rootIni.Object["gcommands"]["R6战绩"] = "GetBattleStastic";
 
                 rootIni.Save();
-            };
-            rootIni.Load();
-
+            }
+            else
+            {
+                rootIni = new IniConfig (commandPath);
+                rootIni.Load();
+            }
+            
             ISection pCommand = rootIni.Object["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
             ISection gCommand = rootIni.Object["gcommands"];
