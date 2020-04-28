@@ -5,6 +5,7 @@ using Native.Sdk.Cqp.EventArgs;
 using System.IO;
 using Native.Tool.IniConfig.Linq;
 using Site.Traceless.Demo.DB;
+using Native.Tool.IniConfig;
 
 namespace Site.Traceless.Demo.Code.Event
 {
@@ -20,45 +21,31 @@ namespace Site.Traceless.Demo.Code.Event
             DB.Common.sqliteHelper = new SQLiteHelper(DB.Common.DbPath);
 
             string commandPath = Common.CqApi.AppDirectory + "command.ini";
-            IniObject iObject;
+            IniConfig rootIni = new IniConfig (commandPath);
+            IObject iObject;
             if (!File.Exists(commandPath))
             {
-                iObject = new IniObject
-                {
-                    new IniSection("gcommands")
-                    {
-                        { "功能1","funcOne"},
-                        { "功能2","funcTwo"}
-                    },
-                    new IniSection("pcommands")
-                    {
-                        { "功能1","funcOne"},
-                        { "功能2","funcTwo"},
-                        { "公告","getGNotice"},
-                    }
-                };
-                iObject.Save(commandPath);
+                rootIni.Object["gcommands"]["功能1"] = "funcOne";
+                rootIni.Object["gcommands"]["功能2"] = "funcTwo";
+                rootIni.Object["pcommands"]["功能1"] = "funcOne";
+                rootIni.Object["pcommands"]["功能2"] = "funcTwo";
+                rootIni.Object["gcommands"]["公告"] = "getGNotice";
+                rootIni.Save();
             };
-            iObject = IniObject.Load(commandPath, Encoding.Default);
-            IniSection pCommand = iObject["pcommands"];
+            ISection pCommand = rootIni.Object["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
-            IniSection gCommand = iObject["gcommands"];
+            ISection gCommand = rootIni.Object["gcommands"];
             Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
 
             commandPath = Common.CqApi.AppDirectory + "setting.ini";
+            IniConfig configIni = new IniConfig (commandPath);
             if (!File.Exists(commandPath))
             {
-                iObject = new IniObject
-                {
-                    new IniSection("setting")
-                    {
-                        { "master",415206409}
-                    }
-                };
-                iObject.Save(commandPath);
+                configIni.Object["setting"]["master"] = 415206409;
+                configIni.Save();
             };
-            iObject = IniObject.Load(commandPath, Encoding.Default);
-            IniSection settings = iObject["setting"];
+
+            ISection settings = configIni.Object["setting"];
             Common.settingDic = settings.ToDictionary(p => p.Key, p => p.Value.ToString());
 
             e.CQApi.SendPrivateMessage(415206409, "[测试-应用启动]", sender, e);
