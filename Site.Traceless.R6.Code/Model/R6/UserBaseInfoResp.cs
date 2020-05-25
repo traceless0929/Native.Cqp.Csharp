@@ -12,7 +12,7 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// id
         /// </summary>
-        public int id { get; set; }
+        public long id { get; set; }
         /// <summary>
         /// 用户的UplayId
         /// </summary>
@@ -47,7 +47,7 @@ namespace Site.Traceless.R6.Code.Model.R6
             /// <summary>
             /// 等级
             /// </summary>
-            public int level { get; set; }
+            public long level { get; set; }
         }
 
         public class Genericstats
@@ -55,19 +55,19 @@ namespace Site.Traceless.R6.Code.Model.R6
             /// <summary>
             /// 击杀
             /// </summary>
-            public int kills { get; set; }
+            public long kills { get; set; }
             /// <summary>
             /// 死亡
             /// </summary>
-            public int deaths { get; set; }
+            public long deaths { get; set; }
             /// <summary>
             /// 胜场
             /// </summary>
-            public int wins { get; set; }
+            public long wins { get; set; }
             /// <summary>
             /// 负场
             /// </summary>
-            public int losses { get; set; }
+            public long losses { get; set; }
 
         }
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Site.Traceless.R6.Code.Model.R6
 {
+
     public class UserSeasonResp
     {
         public string username { get; set; }
@@ -35,7 +36,7 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 赛季ID
         /// </summary>
-        public int id { get; set; }
+        public long id { get; set; }
         /// <summary>
         /// 赛季名
         /// </summary>
@@ -67,19 +68,19 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 美服
         /// </summary>
-        public int? ncsa { get; set; }
+        public long? ncsa { get; set; }
         /// <summary>
         /// 欧服
         /// </summary>
-        public int? emea { get; set; }
+        public long? emea { get; set; }
         /// <summary>
         /// 亚服
         /// </summary>
-        public int? apac { get; set; }
+        public long? apac { get; set; }
         /// <summary>
         /// 全球
         /// </summary>
-        public int? global { get; set; }
+        public long? global { get; set; }
     }
 
     public class Regions
@@ -107,11 +108,11 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 排位ID（没啥用）
         /// </summary>
-        public int id { get; set; }
+        public long id { get; set; }
         /// <summary>
         /// 赛季ID
         /// </summary>
-        public int season_id { get; set; }
+        public long season_id { get; set; }
         /// <summary>
         /// 所属地区
         /// </summary>
@@ -119,11 +120,11 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 弃赛
         /// </summary>
-        public int abandons { get; set; }
+        public long abandons { get; set; }
         /// <summary>
         /// 负场
         /// </summary>
-        public int losses { get; set; }
+        public long losses { get; set; }
         /// <summary>
         /// 最高分数
         /// </summary>
@@ -163,6 +164,6 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 胜场
         /// </summary>
-        public int wins { get; set; }
+        public long wins { get; set; }
     }
 }

@@ -28,11 +28,11 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 击杀
         /// </summary>
-        public int kills { get; set; }
+        public long kills { get; set; }
         /// <summary>
         /// 死亡
         /// </summary>
-        public int deaths { get; set; }
+        public long deaths { get; set; }
         /// <summary>
         /// KD
         /// </summary>
@@ -40,7 +40,7 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 爆头
         /// </summary>
-        public int headshots { get; set; }
+        public long headshots { get; set; }
         /// <summary>
         /// 爆头率
         /// </summary>
@@ -48,9 +48,9 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 使用次数
         /// </summary>
-        public int times_chosen { get; set; }
-        public int bullets_fired { get; set; }
-        public int bullets_hit { get; set; }
+        public long times_chosen { get; set; }
+        public long bullets_fired { get; set; }
+        public long bullets_hit { get; set; }
         public DateTime created { get; set; }
         /// <summary>
         /// 更新时间
@@ -65,7 +65,7 @@ namespace Site.Traceless.R6.Code.Model.R6
     public class Category1
     {
         public string name { get; set; }
-        public string internal_name { get; set; }
+        public string longernal_name { get; set; }
     }
 
     /// <summary>
@@ -76,11 +76,11 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 击杀
         /// </summary>
-        public int kills { get; set; }
+        public long kills { get; set; }
         /// <summary>
         /// 死亡
         /// </summary>
-        public int deaths { get; set; }
+        public long deaths { get; set; }
         /// <summary>
         /// KD
         /// </summary>
@@ -88,7 +88,7 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 爆头
         /// </summary>
-        public int headshots { get; set; }
+        public long headshots { get; set; }
         /// <summary>
         /// 爆头率
         /// </summary>
@@ -96,9 +96,9 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 使用次数
         /// </summary>
-        public int times_chosen { get; set; }
-        public int bullets_fired { get; set; }
-        public int bullets_hit { get; set; }
+        public long times_chosen { get; set; }
+        public long bullets_fired { get; set; }
+        public long bullets_hit { get; set; }
         public DateTime created { get; set; }
         /// <summary>
         /// 最后更新时间
@@ -122,7 +122,7 @@ namespace Site.Traceless.R6.Code.Model.R6
         /// <summary>
         /// 内部名
         /// </summary>
-        public string internal_name { get; set; }
+        public string longernal_name { get; set; }
         /// <summary>
         /// 分类
         /// </summary>

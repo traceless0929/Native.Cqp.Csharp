@@ -26,9 +26,9 @@ namespace Site.Traceless.R6.Code.Model.R6
 
     public class Progression
     {
-        public int level { get; set; }
-        public int lootbox_probability { get; set; }
-        public int total_xp { get; set; }
+        public long level { get; set; }
+        public long lootbox_probability { get; set; }
+        public long total_xp { get; set; }
     }
 
     public class Alias
@@ -47,29 +47,29 @@ namespace Site.Traceless.R6.Code.Model.R6
 
     public class General
     {
-        public int assists { get; set; }
-        public int barricades_deployed { get; set; }
-        public int blind_kills { get; set; }
-        public int bullets_fired { get; set; }
-        public int bullets_hit { get; set; }
-        public int dbnos { get; set; }
-        public int deaths { get; set; }
-        public int distance_travelled { get; set; }
-        public int draws { get; set; }
-        public int gadgets_destroyed { get; set; }
-        public int games_played { get; set; }
-        public int headshots { get; set; }
+        public long assists { get; set; }
+        public long barricades_deployed { get; set; }
+        public long blind_kills { get; set; }
+        public long bullets_fired { get; set; }
+        public long bullets_hit { get; set; }
+        public long dbnos { get; set; }
+        public long deaths { get; set; }
+        public long distance_travelled { get; set; }
+        public long draws { get; set; }
+        public long gadgets_destroyed { get; set; }
+        public long games_played { get; set; }
+        public long headshots { get; set; }
         public float kd { get; set; }
-        public int kills { get; set; }
-        public int losses { get; set; }
-        public int melee_kills { get; set; }
-        public int penetration_kills { get; set; }
-        public int playtime { get; set; }
-        public int rappel_breaches { get; set; }
-        public int reinforcements_deployed { get; set; }
-        public int revives { get; set; }
-        public int suicides { get; set; }
-        public int wins { get; set; }
+        public long kills { get; set; }
+        public long losses { get; set; }
+        public long melee_kills { get; set; }
+        public long penetration_kills { get; set; }
+        public long playtime { get; set; }
+        public long rappel_breaches { get; set; }
+        public long reinforcements_deployed { get; set; }
+        public long revives { get; set; }
+        public long suicides { get; set; }
+        public long wins { get; set; }
         public float wl { get; set; }
     }
 
@@ -82,40 +82,40 @@ namespace Site.Traceless.R6.Code.Model.R6
 
     public class Casual
     {
-        public int deaths { get; set; }
-        public int draws { get; set; }
-        public int games_played { get; set; }
+        public long deaths { get; set; }
+        public long draws { get; set; }
+        public long games_played { get; set; }
         public float kd { get; set; }
-        public int kills { get; set; }
-        public int losses { get; set; }
-        public int playtime { get; set; }
-        public int wins { get; set; }
+        public long kills { get; set; }
+        public long losses { get; set; }
+        public long playtime { get; set; }
+        public long wins { get; set; }
         public float wl { get; set; }
     }
 
     public class Ranked
     {
-        public int deaths { get; set; }
-        public int draws { get; set; }
-        public int games_played { get; set; }
+        public long deaths { get; set; }
+        public long draws { get; set; }
+        public long games_played { get; set; }
         public float kd { get; set; }
-        public int kills { get; set; }
-        public int losses { get; set; }
-        public int playtime { get; set; }
-        public int wins { get; set; }
+        public long kills { get; set; }
+        public long losses { get; set; }
+        public long playtime { get; set; }
+        public long wins { get; set; }
         public float wl { get; set; }
     }
 
     public class Other
     {
-        public int deaths { get; set; }
-        public int draws { get; set; }
-        public int games_played { get; set; }
+        public long deaths { get; set; }
+        public long draws { get; set; }
+        public long games_played { get; set; }
         public float kd { get; set; }
-        public int kills { get; set; }
-        public int losses { get; set; }
-        public int playtime { get; set; }
-        public int wins { get; set; }
+        public long kills { get; set; }
+        public long losses { get; set; }
+        public long playtime { get; set; }
+        public long wins { get; set; }
         public float wl { get; set; }
     }
 
@@ -128,35 +128,35 @@ namespace Site.Traceless.R6.Code.Model.R6
 
     public class Bomb
     {
-        public int best_score { get; set; }
-        public int games_played { get; set; }
-        public int losses { get; set; }
-        public int playtime { get; set; }
-        public int wins { get; set; }
+        public long best_score { get; set; }
+        public long games_played { get; set; }
+        public long losses { get; set; }
+        public long playtime { get; set; }
+        public long wins { get; set; }
         public float wl { get; set; }
     }
 
     public class Secure_Area
     {
-        public int best_score { get; set; }
-        public int games_played { get; set; }
-        public int kills_as_attacker_in_objective { get; set; }
-        public int kills_as_defender_in_objective { get; set; }
-        public int losses { get; set; }
-        public int playtime { get; set; }
-        public int times_objective_secured { get; set; }
-        public int wins { get; set; }
+        public long best_score { get; set; }
+        public long games_played { get; set; }
+        public long kills_as_attacker_in_objective { get; set; }
+        public long kills_as_defender_in_objective { get; set; }
+        public long losses { get; set; }
+        public long playtime { get; set; }
+        public long times_objective_secured { get; set; }
+        public long wins { get; set; }
         public float wl { get; set; }
     }
 
     public class Hostage
     {
-        public int best_score { get; set; }
-        public int games_played { get; set; }
-        public int losses { get; set; }
-        public int playtime { get; set; }
-        public int extractions_denied { get; set; }
-        public int wins { get; set; }
+        public long best_score { get; set; }
+        public long games_played { get; set; }
+        public long losses { get; set; }
+        public long playtime { get; set; }
+        public long extractions_denied { get; set; }
+        public long wins { get; set; }
         public float wl { get; set; }
     }
 
@@ -168,17 +168,17 @@ namespace Site.Traceless.R6.Code.Model.R6
 
     public class Operator
     {
-        public int kills { get; set; }
-        public int deaths { get; set; }
+        public long kills { get; set; }
+        public long deaths { get; set; }
         public float kd { get; set; }
-        public int wins { get; set; }
-        public int losses { get; set; }
+        public long wins { get; set; }
+        public long losses { get; set; }
         public float wl { get; set; }
-        public int headshots { get; set; }
-        public int dbnos { get; set; }
-        public int melee_kills { get; set; }
-        public int experience { get; set; }
-        public int playtime { get; set; }
+        public long headshots { get; set; }
+        public long dbnos { get; set; }
+        public long melee_kills { get; set; }
+        public long experience { get; set; }
+        public long playtime { get; set; }
         public Ability[] abilities { get; set; }
         public Operator1 @operator { get; set; }
     }
@@ -186,7 +186,7 @@ namespace Site.Traceless.R6.Code.Model.R6
     public class Operator1
     {
         public string name { get; set; }
-        public string internal_name { get; set; }
+        public string longernal_name { get; set; }
         public string role { get; set; }
         public string ctu { get; set; }
         public Images images { get; set; }
@@ -203,7 +203,7 @@ namespace Site.Traceless.R6.Code.Model.R6
     {
         public string key { get; set; }
         public string title { get; set; }
-        public int value { get; set; }
+        public long value { get; set; }
     }
 
 
