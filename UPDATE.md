@@ -1,6 +1,26 @@
 ## Native.SDK 更新日志
 
-#### 2020年04月20日 版本: V4.2.0.0424
+#### 2020年05月22日 版本: V4.2.4.0522
+
+	1. 修复 DEBUG條件下部分Api缺失返回值问题
+
+#### 2020年05月22日 版本: V4.2.3.0522
+
+	1. 优化 QQ、QQMessage、QQRequset、Group 和 Discuss 类, 重载与某些基础数据类型比较的运算符
+	2. 优化 BasisStreamModel 在解码字节数组时若长度是 0 则不解析
+	3. 修复 QQMessage 类解析正则事件后永远为 null
+
+#### 2020年05月01日 版本: V4.2.2.0501
+
+	1. 修复 IniConfig 反序列化时设置值失败
+	2. 修复 IValue 针对某些类型的数据转换问题
+
+#### 2020年04月29日 版本: V4.2.1.0429
+
+	1. 修复 QQMessage 类 CQCode 解析问题
+	2. 新增 IValue 类 GetValueOrDefault<T>()、GetValue<T>() 方法
+
+#### 2020年04月24日 版本: V4.2.0.0424
 
 	1. 优化 Native.Sdk.Cqp.Model 下原有类的构造方式, 为所有类增加了抽象
 	2. 优化 QQ、Group、Discuss、QQMessage 和 QQRequest 类的转换方式 (现在支持转换为对应的封装数据类型, 例如: QQMessage 能直接赋值给 string 类型)

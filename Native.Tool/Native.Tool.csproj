@@ -76,10 +76,8 @@
     <Compile Include="IniConfig\Utilities\ConvertUtils.cs" />
     <Compile Include="IniConfig\Utilities\MathUtils.cs" />
     <Compile Include="IniConfig\Utilities\MiscellaneousUtils.cs" />
+    <Compile Include="IniConfig\Utilities\ReflectionUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="IniConfig\README.md" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
