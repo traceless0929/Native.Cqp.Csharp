@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Native.Sdk.Cqp.Interface;
 using Native.Sdk.Cqp.EventArgs;
-using Site.Traceless.Nativedemo.Code.Model;
+using Site.Traceless.Common.Model.Base;
 using Site.Traceless.Nativedemo.Code.Command;
 
 namespace Site.Traceless.Nativedemo.Code.Event

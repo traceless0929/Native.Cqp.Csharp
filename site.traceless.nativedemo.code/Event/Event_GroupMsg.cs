@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Native.Sdk.Cqp.Interface;
 using Native.Sdk.Cqp.EventArgs;
-using Site.Traceless.Nativedemo.Code.Model;
+using Site.Traceless.Common.Model.Base;
 using Site.Traceless.Nativedemo.Code.Command;
 
 namespace Site.Traceless.Nativedemo.Code.Event
@@ -25,8 +25,6 @@ namespace Site.Traceless.Nativedemo.Code.Event
             object result = method.Invoke(null, new object[] { e, nowModel });
 
             e.Handler = false;
-
         }
-
     }
 }

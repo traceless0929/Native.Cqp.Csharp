@@ -1,9 +1,9 @@
 ﻿using Native.Sdk.Cqp;
 using System.Collections.Generic;
 
-namespace Site.Traceless.Nativedemo.Code
+namespace Site.Traceless.Common.Model
 {
-    public static class Common
+    public static class CommonData
     {
         /// <summary>
         /// 命令映射路由(群聊)

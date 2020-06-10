@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</ProjectGuid>
+    <ProjectGuid>{2574D56D-4897-4772-B20C-3CFB069C5C4A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Site.Traceless.Nativedemo.Code</RootNamespace>
-    <AssemblyName>Site.Traceless.Nativedemo.Code</AssemblyName>
+    <RootNamespace>Site.Traceless.Common.Model</RootNamespace>
+    <AssemblyName>Site.Traceless.Common.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,38 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\FriendApp.cs" />
-    <Compile Include="Command\GroupApp.cs" />
-    <Compile Include="Event\Event_AppDisable.cs" />
-    <Compile Include="Event\Event_AppEnable.cs" />
-    <Compile Include="Event\Event_CQExit.cs" />
-    <Compile Include="Event\Event_CQStartup.cs" />
-    <Compile Include="Event\Event_DiscussMsg.cs" />
-    <Compile Include="Event\Event_FriendAdd.cs" />
-    <Compile Include="Event\Event_FriendAddRequest.cs" />
-    <Compile Include="Event\Event_GroupAddRequest.cs" />
-    <Compile Include="Event\Event_GroupBanSpeak.cs" />
-    <Compile Include="Event\Event_GroupManageChange.cs" />
-    <Compile Include="Event\Event_GroupMemberDecrease.cs" />
-    <Compile Include="Event\Event_GroupMemberIncrease.cs" />
-    <Compile Include="Event\Event_GroupMsg.cs" />
-    <Compile Include="Event\Event_GroupUpload.cs" />
-    <Compile Include="Event\Event_PrivateMsg.cs" />
+    <Compile Include="CommonData.cs" />
+    <Compile Include="Base\AnalysisMsg.cs" />
+    <Compile Include="Base\OrderInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
       <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>
       <Name>Native.Sdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Native.Tool\Native.Tool.csproj">
-      <Project>{0ca93eb9-4e25-46c6-94d2-0f97137a1606}</Project>
-      <Name>Native.Tool</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Site.Traceless.Common.Model\Site.Traceless.Common.Model.csproj">
-      <Project>{2574d56d-4897-4772-b20c-3cfb069c5c4a}</Project>
-      <Name>Site.Traceless.Common.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

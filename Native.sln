@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Core", "Native.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.Nativedemo.Code", "site.traceless.nativedemo.code\Site.Traceless.Nativedemo.Code.csproj", "{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.Plugin.Base", "Site.Traceless.Plugin.Base\Site.Traceless.Plugin.Base.csproj", "{674BE4C6-F761-4E57-851F-BF840271A51C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Traceless.Common.Model", "Site.Traceless.Common.Model\Site.Traceless.Common.Model.csproj", "{2574D56D-4897-4772-B20C-3CFB069C5C4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,22 @@ Global
 		{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}.Release|x86.ActiveCfg = Release|Any CPU
 		{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}.Release|x86.Build.0 = Release|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Debug|x86.Build.0 = Debug|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Release|x86.ActiveCfg = Release|Any CPU
+		{674BE4C6-F761-4E57-851F-BF840271A51C}.Release|x86.Build.0 = Release|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Debug|x86.Build.0 = Debug|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Release|x86.ActiveCfg = Release|Any CPU
+		{2574D56D-4897-4772-B20C-3CFB069C5C4A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

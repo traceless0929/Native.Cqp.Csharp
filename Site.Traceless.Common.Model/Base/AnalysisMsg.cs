@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Site.Traceless.Common.Model;
 
-namespace Site.Traceless.Nativedemo.Code.Model
+namespace Site.Traceless.Common.Model.Base
 {
-     public class AnalysisMsg
+    public class AnalysisMsg
     {
         private static OrderInfoModel _msg = new OrderInfoModel("");
 
@@ -20,7 +16,7 @@ namespace Site.Traceless.Nativedemo.Code.Model
             get
             {
                 string _gcommand = null;
-                Common.GCommandDic.TryGetValue(_msg.What.Trim(),out _gcommand);
+                CommonData.GCommandDic.TryGetValue(_msg.What.Trim(), out _gcommand);
                 return _gcommand;
             }
         }
@@ -30,7 +26,7 @@ namespace Site.Traceless.Nativedemo.Code.Model
             get
             {
                 string _pcommand = null;
-                Common.PCommandDic.TryGetValue(_msg.What.Trim(), out _pcommand);
+                CommonData.PCommandDic.TryGetValue(_msg.What.Trim(), out _pcommand);
                 return _pcommand;
             }
         }
