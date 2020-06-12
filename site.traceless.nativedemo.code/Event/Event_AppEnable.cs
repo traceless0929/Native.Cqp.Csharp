@@ -17,30 +17,9 @@ namespace Site.Traceless.Nativedemo.Code.Event
         public void AppEnable(object sender, CQAppEnableEventArgs e)
         {
             CommonData.CqApi = e.CQApi;
-            string commandPath = CommonData.CqApi.AppDirectory + "command.ini";
-            IniConfig rootConfig = null;
-            if (!File.Exists(commandPath))
-            {
-                rootConfig = new IniConfig(commandPath);
-                rootConfig.Object["gcommands"]["功能1"] = "funcOne";
-                rootConfig.Object["gcommands"]["功能2"] = "funcTwo";
-                rootConfig.Object["pcommands"]["功能1"] = "funcOne";
-                rootConfig.Object["pcommands"]["功能2"] = "funcTwo";
-
-                rootConfig.Save();
-            }
-            else
-            {
-                rootConfig = new IniConfig(commandPath);
-                rootConfig.Load();
-            }
-
-            ISection pCommand = rootConfig.Object["pcommands"];
-            CommonData.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
-            ISection gCommand = rootConfig.Object["gcommands"];
-            CommonData.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
-
-            commandPath = CommonData.CqApi.AppDirectory + "setting.ini";
+            CommonData.CqLog = e.CQLog;
+            PluginStore.InitPlugIn();
+            string commandPath = commandPath = CommonData.CqApi.AppDirectory + "setting.ini";
             IniConfig settingConfig = null;
             if (!File.Exists(commandPath))
             {

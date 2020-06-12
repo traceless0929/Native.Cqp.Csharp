@@ -4,21 +4,23 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A9CBA998-A1DA-4A85-BF67-0B9EC35CCD62}</ProjectGuid>
+    <ProjectGuid>{ED47B5FD-E441-4506-8839-E21ACB2A2562}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Site.Traceless.Nativedemo.Code</RootNamespace>
-    <AssemblyName>Site.Traceless.Nativedemo.Code</AssemblyName>
+    <RootNamespace>Site.Traceless.Plugin.Demo</RootNamespace>
+    <AssemblyName>Site.Traceless.Plugin.Demo</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\酷Q Pro\data\app\site.traceless.nativedemo\plugin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,6 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Costura, Version=1.6.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.1.6.2\lib\dotnet\Costura.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,44 +51,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\FriendApp.cs" />
-    <Compile Include="Command\GroupApp.cs" />
-    <Compile Include="Event\Event_AppDisable.cs" />
-    <Compile Include="Event\Event_AppEnable.cs" />
-    <Compile Include="Event\Event_CQExit.cs" />
-    <Compile Include="Event\Event_CQStartup.cs" />
-    <Compile Include="Event\Event_DiscussMsg.cs" />
-    <Compile Include="Event\Event_FriendAdd.cs" />
-    <Compile Include="Event\Event_FriendAddRequest.cs" />
-    <Compile Include="Event\Event_GroupAddRequest.cs" />
-    <Compile Include="Event\Event_GroupBanSpeak.cs" />
-    <Compile Include="Event\Event_GroupManageChange.cs" />
-    <Compile Include="Event\Event_GroupMemberDecrease.cs" />
-    <Compile Include="Event\Event_GroupMemberIncrease.cs" />
-    <Compile Include="Event\Event_GroupMsg.cs" />
-    <Compile Include="Event\Event_GroupUpload.cs" />
-    <Compile Include="Event\Event_PrivateMsg.cs" />
-    <Compile Include="Plugin\PluginStore.cs" />
+    <Compile Include="PlugMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
       <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>
       <Name>Native.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Native.Tool\Native.Tool.csproj">
-      <Project>{0ca93eb9-4e25-46c6-94d2-0f97137a1606}</Project>
-      <Name>Native.Tool</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Site.Traceless.Common.Model\Site.Traceless.Common.Model.csproj">
-      <Project>{2574d56d-4897-4772-b20c-3cfb069c5c4a}</Project>
+      <Project>{2574D56D-4897-4772-B20C-3CFB069C5C4A}</Project>
       <Name>Site.Traceless.Common.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Traceless.Plugin.Base\Site.Traceless.Plugin.Base.csproj">
-      <Project>{674BE4C6-F761-4E57-851F-BF840271A51C}</Project>
+      <Project>{674be4c6-f761-4e57-851f-bf840271a51c}</Project>
       <Name>Site.Traceless.Plugin.Base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.0.0\build\dotnet\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets'))" />
+  </Target>
+  <Import Project="..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" />
 </Project>

@@ -7,6 +7,7 @@ using Native.Sdk.Cqp.Interface;
 using Native.Sdk.Cqp.EventArgs;
 using Site.Traceless.Common.Model.Base;
 using Site.Traceless.Nativedemo.Code.Command;
+using Site.Traceless.Plugin.Base;
 
 namespace Site.Traceless.Nativedemo.Code.Event
 {
@@ -15,14 +16,12 @@ namespace Site.Traceless.Nativedemo.Code.Event
         public void GroupMessage(object sender, CQGroupMessageEventArgs e)
         {
             AnalysisMsg nowModel = new AnalysisMsg(e.Message.Text);
-            if (String.IsNullOrEmpty(nowModel.GCommand))
+
+            IBasePlugin basePlugin = PluginStore.GetPluginPcmd(nowModel.What);
+            if (basePlugin != null)
             {
-                e.Handler = false;
-                return;
+                basePlugin.DoGroup(e, nowModel);
             }
-            var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
-            var method = gapp.GetType().GetMethod(nowModel.GCommand);
-            object result = method.Invoke(null, new object[] { e, nowModel });
 
             e.Handler = false;
         }

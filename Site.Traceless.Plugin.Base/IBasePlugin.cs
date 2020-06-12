@@ -10,12 +10,13 @@ namespace Site.Traceless.Plugin.Base
 {
     public interface IBasePlugin
     {
-        String Name { get; set; }
+        string Name { get; set; }
+        string Author { get; set; }
         string GCommand { get; set; }
         string PCommand { get; set; }
 
-        string DoGroup(CQGroupMessageEventArgs e, AnalysisMsg msg);
+        bool DoGroup(CQGroupMessageEventArgs e, AnalysisMsg msg);
 
-        string DoPrivate(CQPrivateMessageEventArgs e, AnalysisMsg msg);
+        bool DoPrivate(CQPrivateMessageEventArgs e, AnalysisMsg msg);
     }
 }

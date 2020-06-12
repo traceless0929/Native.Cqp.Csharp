@@ -11,26 +11,6 @@ namespace Site.Traceless.Common.Model.Base
             get => _msg.What.Trim() ?? "";
         }
 
-        public string GCommand
-        {
-            get
-            {
-                string _gcommand = null;
-                CommonData.GCommandDic.TryGetValue(_msg.What.Trim(), out _gcommand);
-                return _gcommand;
-            }
-        }
-
-        public string PCommand
-        {
-            get
-            {
-                string _pcommand = null;
-                CommonData.PCommandDic.TryGetValue(_msg.What.Trim(), out _pcommand);
-                return _pcommand;
-            }
-        }
-
         public string How
         {
             get => _msg.How.Trim() ?? "";
