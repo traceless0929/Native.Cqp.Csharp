@@ -1,5 +1,69 @@
 ## Native.SDK 更新日志
 
+#### 2020年06月16日 版本: V4.2.8.0616
+
+	1. 补充 QQSex 枚举描述
+
+#### 2020年06月01日 版本: V4.2.7.0601
+
+	1. 修复 IniConfig 初始化时文件不存在可能报错的问题.
+
+#### 2020年05月27日 版本: V4.2.6.0527
+
+	1. 修复 QQMessage 类 ToString 方法报错
+	2. 修复 Discuss、Group、QQ、QQMessage 和 QQRequest 类运算符方法 == 和 != NPE 问题 (@traceless0929)
+
+#### 2020年05月26日 版本: V4.2.5.0526
+
+	1. 修复 QQMessage 类解析正则消息的问题
+
+#### 2020年05月22日 版本: V4.2.4.0522
+
+	1. 修复 DEBUG條件下部分Api缺失返回值问题
+
+#### 2020年05月22日 版本: V4.2.3.0522
+
+	1. 优化 QQ、QQMessage、QQRequset、Group 和 Discuss 类, 重载与某些基础数据类型比较的运算符
+	2. 优化 BasisStreamModel 在解码字节数组时若长度是 0 则不解析
+	3. 修复 QQMessage 类解析正则事件后永远为 null
+
+#### 2020年05月01日 版本: V4.2.2.0501
+
+	1. 修复 IniConfig 反序列化时设置值失败
+	2. 修复 IValue 针对某些类型的数据转换问题
+
+#### 2020年04月29日 版本: V4.2.1.0429
+
+	1. 修复 QQMessage 类 CQCode 解析问题
+	2. 新增 IValue 类 GetValueOrDefault<T>()、GetValue<T>() 方法
+
+#### 2020年04月24日 版本: V4.2.0.0424
+
+	1. 优化 Native.Sdk.Cqp.Model 下原有类的构造方式, 为所有类增加了抽象
+	2. 优化 QQ、Group、Discuss、QQMessage 和 QQRequest 类的转换方式 (现在支持转换为对应的封装数据类型, 例如: QQMessage 能直接赋值给 string 类型)
+	3. 移除 CQApi 传入封装数据类型的接口 (由于支持隐式转换, 所以精简该类)
+	4. 移除 QQ 类中包含群操作的接口
+	5. 修复 GroupMemberInfo 类, ToString 时抛出异常.
+	6. 新增 FriendInfoCollection 类, 表示只读的好友列表信息
+	7. 新增 GroupInfoCollection 类, 表示只读的群列表信息
+	8. 新增 GroupMemberInfoCollection 类, 表示只读的群成员列表信息
+	9. 升级 IniConfig 工具, 同时为所有旧成员标记过时. 将于下个版本移除
+
+#### 2020年04月06日 版本: V4.1.4.0406
+
+	1. 修复 QQMessage 类, 在接收图片时的 bug
+
+#### 2020年04月04日 版本: V4.1.3.0404
+
+	哀悼在抗击新冠肺炎争斗中牺牲的烈士和逝世同胞. 愿逝者安息, 愿生者奋发, 愿祖国昌盛.
+	
+	1. 修复 QQMessage 类, 在内部 CQCodes 个数为 0 时. 针对判断是否为纯图片或纯语音消息错误
+
+#### 2020年03月23日 版本: V4.1.2.0323
+
+	1. 优化 QQMessage 类, 支持直接判断是否属于纯图片或纯语音消息
+	2. 优化 CQCode 类, 增加判断该 CQCode 是否属于图片或属于语音
+
 #### 2020年02月16日 版本: V4.1.1.0216
 
 	1. 修复 Native.Tool 项目在 Release 项目下的编译问题

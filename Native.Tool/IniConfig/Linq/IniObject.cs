@@ -13,6 +13,7 @@ namespace Native.Tool.IniConfig.Linq
 	/// 用于描述 Ini 配置项的类
 	/// </summary>
 	[Serializable]
+	[Obsolete ("请改用 IObject 类型")]
 	public class IniObject : List<IniSection>
 	{
 		#region --字段--
@@ -48,10 +49,6 @@ namespace Native.Tool.IniConfig.Linq
 				catch (InvalidOperationException ex)
 				{
 					throw new SectionNotFoundException (string.Format ("无法通过指定的名称 {0} 找到对应的 IniSection", name), ex);
-				}
-				finally
-				{
-					this.Add(new IniSection(name));
 				}
 			}
 			set

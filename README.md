@@ -9,9 +9,12 @@ base分支为我自用的新建App的模板，引入了一些自己的机制简�
 
 ### 样例应用
 
+系列教程地址：[手摸手教你开发QQ机器人](https://traceless.site/index.php/archives/20/)
+
 | 应用名                                                       | 描述                                    | 备注 |
 | ------------------------------------------------------------ | --------------------------------------- | ---- |
 | [彩虹六号战绩查询](https://github.com/traceless0929/Native.Cqp.Csharp/tree/rainbow6) | 彩虹六号战绩查询插件，数据来源于R6stats |      |
+| [综合DEMO](https://github.com/traceless0929/Native.Cqp.Csharp/tree/demo) | 手摸手系列教程demo插件 |      |
 
 ### 消息解析
 
@@ -60,29 +63,27 @@ public void AppEnable(object sender, CQAppEnableEventArgs e)
         //此处仅演示 私聊 和 群聊
             Common.CqApi = e.CQApi;
             string commandPath = Common.CqApi.AppDirectory + "command.ini";
-            IniObject iObject;
+            IniConfig rootConfig=null;
             if (!File.Exists(commandPath))
             {
-                iObject = new IniObject
-                {
-                    new IniSection("gcommands")
-                    {
-                        { "攻击","funcOne"},
-                        { "打击","funcOne"},
-                        { "防御","funcTwo"},
-                    },
-                    new IniSection("pcommands")
-                    {
-                        { "功能1","funcOne"},
-                        { "功能2","funcTwo"}
-                    }
-                };
-                iObject.Save(commandPath);
-            };
-            iObject = IniObject.Load(commandPath, Encoding.Default);
-            IniSection pCommand = iObject["pcommands"];
+                rootConfig = new IniConfig(commandPath);
+                rootConfig.Object["gcommands"]["功能1"] = "funcOne";
+                rootConfig.Object["gcommands"]["功能2"] = "funcTwo";
+                rootConfig.Object["pcommands"]["功能1"] = "funcOne";
+                rootConfig.Object["pcommands"]["功能2"] = "funcTwo";
+
+                rootConfig.Save();
+            }
+            else
+            {
+                rootConfig = new IniConfig(commandPath);
+                rootConfig.Load();
+            }
+            
+
+            ISection pCommand = rootConfig.Object["pcommands"];
             Common.PCommandDic = pCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
-            IniSection gCommand = iObject["gcommands"];
+            ISection gCommand = rootConfig.Object["gcommands"];
             Common.GCommandDic = gCommand.ToDictionary(p => p.Key, p => p.Value.ToString());
 ```
 
@@ -97,7 +98,7 @@ public class Event_GroupMsg : IGroupMessage
             if (String.IsNullOrEmpty(nowModel.GCommand))
             {
                 e.Handler = false;
-                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+                return;
             }
             var gapp = Activator.CreateInstance(typeof(GroupApp)) as GroupApp;
             var method = gapp.GetType().GetMethod(nowModel.GCommand);
@@ -119,7 +120,7 @@ public class Event_GroupMsg : IGroupMessage
             if (String.IsNullOrEmpty(nowModel.PCommand))
             {
                 e.Handler = false;
-                return;     // 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
+                return;
             }
             var papp = Activator.CreateInstance(typeof(FriendApp)) as FriendApp;
             var method = papp.GetType().GetMethod(nowModel.PCommand);
@@ -164,10 +165,9 @@ Native.SDK  是为了方便 .Net 平台开发者高效开发 酷Q应用 的开�
 * 使用 UTF-8 编码，并且在托管和非托管之间启用了 GB18030 编码的转换
 * 可以在 <a href="https://cqp.cc/t/42164">酷Q on Docker</a> 中运行。(目前仅支持 .Net Framework 4.5)
 
-## 维基
+## 在线文档
 
-<a href="https://github.com/Jie2GG/Native.Framework/wiki">Native 维基百科</a><br/>
-同时包括了 Native.SDK 的安装方法、编程规范、编译部署及常见错误和解决方案
+[Native 在线文档](https://native.run/)
 
 ## 更新日志
 
