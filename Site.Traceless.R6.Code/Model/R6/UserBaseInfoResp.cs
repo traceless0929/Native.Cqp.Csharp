@@ -1,75 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Newtonsoft.Json;
 
 namespace Site.Traceless.R6.Code.Model.R6
 {
-    public class UserBaseInfoResp
+    public partial class UserBaseInfoResp
     {
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Datum> Data { get; set; }
+    }
 
-        /// <summary>
-        /// id
-        /// </summary>
-        public long id { get; set; }
-        /// <summary>
-        /// 用户的UplayId
-        /// </summary>
-        public string uplay_id { get; set; }
-        /// <summary>
-        /// 用户的育碧id(目前是一样的)
-        /// </summary>
-        public string ubisoft_id { get; set; }
-        /// <summary>
-        /// 用户昵称
-        /// </summary>
-        public string username { get; set; }
-        /// <summary>
-        /// 平台pc/ps4/xbox
-        /// </summary>
-        public string platform { get; set; }
-        /// <summary>
-        /// ？？？大概是是不是被封号了？
-        /// </summary>
-        public bool avatar_banned { get; set; }
-        /// <summary>
-        /// 等级信息
-        /// </summary>
-        public Progressionstats progressionStats { get; set; }
-        /// <summary>
-        /// 对局数据概况
-        /// </summary>
-        public Genericstats genericStats { get; set; }
+    public partial class Datum
+    {
+        [JsonProperty("username", NullValueHandling = NullValueHandling.Ignore)]
+        public string Username { get; set; }
 
-        public class Progressionstats
-        {
-            /// <summary>
-            /// 等级
-            /// </summary>
-            public long level { get; set; }
-        }
+        [JsonProperty("platform", NullValueHandling = NullValueHandling.Ignore)]
+        public string Platform { get; set; }
 
-        public class Genericstats
-        {
-            /// <summary>
-            /// 击杀
-            /// </summary>
-            public long kills { get; set; }
-            /// <summary>
-            /// 死亡
-            /// </summary>
-            public long deaths { get; set; }
-            /// <summary>
-            /// 胜场
-            /// </summary>
-            public long wins { get; set; }
-            /// <summary>
-            /// 负场
-            /// </summary>
-            public long losses { get; set; }
+        [JsonProperty("ubisoft_id", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? UbisoftId { get; set; }
 
-        }
+        [JsonProperty("uplay_id", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? UplayId { get; set; }
 
+        [JsonProperty("avatar_url_146", NullValueHandling = NullValueHandling.Ignore)]
+        public Uri AvatarUrl146 { get; set; }
+
+        [JsonProperty("avatar_url_256", NullValueHandling = NullValueHandling.Ignore)]
+        public Uri AvatarUrl256 { get; set; }
+
+        [JsonProperty("avatar_banned", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? AvatarBanned { get; set; }
+
+        [JsonProperty("claimed", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Claimed { get; set; }
+
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LastUpdated { get; set; }
+
+        [JsonProperty("progressionStats", NullValueHandling = NullValueHandling.Ignore)]
+        public ProgressionStats ProgressionStats { get; set; }
+
+        [JsonProperty("genericStats", NullValueHandling = NullValueHandling.Ignore)]
+        public GenericStats GenericStats { get; set; }
+
+        [JsonProperty("seasonalStats", NullValueHandling = NullValueHandling.Ignore)]
+        public SeasonalStats SeasonalStats { get; set; }
     }
 }

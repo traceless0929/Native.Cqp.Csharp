@@ -64,7 +64,7 @@ namespace Native.App.Export
 			// 反射获取 AppData 实例	
 			Type appDataType = typeof (AppData);	
 			// 注册一个 CQApi 实例	
-			AppInfo appInfo = new AppInfo ("site.traceless.r6", 1, 9, "彩虹六号战绩查询", "1.0.14", 14, "Traceless", "彩虹六号战绩查询插件，数据来源于R6stats\r\n使用Native.SDK 4.0，你从未使用过的船新版本", authCode);	
+			AppInfo appInfo = new AppInfo ("site.traceless.r6", 1, 9, "彩虹六号战绩查询", "1.0.17", 16, "Traceless", "彩虹六号战绩查询插件，数据来源于R6stats\r\n使用Native.SDK 4.0，你从未使用过的船新版本", authCode);	
 			appDataType.GetRuntimeProperty ("CQApi").GetSetMethod (true).Invoke (null, new object[] { new CQApi (appInfo) });	
 			AppData.UnityContainer.RegisterInstance<CQApi> ("site.traceless.r6", AppData.CQApi);	
 			// 向容器注册一个 CQLog 实例	

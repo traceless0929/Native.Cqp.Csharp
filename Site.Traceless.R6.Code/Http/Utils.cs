@@ -9,34 +9,38 @@ namespace Site.Traceless.R6.Code.Http
 {
     public class Utils
     {
-        public static string ConvertToRankDes(int? rank)
+        public static string ConvertToRankDes(long? rank)
         {
-            if (rank==null||rank == 0) return "无";
+            if (rank == null || rank == 0) return "无";
             rank = rank - 1;
-            int rankAera = rank.Value / 4;
-            int rankLevel = 4 - (rank.Value % 4);
+            long rankAera = rank.Value / 4;
+            long rankLevel = 4 - (rank.Value % 4);
             StringBuilder sb = new StringBuilder();
             switch (rankAera)
             {
                 case 0:
                     sb.Append("紫铜");
                     break;
+
                 case 1:
                     sb.Append("青铜");
                     break;
+
                 case 2:
                     sb.Append("白银");
                     break;
+
                 case 3:
                     sb.Append("黄金");
                     break;
+
                 case 4:
                     sb.Append("白金");
                     break;
+
                 case 5:
                     sb.Append("钻石");
                     break;
-
             }
             sb.Append(rankLevel);
             return sb.ToString();

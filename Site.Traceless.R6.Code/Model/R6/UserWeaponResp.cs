@@ -1,138 +1,120 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using System.Globalization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Site.Traceless.R6.Code.Model.R6
 {
-
-    public class UserWeaponResp
+    public partial class UserWeaponResp
     {
-        public string username { get; set; }
-        public string platform { get; set; }
-        public string ubisoft_id { get; set; }
-        public string uplay_id { get; set; }
-        public string avatar_url_146 { get; set; }
-        public string avatar_url_256 { get; set; }
-        public DateTime last_updated { get; set; }
-        public Category[] categories { get; set; }
-        public Weapon[] weapons { get; set; }
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Ignore)]
+        public WeaponData Data { get; set; }
     }
 
-    /// <summary>
-    /// 分类统计
-    /// </summary>
-    public class Category
+    public partial class WeaponData
     {
-        /// <summary>
-        /// 击杀
-        /// </summary>
-        public long kills { get; set; }
-        /// <summary>
-        /// 死亡
-        /// </summary>
-        public long deaths { get; set; }
-        /// <summary>
-        /// KD
-        /// </summary>
-        public float kd { get; set; }
-        /// <summary>
-        /// 爆头
-        /// </summary>
-        public long headshots { get; set; }
-        /// <summary>
-        /// 爆头率
-        /// </summary>
-        public float headshot_percentage { get; set; }
-        /// <summary>
-        /// 使用次数
-        /// </summary>
-        public long times_chosen { get; set; }
-        public long bullets_fired { get; set; }
-        public long bullets_hit { get; set; }
-        public DateTime created { get; set; }
-        /// <summary>
-        /// 更新时间
-        /// </summary>
-        public DateTime last_updated { get; set; }
-        public Category1 category { get; set; }
+        [JsonProperty("username", NullValueHandling = NullValueHandling.Ignore)]
+        public string Username { get; set; }
+
+        [JsonProperty("platform", NullValueHandling = NullValueHandling.Ignore)]
+        public string Platform { get; set; }
+
+        [JsonProperty("ubisoft_id", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? UbisoftId { get; set; }
+
+        [JsonProperty("uplay_id", NullValueHandling = NullValueHandling.Ignore)]
+        public Guid? UplayId { get; set; }
+
+        [JsonProperty("avatar_url_146", NullValueHandling = NullValueHandling.Ignore)]
+        public Uri AvatarUrl146 { get; set; }
+
+        [JsonProperty("avatar_url_256", NullValueHandling = NullValueHandling.Ignore)]
+        public Uri AvatarUrl256 { get; set; }
+
+        [JsonProperty("claimed", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Claimed { get; set; }
+
+        [JsonProperty("claimee", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Claimee { get; set; }
+
+        [JsonProperty("profile")]
+        public object Profile { get; set; }
+
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LastUpdated { get; set; }
+
+        [JsonProperty("queue", NullValueHandling = NullValueHandling.Ignore)]
+        public Queue Queue { get; set; }
+
+        [JsonProperty("categories", NullValueHandling = NullValueHandling.Ignore)]
+        public List<CategoryElement> Categories { get; set; }
+
+        [JsonProperty("weapons", NullValueHandling = NullValueHandling.Ignore)]
+        public List<CategoryElement> Weapons { get; set; }
     }
 
-    /// <summary>
-    /// 大类
-    /// </summary>
-    public class Category1
+    public partial class CategoryElement
     {
-        public string name { get; set; }
-        public string longernal_name { get; set; }
+        [JsonProperty("kills", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Kills { get; set; }
+
+        [JsonProperty("deaths", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Deaths { get; set; }
+
+        [JsonProperty("kd", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Kd { get; set; }
+
+        [JsonProperty("headshots", NullValueHandling = NullValueHandling.Ignore)]
+        public long? Headshots { get; set; }
+
+        [JsonProperty("headshot_percentage", NullValueHandling = NullValueHandling.Ignore)]
+        public double? HeadshotPercentage { get; set; }
+
+        [JsonProperty("times_chosen", NullValueHandling = NullValueHandling.Ignore)]
+        public long? TimesChosen { get; set; }
+
+        [JsonProperty("bullets_fired", NullValueHandling = NullValueHandling.Ignore)]
+        public long? BulletsFired { get; set; }
+
+        [JsonProperty("bullets_hit", NullValueHandling = NullValueHandling.Ignore)]
+        public long? BulletsHit { get; set; }
+
+        [JsonProperty("created", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? Created { get; set; }
+
+        [JsonProperty("last_updated", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? LastUpdated { get; set; }
+
+        [JsonProperty("category", NullValueHandling = NullValueHandling.Ignore)]
+        public CategoryCategory Category { get; set; }
+
+        [JsonProperty("weapon", NullValueHandling = NullValueHandling.Ignore)]
+        public Weapon Weapon { get; set; }
     }
 
-    /// <summary>
-    /// 武器统计
-    /// </summary>
-    public class Weapon
+    public partial class CategoryCategory
     {
-        /// <summary>
-        /// 击杀
-        /// </summary>
-        public long kills { get; set; }
-        /// <summary>
-        /// 死亡
-        /// </summary>
-        public long deaths { get; set; }
-        /// <summary>
-        /// KD
-        /// </summary>
-        public float kd { get; set; }
-        /// <summary>
-        /// 爆头
-        /// </summary>
-        public long headshots { get; set; }
-        /// <summary>
-        /// 爆头率
-        /// </summary>
-        public float headshot_percentage { get; set; }
-        /// <summary>
-        /// 使用次数
-        /// </summary>
-        public long times_chosen { get; set; }
-        public long bullets_fired { get; set; }
-        public long bullets_hit { get; set; }
-        public DateTime created { get; set; }
-        /// <summary>
-        /// 最后更新时间
-        /// </summary>
-        public DateTime last_updated { get; set; }
-        /// <summary>
-        /// 武器信息
-        /// </summary>
-        public Weapon1 weapon { get; set; }
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        public string Name { get; set; }
+
+        [JsonProperty("internal_name", NullValueHandling = NullValueHandling.Ignore)]
+        public string InternalName { get; set; }
+
+        [JsonProperty("key", NullValueHandling = NullValueHandling.Ignore)]
+        public string Key { get; set; }
     }
 
-    /// <summary>
-    /// 武器信息
-    /// </summary>
-    public class Weapon1
+    public partial class Weapon
     {
-        /// <summary>
-        /// 武器名
-        /// </summary>
-        public string name { get; set; }
-        /// <summary>
-        /// 内部名
-        /// </summary>
-        public string longernal_name { get; set; }
-        /// <summary>
-        /// 分类
-        /// </summary>
-        public Category2 category { get; set; }
-    }
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        public string Name { get; set; }
 
-    public class Category2
-    {
-        public string name { get; set; }
-        public string key { get; set; }
-    }
+        [JsonProperty("internal_name", NullValueHandling = NullValueHandling.Ignore)]
+        public string InternalName { get; set; }
 
+        [JsonProperty("category", NullValueHandling = NullValueHandling.Ignore)]
+        public CategoryCategory Category { get; set; }
+    }
 }
