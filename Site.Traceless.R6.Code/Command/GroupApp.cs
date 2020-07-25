@@ -73,6 +73,11 @@ namespace Site.Traceless.R6.Code.Command
             if (res != null)
             {
                 StringBuilder sb = new StringBuilder();
+                if (res.Stats.Count < 1)
+                {
+                    e.CQApi.SendGroupMessage(e.FromGroup, "[R6战绩查询] 找不到 " + msg.Who + " 相关战绩[R6Stats]");
+                    return;
+                }
                 var gen = res.Stats.FirstOrDefault().General;
                 var que = res.Stats.FirstOrDefault().Queue;
                 List<OperatorElement> operators = res.Operators.OrderByDescending(p => p.Experience).Take(20).ToList();
