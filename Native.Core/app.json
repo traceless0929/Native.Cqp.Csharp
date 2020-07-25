@@ -6,8 +6,8 @@
   "ret": 1,
   "apiver": 9,
   "name": "彩虹六号战绩查询",
-  "version": "1.0.18",
-  "version_id": 18,
+  "version": "1.0.19",
+  "version_id": 19,
   "author": "Traceless",
   "description": "彩虹六号战绩查询插件，数据来源于R6stats\r\n使用Native.SDK 4.0，你从未使用过的船新版本",
   "event": [
